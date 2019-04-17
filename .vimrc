@@ -26,9 +26,6 @@ set foldlevelstart=99
 "set code fold
 set fdm=manual  "manual  indent  expr   syntax   diff   marker
 
-
-
-
 "forbiden vim generate backup file
 set nobackup
 set noswapfile
@@ -44,9 +41,12 @@ set cursorcolumn " 高亮显示当前列
 
 set laststatus=2 " 总是显示状态栏
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+
+" vim卡顿 https://github.com/wklken/k-vim/issues/233
+" 主要是因为syntax on. 如果syntax off会好很多
+set re=1
+set ttyfast
+set lazyredraw
 
 "mouse support
 "n Normal mode
@@ -57,7 +57,8 @@ Bundle 'gmarik/vundle'
 "a all previous modes
 set mouse=n
 
-Bundle 'taglist.vim'
+"Plugin 'taglist.vim'
+"taglist config
 let Tlist_Ctags_Cmd='ctags'
 "let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow=1             "如果taglist窗口是最后一个窗口，则退出vim
@@ -69,8 +70,8 @@ let Tlist_WinWidt ="95"                    "设置taglist的宽度
 
 
 "color set
+"colorscheme molokai_dark
 colorscheme molokai_dark
-"colorscheme molokai
 let g:molokai_original = 1
 syntax enable
 set t_Co=256
@@ -78,19 +79,10 @@ let g:rehash256 = 1
 "highlight NonText guibg=#060606
 "highlight Folded  guibg=#0A0A0A guifg=#9090D0
 "==================================
-"colorscheme papercolor setting
-"set background=dark
-"colorscheme PaperColor
-
-
-Plugin 'sickill/vim-monokai'
-Bundle 'The-NERD-tree'
-"open NERDTree default
-"autocmd VimEnter * NERDTree
 
 " Set syntax highlighting for specific file types
 autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-autocmd BufRead,BufNewFile *.md set filetype=markdown
+"autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd Syntax javascript set syntax=jquery
 let NERDTreeWinSize=40
 let NERDTreeMouseMode=2
@@ -118,29 +110,29 @@ if has("cscope")
 	set csverb
 endif
 
+set csprg=~/cscope.sh
+
 "ctrl+] search func name
 map g<C-]> :cs find 3 <C-R>=expand(“<cword>”)<CR><CR>
 "ctul+/ search c symbols
-map g<C-/> :cs find 0 <C-R>=expand(“<cword>”)<CR><CR>
-
-nmap ss :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap sg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap sc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap st :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap se :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap sf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap si :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap sd :cs find d <C-R>=expand("<cword>")<CR><CR>
+map g<C-/> : cs find 0 <C-R>=expand(“<cword>”)<CR><CR>
+nmap ss    : cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap sg    : cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap sc    : cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap st    : cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap se    : cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap sf    : cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap si    : cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap sd    : cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "show cscope result in a quickfix window
 "set cscopequickfix=s-,c-,d-,i-,t-,e-   
 
 
 "powerline
-"Bundle "Lokaltog/vim-powerline"
 set laststatus=2
-let g:Powerline_symbols = 'compatible'
-let g:Powerline_stl_path_style = 'short'
+let g:Powerline_symbols='compatible'
+let g:Powerline_stl_path_style='short'
 set encoding=UTF-8
 set fillchars+=stl:\ ,stlnc:\
 
@@ -156,37 +148,10 @@ if has("autocmd")
       \| exe "normal g'\"" | endif
 endif
 
-set csprg=~/cscope.sh
-
-"marks
-highlight MarkWord6 ctermfg=0  ctermbg=9  guifg=#ffffff  guibg=#ff7272
-highlight MarkWord7 ctermfg=231  ctermbg=98  guifg=#ffffff  guibg=#875fd7
-highlight MarkWord8 ctermfg=15  ctermbg=75  guifg=#ffffff  guibg=#50f078
-highlight MarkWord9 cterm=bold ctermfg=231  ctermbg=160  guifg=#ffffff  guibg=#d70000
-highlight MarkWord10 ctermfg=15  ctermbg=216  guifg=Black  guibg=#82F078
-highlight MarkWord11 ctermfg=231  ctermbg=24  guifg=#ffffff  guibg=#005f87
-highlight MarkWord12 cterm=bold ctermfg=88  ctermbg=208 gui=bold  guifg=#ffffff  guibg=#ff8700
-highlight MarkWord13 cterm=bold ctermfg=231  ctermbg=97  gui=bold  guifg=#ffffff  guibg=#0058f7
-highlight MarkWord14 cterm=bold ctermfg=15  ctermbg=90  gui=bold  guifg=#005f5f  guibg=#ffffff
-highlight MarkWord15 cterm=bold ctermfg=15  ctermbg=55  gui=bold  guifg=#5f00af  guibg=#ffffff
-highlight MarkWord16 cterm=bold ctermfg=160 ctermbg=148  gui=bold  guifg=#d70000  guibg=#afd700
-highlight MarkWord17 cterm=bold ctermfg=231 ctermbg=60   gui=bold  guifg=#ffffff  guibg=#5f00af
-highlight MarkWord18 cterm=bold ctermfg=0  ctermbg=178  gui=bold  guifg=Black  guibg=#6BF0B4
-highlight MarkWord19 cterm=bold ctermfg=0  ctermbg=26  gui=bold  guifg=Black  guibg=#06F099
-highlight MarkWord20 cterm=bold ctermfg=0  ctermbg=62  gui=bold  guifg=Black  guibg=#22F078
-highlight MarkWord21 cterm=bold ctermfg=0  ctermbg=200  gui=bold  guifg=White  guibg=#A6BFA1
-
 
 let g:mwAutoSaveMarks = 1  "auto save preview vim session's marks
 let g:mwAutoLoadMarks = 1
 
-
-
-"plantuml
-"let g:plantuml_executable_script='java -jar /drivers/c/MyLearning/plantuml.jar'
-"nnoremap <F4> :w<CR> :silent make<CR>
-"inoremap <F4> <Esc>:w<CR>:silent make<CR>
-"vnoremap <F4> :<C-U>:w<CR>:silent make<CR
 
 set nocp
 set backspace=indent,eol,start
@@ -194,13 +159,13 @@ set backspace=indent,eol,start
 "install vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
-let g:cpp_experimental_template_highlight = 1
+"let g:cpp_experimental_template_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
 
 "Ctrlp file search
 
-Bundle 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
@@ -227,6 +192,7 @@ set incsearch
 "==============================
 "Do this First
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+
 "    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 Plug 't9md/vim-quickhl'
@@ -238,9 +204,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tacahiroy/ctrlp-funky'
 "Another replace of powerline
 Plug 'itchyny/lightline.vim'
-"Plug 'lokaltog/vim-powerline'
+
 Plug 'vimwiki/vimwiki'
-Plug 'nathanaelkane/vim-indent-guides'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -250,7 +215,69 @@ Plug 'vim-pandoc/vim-pandoc'
 
 "github color scheme
 Plug 'endel/vim-github-colorscheme'
+
+"powerline
+Plug 'lokaltog/vim-powerline'
+"airline
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+
+"ctrlp
+Plug 'ctrlpvim/ctrlp.vim'
+
+"tomasr/molokai
+"sudo cp ~/.vim/plugged/moloknai/colors/molokai.vim /usr/share/vim/vim81/colors/
+"need run copy before it works
+Plug 'tomasr/molokai'
+
+"molokai_dark
+Plug 'fcevado/molokai_dark'
+
+
+"vim-cpp-enhanced-highlight
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+"quickhl
+Plug 't9md/vim-quickhl'
+
+Plug 'vim-scripts/mru.vim'
+
+"Plugin 'inkarkat/vim-mark'
+"tips : check the mark.vim, will helpful.   like `99\m` and :Marks
+Plug 'inkarkat/vim-mark'
+
+"Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
+
+"taglist
+"Plug 'taglist.vim'
+
+"tagbar  tagbar and taglist should choose one and delete another
+Plug 'majutsushi/tagbar'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+
+"common function
+Plug 'inkarkat/vim-ingo-library'
+
 call plug#end()
+
+
+
+
+
+
+"vim-markdown config
+let g:vim_markdown_folding_disabled = 1
+
+"vim-mark
+let g:mwDefaultHighlightingPalette = 'maximum'
+
+"tagbar config
+nmap <F5> :TagbarToggle<CR>
+
 let g:quickhl_manual_enable_at_startup = 1
 nmap <Space>m <Plug>(quickhl-manual-this)
 xmap <Space>m <Plug>(quickhl-manual-this)
@@ -297,9 +324,9 @@ let g:ctrlp_funky_matchtype = 'path'
 "vimwiki
 "let g:vimwiki_folding = 'list'
 let wiki = {}
-let wiki.path = '/mnt/c/vimwiki/'
-let wiki.export_path = '/mnt/c/vimwiki/vimwiki_assets'
-let wiki.path_html = '/mnt/c/vimwiki_html'
+let wiki.path = '/mnt/c/mygithub/mywiki/vimwiki/'
+let wiki.export_path = '/mnt/c/mygithub/mywiki/vimwiki/vimwiki_assets'
+let wiki.path_html = '/mnt/c/mygithub/mywiki/vimwiki_html'
 let wiki.nested_syntaxes = {'js':'javascript', 'python': 'python', 'c++': 'cpp', 'md':'markdown'}
 "let wiki.template_path=wiki.path_html.'/template'
 let wiki.template_path=wiki.export_path.'vimwiki-assets'
@@ -325,12 +352,6 @@ let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1,color,p
 
 
 
-"reset cscope out file
-map <F5> : call FlushStatus()<cr>
-func! FlushStatus()
-exec "Gblame"
-endfunc
-
 
 map <f11> :call CompileUml()<cr>
 func! CompileUml()
@@ -348,3 +369,11 @@ exec "set csprg=~/cscope.sh"
 exec "cs add cscope.out"
 endfunc
 
+"use
+func! CallTagTog()
+exec "TagbarTogger"
+endfunc
+nmap tt :TagbarToggle<CR><CR>
+
+"map Gblame
+nmap gb :Gblame<cr>
