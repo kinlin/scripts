@@ -262,10 +262,34 @@ Plug 'plasticboy/vim-markdown'
 "common function
 Plug 'inkarkat/vim-ingo-library'
 
+"snippet
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+
+"undo tree
+"http://foocoder.com/2014/04/15/mei-ri-vimcha-jian-vim-che-xiao-shu-gundo-dot-vim/
+" enter undolist will show undo tree
+"Plug 'sjl/gundo.vim'
+"This is not good. Use new one
+Plug 'mbbill/undotree'
 call plug#end()
 
 
+"undotree config
+if has("persistent_undo")
+    set undodir=$HOME."/.undodir"
+    set undofile
+endif
+nnoremap <F5> :UndotreeToggle<cr>
 
+
+"snippet config
+let g:UltiSnipsExpandTrigger="<tab>"
+" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" 使用 UltiSnipsEdit 命令时垂直分割屏幕
+let g:UltiSnipsEditSplit="vertical"
 
 
 
@@ -332,6 +356,7 @@ let wiki.nested_syntaxes = {'js':'javascript', 'python': 'python', 'c++': 'cpp',
 let wiki.template_path=wiki.export_path.'vimwiki-assets'
 let wiki.template_default='default'
 let wiki.template_ext = '.html'
+let g:vimwiki_table_mappings = 0
 
 
 
@@ -377,3 +402,5 @@ nmap tt :TagbarToggle<CR><CR>
 
 "map Gblame
 nmap gb :Gblame<cr>
+
+
