@@ -1,0 +1,33 @@
+@startuml
+title
+**BufferQueue**
+1. RDIBufferQueue
+2. Offline BufferQueue
+
+
+others camera3.h
+1. acquire_fence. 
+the HAL must wait on this fence fd before attempting to read from or write to this buffer
+the framework may be set to -1 to indicate that no waiting is necessary for this buffer. 
+When the HAL returns an output buffer to the framework with process_capture_result(), the acquire_fence must be set to -1.
+For input buffers, the HAL must not change the acquire_fence field during the process_capture_request() call.
+When the HAL returns an input buffer to the framework with process_capture_result(), the acquire_fence must be set to -1
+
+2. release_fence
+The release sync fence for this buffer. The HAL must set this fence when returning buffers to the framework, or write -1 to indicate that no
+waiting is required for this buffer.
+
+For the output buffers, the fences must be set in the output_buffers array passed to process_capture_result().
+After signaling the release_fence for this buffer, the HAL should not make any further attempts to access this buffer as the
+ownership has been fully transferred back to the framework.
+If a fence of -1 was specified then the ownership of this buffer
+is transferred back immediately upon the call of process_capture_result.
+end title
+
+participant chxadvancedcamerausecase
+
+
+== thread Pool create ==
+
+
+@enduml

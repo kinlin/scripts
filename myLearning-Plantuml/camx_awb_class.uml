@@ -1,0 +1,312 @@
+@startuml
+title <size:18>camx awb class Arch</size>\n     Lin Jin
+
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+      <color:red><size:16>****</size></color>
+      <color:blue><size:15></size></color>
+'/
+
+class IAWB {
+__public__
+virtual **Process()**
+virtual **AWBSetParameter()**
+virtual **AWBGetParameter()**
+virtual **GetAWBControl()**
+virtual **DestroyInstance()**
+}
+
+/'CAWBMain'/
+package AWBMain {
+  class CAWBMain {
+  __public__
+  IAWBControl* m_pAWBControl;
+  IAWBTemporalConvergence* m_pAWBTemporalFilter;
+  IAWBHistoryControl* m_pAWBHistoryControl;
+  IAWBDynamicSkipFrame* m_pAWBFrameControl;
+  IAWBFlashDec* m_pPreflashAdjust;
+  **CreateInstance()**
+  virtual **DestroyInstance()**
+  virtual **Process()**
+  virtual **AWBSetParameter()**
+  virtual **AWBGetParameter()**
+  virtual **AddDebugData()**
+  virtual **GetAWBControl()**
+  **ConvertCCTtoDecision()**
+  __private__
+  **explicit CAWBMain**
+  **IAWBFactory* m_pFactory**;
+  **AWBStatFilterDeque m_StatFilters;**
+  **AWBStatFilterDeque m_PreflashStatFilters;**
+  **AWBStatFilterDeque* m_pCurStatFilters;**
+  **AWBSceneAnalyzerDeque m_SceneAnalyzers;**
+  **IAWBDecisionAggregator* m_pDecisionAggregator;**
+  **IAWBGainAdjust* m_pMeshAdjustGain;**
+  }
+
+  IAWB <|-down- CAWBMain
+
+
+}
+/'end'/
+
+CAWBMain*-down- IAWBControl
+CAWBMain*-down- IAWBFactory
+
+
+package <color:blue><size:15>**StatFilter** {
+  /'Stat Filter Interface'/
+  class IAWBStatFilter {
+  __<color:red>**public**__
+  virtual **OnFrameStart()**=0;
+  virtual **OnFrameEnd()**=0;
+  virtual **Configure()**=0;
+  virtual **HandleNewStat()**=0;
+  virtual **HandlingNewStatsIsNeeded()**=0;
+  virtual **IsTuningChanged()**=0;
+  virtual **DestroyInstance()**=0;
+  virtual **~IAWBStatFilter()**
+  }
+  
+  class CSFStatDistV1 {
+      <color:red><size:16>**Usage:**</size></color>
+      <color:blue><size:15>get the minimum distance stat </size></color>
+      <color:blue><size:15>with the Illu ref point</size></color>
+      <color:blue><size:15>then set the statsData.distance/CCT/decision</size></color>
+      <color:blue><size:15>the CCT, is interp from the Ref point</size></color>
+      <color:blue><size:15>Func is GetStatDecision</size></color>
+
+  }
+  
+  class CSFCustRefPtV1 {
+      AWB Custom reference point
+      Add custome reference points for 
+      different illuminants
+  }
+  
+  class CSFDDV1 {
+  }
+  
+  class CSFDEPTHV1 {
+      AWB statistics filter depth map
+  }
+  
+  class CSFDistWVV1 {
+      AWB statistics filter distance weitht
+  }
+  
+  class CSFFlashRefPtV1 {
+      AWB statistics filter flash
+      reference point interface
+  }
+  
+  class CSFFlashWV1 {
+  }
+  
+  class CSFIlluWVV1 {
+      Illuminant Weight Vector stat filter
+  }
+  
+  class CSFLCDFlashV1 {
+  }
+  
+  class CSFLEDTorchV1 {
+  }
+  
+  class CSFMLCZV1 {
+      <color:red><size:16>****</size></color>
+      <color:blue><size:15></size></color>
+  }
+  
+  class CSFMLCZV2 {
+      <color:red><size:16>****</size></color>
+      <color:blue><size:15></size></color>
+  }
+  
+  class CSFRefPtV1 {
+      <color:red><size:16>**Usage:**</size></color>
+      <color:blue><size:15>Set the Ref Illu Point</size></color>
+  }
+  
+  class CSFStatScrV1 {
+      <color:red><size:16>**Usage:**</size></color>
+      <color:blue><size:15>for the R/G/B out of m_CurDarkTheshold</size></color>
+      <color:blue><size:15>and m_CurSaturationThreshold</size></color>
+
+  }
+  
+  class CSFSubSmpV1 {
+      <color:red><size:16>**Usage:**</size></color>
+      <color:blue><size:15> If we Use Binning Stat or not </size></color>
+      <color:blue><size:15> Calc the average red/green/blue of every subZone </size></color>
+  }
+  
+  CAWBMain*-right- IAWBStatFilter
+
+  IAWBStatFilter <|-down- CSFStatDistV1
+  IAWBStatFilter <|-down- CSFCustRefPtV1
+  IAWBStatFilter <|-down- CSFDDV1
+  IAWBStatFilter <|-down- CSFDEPTHV1
+  IAWBStatFilter <|-down- CSFDistWVV1 
+  IAWBStatFilter <|-down- CSFFlashRefPtV1
+  IAWBStatFilter <|-down- CSFFlashWV1
+  IAWBStatFilter <|-down- CSFIlluWVV1
+  IAWBStatFilter <|-down- CSFLCDFlashV1
+  IAWBStatFilter <|-down- CSFLEDTorchV1
+  IAWBStatFilter <|-down- CSFMLCZV1
+  IAWBStatFilter <|-down- CSFMLCZV2
+  IAWBStatFilter <|-down- CSFRefPtV1
+  IAWBStatFilter <|-down- CSFStatScrV1
+  IAWBStatFilter <|-down- CSFSubSmpV1
+  /'end of filter'/
+}
+
+
+package <color:blue><size:15>**AWBSceneAnalyzer** {
+  /'start of awb scene analyzer'/
+  class IAWBSceneAnalyzer {
+  virtual **OnFrameStart()**=0;
+  virtual **HandleNewStat()**=0;
+  virtual **HandlingNewStatsIsNeeded()**=0;
+  virtual **OnFrameEnd()**=0;
+  virtual **Analyze()**=0;
+  virtual **Configure()**=0;
+  virtual **IsTuningChanged()**=0;
+  virtual **DestroyInstance()**=0;
+  virtual **~IAWBSceneAnalyzer**;
+  }
+  
+  class CSADualcamSyncV1 {
+  }
+  
+  class CSAFaceAssistV1 {
+  }
+  
+  class CSAGenV1 {
+  }
+  
+  class CSAGenV2 {
+  }
+  
+  class CSAAGWV1 {
+  }
+  
+  CAWBMain*-right- IAWBSceneAnalyzer
+  
+  IAWBSceneAnalyzer <|-- CSADualcamSyncV1
+  IAWBSceneAnalyzer <|-- CSAFaceAssistV1
+  IAWBSceneAnalyzer <|-- CSAGenV1
+  IAWBSceneAnalyzer <|-- CSAGenV2
+  IAWBSceneAnalyzer <|-- CSAAGWV1
+  /'end'/
+}
+
+
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+  /'Decision Aggregator'/
+  class IAWBDecisionAggregator {
+      virtual **Configure()**=0;
+      virtual **Run()**=0;
+      virtual **IsTuningChanged**=0;
+      virtual **DestroyInstance**=0;
+      virtual **~IAWBDecisionAggregator**;
+  }
+  
+  class CDAV1 {
+  iAWB Decision aggregator
+  }
+
+  CAWBMain*-right- IAWBDecisionAggregator
+  
+  IAWBDecisionAggregator <|-down- CDAV1
+  /'end'/
+}
+
+package <color:blue><size:15>**AWBGainAdjust** {
+  /'Gain Adjust start'/
+  class IAWBGainAdjust {
+  __<color:red>**public**</color>__
+  virtual **Configure()**=0;
+  virtual **Run()**=0;
+  virtual **IsTuningChanged**=0;
+  virtual **DestroyInstance()**=0;
+  virtual **~IAWBGainAdjust()**
+  }
+  
+  class CTrigleAdjV1 {
+      AWB Triangle Gain Adjust
+  }
+  
+  CAWBMain*-right- IAWBGainAdjust
+  IAWBGainAdjust<|-down-CTrigleAdjV1
+  /'Gain Adjust end'/
+}
+
+
+/'awb factory start ------------------------------------------------------------------------'/
+class IAWBFactory {
+__<color:red>**public:**</color>__
+virtual **CreateStatFilters()**=0
+virtual **CreatePreflashStatFilters()**=0
+virtual **CreateSceneAnalyzers()**=0
+virtual **CreateSceneAnalyzersV2()**=0
+virtual **CreateDecisionAggregator()**=0
+virtual **CreateGainAdjust()**=0
+virtual **CreateFlashDec()**=0
+virtual **CreateAWBControl()**=0
+virtual **CreateHistoryControl()**=0
+virtual **CreateFrameControl()**=0
+virtual **CreateTemporalFilter()**=0
+virtual **~IAWBFactory()**
+}
+class CAWBFactory {
+}
+
+IAWBFactory<|--CAWBFactory
+
+/'end---------------------------------------------------------------------------------------'/
+
+/'start awb control'/
+class IAWBControl {
+__<color:red>**public**</color>__
+virtual **RunFlashSnapshot()**=0;
+virtual **RunBestShotMode()**=0;
+virtual **RunMWBMode()**=0;
+virtual **SetAWBControlInfo()**=0;
+virtual **GetStatInformation()**=0;
+virtual **AddConvSpeed()**=0;
+virtual **RemoveConvSpeed()**=0;
+virtual **SetRoleSwitch()**=0;
+virtual **GetInterpolatedGain()**=0;
+virtual **dualcamSyncTmpConv()**=0;
+virtual **ComputeDualcamOutput()**=0;
+virtual **GetDualcamOutput()**=0;
+virtual **DestroyInstance()**=0;
+virtual **Reset()**=0;
+virtual **Configure()**=0;
+virtual **IsTuningChanged()**=0;
+virtual **DoCalibrateZone()**=0;
+virtual **DoCalibratePoint()**=0;
+virtual **ComputeCalFactors()**=0;
+virtual **GetGainFromCCT()**=0;
+virtual **GetCCTFromGain()**=0;
+virtual **UpdateAWBState()**=0;
+virtual **RegisterDetectionZone(const AWBDetectionZone& detectionZone) **=0;
+virtual **RegisterDetectionZone(const AWBWeightedDetectionZone& detectionZone)**=0;
+virtual **GetZoneData()**=0;
+virtual **CalculateValidDecisionThreshold()**=0;
+}
+
+class CAWBCtrlV1 {
+}
+
+IAWBControl<|--CAWBCtrlV1
+/'end   awb control'/
+
+
+
+
+@enduml

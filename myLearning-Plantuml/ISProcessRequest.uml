@@ -1,0 +1,41 @@
+@startuml
+title Image Stabilization Node Request Processing
+
+
+participant "Topology" as Topology #00FF00
+participant "ISNode" as ISNode
+participant "IS Processor" as ISProcessor
+control "Thread Pool" as ThreadPool #00FF00
+participant "Property Pool" as PropertyPool #00FF00
+
+
+...
+Topology --> ISNode : ExecuteProcessRequest()
+ISNode -> ISProcessor : GetDependency()
+ISNode <- ISProcessor : return Dependency
+ISNode -> PropertyPool : IsPublished()
+ISNode <- PropertyPool : return FALSE
+Topology <-- ISNode : return Success\nwith dependency requirement
+
+
+...
+...
+Topology --> ISNode : ExecuteProcessRequest()
+ISNode -> ISProcessor : GetDependency()
+ISNode <- ISProcessor : return Dependency
+ISNode -> PropertyPool : IsPublished()
+ISNode <- PropertyPool : return TRUE
+ISNode -> PropertyPool : GetPropertyBlob()
+ISNode -> ThreadPool : PostJob(ISJobHandler)
+ISNode <- ThreadPool : return Success
+Topology <- ISNode : return Success
+
+
+...
+ThreadPool --> ISNode: ISJobHandler()
+ISNode -> ISProcessor: Process()
+ISNode -> PropertyPool: PublishProperty()
+ISNode -> ISNode: ProcessRequestIdDone()
+
+
+@enduml

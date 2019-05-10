@@ -1,0 +1,38 @@
+@startuml
+title 
+<size:18>camx multicam controller</size>\n     Lin Jin
+1. ENABLE_SNAPSHOT_FUSION: if we capture snapshot from both camera and feeding to fusion algo
+2. ENABLE_LPM: where only one camera
+3. SYNC_MECHANSIM: HW_SYNC, SW_SYNC(not supported)
+4. SNAPSHOT_FUSION_ZOOM_MIN/MAX
+5. SNAPSHOT_FUSION_LUX_IDX_THRESHOLD(1.0)
+6. SNAPSHOT_FUSION_FOCUS_DIST_CM_MIN(15) if focus dist lower then thres, snapshot fusion will be disabled
+end title
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+
+participant chxusecasemc
+participant chxmulticamcontroller
+== get controller ==
+chxusecasemc->chxmulticamcontroller: GetController
+activate chxmulticamcontroller
+  rnote over chxmulticamcontroller
+    we have several controlMode
+    <size:15>**CONTROLLER_TYPE_DUALFOV**</size> In usecasemc
+    <size:15>**CONTROLLER_TYPE_RTB**</size> In usecasemc
+    <size:15>**CONTROLLER_TYPE_BAYERMONO**</size>
+    <size:15>**CONTROLLER_TYPE_VR**</size>
+  end rnote
+chxmulticamcontroller->chxusecasemc: return
+deactivate chxmulticamcontroller
+
+
+==ConsolidateCameraInfo ==
+[o->chxmulticamcontroller: ConsolidateCameraInfo
+activate chxmulticamcontroller
+
+[o<-chxmulticamcontroller: return
+deactivate chxmulticamcontroller
+
+@enduml

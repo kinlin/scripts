@@ -1,0 +1,239 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6. 
+'/
+
+@startuml
+title <size:18>camx TargetBuffer</size>\n     Lin Jin\n Actually I want to know how Large Buffer Map or Malloc \n Think this can also who fillin the RDIbuffer, and we just get that.
+participant chxadvancedcamerausecase
+participant chxusecaseutils
+participant camxchi
+participant camximagebuffermanager
+participant camxmempoomgr
+participant camxmempoolgroup
+
+note left chxadvancedcamerausecase
+
+  **ChiGetBufferManagerOps()**
+    pBufferManagerOps->**pCreate**              = **ChiBufferManagerCreate;**
+    pBufferManagerOps->**pDestroy**             = **ChiBufferManagerDestroy;**
+    pBufferManagerOps->**pGetImageBuffer     ** = **ChiBufferManagerGetImageBuffer;**
+    pBufferManagerOps->**pAddReference       ** = **ChiBufferManagerAddReference;**
+    pBufferManagerOps->**pReleaseReference   ** = **ChiBufferManagerReleaseReference;**
+    pBufferManagerOps->**pGetReference       ** = **ChiBufferManagerGetReference;**
+    pBufferManagerOps->**pActivate           ** = **ChiBufferManagerActivate;**
+    pBufferManagerOps->**pDeactivate         ** = **ChiBufferManagerDeactivate;**
+    pBufferManagerOps->**pBindBuffer         ** = **ChiBufferManagerBindBuffer;**
+    pBufferManagerOps->**pGetCPUAddress      ** = **ChiBufferManagerGetCPUAddress;**
+    pBufferManagerOps->**pGetFileDescriptor  ** = **ChiBufferManagerGetFileDescriptor;**
+    pBufferManagerOps->**pGetGrallocHandle   ** = **ChiBufferManagerGetGrallocHandle;**
+    pBufferManagerOps->**pCacheOps           ** = **ChiBufferManagerCacheOps;**
+
+end note
+
+[o->chxadvancedcamerausecase: **CameraUsecaseBase::**\n**Initialize()**
+activate chxadvancedcamerausecase
+  chxadvancedcamerausecase->chxadvancedcamerausecase: **GenerateInternalBufferIndex()**
+  activate chxadvancedcamerausecase
+    note over chxadvancedcamerausecase
+      loop sinkTarget.numTargets
+        if StreamIsInternal
+            m_targetBuffers[targetId].pChiStream = pTarget->pChiStream
+      end loop
+    end note
+  chxadvancedcamerausecase->chxadvancedcamerausecase: return
+  deactivate chxadvancedcamerausecase
+
+  loop m_pChiUsecase->**numPipelines**
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **CreatePipeline()**
+    activate chxadvancedcamerausecase
+    chxadvancedcamerausecase->chxadvancedcamerausecase: return
+    deactivate chxadvancedcamerausecase
+
+
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **PipelineHasHalInputStream()**
+    activate chxadvancedcamerausecase
+    chxadvancedcamerausecase->chxadvancedcamerausecase: return
+    deactivate chxadvancedcamerausecase
+
+
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **PipelineCreated**\n**(sessionId, pipelineId)**
+    activate chxadvancedcamerausecase
+    chxadvancedcamerausecase->chxadvancedcamerausecase: return
+    deactivate chxadvancedcamerausecase
+
+
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **CreateInternalBufferManager()**
+    activate chxadvancedcamerausecase
+      loop m_pChiUsecase->numPipelines
+          loop sinkTarget.numTargets
+              alt TRUE==**StreamIsInternal()**
+                note over chxadvancedcamerausecase
+                    1. create **CHIBufferManagerCreateData**
+                    2. createData.maxBufferCount = **BufferQueueDepth**, this is configured
+                    3. createData.**bEnableLataBinding**
+                    4. set consumerFlags, if CPU can read
+                end note
+
+                chxadvancedcamerausecase->chxusecaseutils: **CHIBufferManager** \n **Create()**
+                activate chxusecaseutils
+                    chxusecaseutils->chxusecaseutils: **CHIBufferManager** \n **Initialize()**
+                    activate chxusecaseutils
+                        note over chxusecaseutils
+                           There is a Config **EnableUnifiedBufferManager()**
+                           if that is True:
+                               **m_bIsUnifiedBufferManagerEnabled = TRUE**
+                        end note
+
+                        chxusecaseutils->camxchi: **ChiBufferManagerCreate()**
+                        activate camxchi
+                            note over camxchi
+                                转换ChiStream里面的color space 和rotation为统一的ImageFormat
+                                调用**InitializeFormatParams**:
+                                    Y8:          bitsPerPixel=8;
+                                    RawPlain16:  bitPerpixel=10;
+                                    RawPlain64:  bitPerpixel=8;
+                                    RawMIPI8:    bitPerpixel=8;
+                                    RawMIPI:   bitWidth:8 ->  bitPerpixel=8;
+                                    RawMIPI:   bitWidth:10->  bitPerpixel=10;
+                                    RawMIPI:   bitWidth:12->  bitPerpixel=12;
+                                    RawMIPI:   bitWidth:14->  bitPerpixel=14;
+                                    P010:      Align and w/h etc.
+                                    YUV420NV12/YUV420NV21: Align and w/h etc.
+                                    PD10:      wight/height/stride
+                                    YUV422NV16:   
+
+                                BufferHeap: 
+                                    System -->  CSLBufferHeapSystem
+                                    Ion    -->  CSLBufferHeapIon
+                                    DSP    -->  CSLBufferHeapDSP
+                                    EGL    -->  CSLBufferHeapEGL
+
+                                处理好之后，才能调用ImageBuffer去create
+                            end note
+
+                            camxchi->camximagebuffermanager: **ImageBufferManager::**\n **Create**
+                            activate camximagebuffermanager
+
+                                camximagebuffermanager->camximagebuffermanager: **ImageBufferManager::Initialize()**
+                                activate camximagebuffermanager
+                                    note over camximagebuffermanager
+                                        will run **MemPoolMgr::RegisterBufferManager( pCreateData)**
+                                    end note
+                                camximagebuffermanager->camximagebuffermanager: return
+                                deactivate camximagebuffermanager
+
+                                camximagebuffermanager->camximagebuffermanager: **ImageBufferManager::InitializeBuffers()**
+                                activate camximagebuffermanager
+                                    note over camximagebuffermanager
+                                        1. if **m_immediateAllocBufferCount** > **m_maxBufferCount**, only alloc m_maxBufferCount
+                                           m_maxBufferCount will config in Feature like in Chxfeaturehdr
+                                                maxBufferCount = MinOutputBuffers
+                                           in Advancedcamerausecase
+                                                maxBufferCount = BuferQueueDepth
+                                        2. then call
+                                           -  pBuffer = **CAMX_NEW ImageBuffer()**
+                                           -  **pBuffer->Initialize()**
+                                           -  **pBuffer->Allocate()** will paint this flow
+                                    end note
+
+                                    camximagebuffermanager->camximagebuffer: **ImageBuffer::Allocate()**
+                                    activate camximagebuffer
+                                        note over camximagebuffer
+                                            1. 区分是在mempoolBufMgr里分配还是Gralloc分配（可以调用Gralloc接口）
+                                            2. MemPoolMgr::**GetBufferFromPool** 将会map buffer 到device。  然后 **ImportCSLBuffer()**
+                                            3. Gralloc, 分配buf后，调用CSLMapNativeBuffer 来map，然后 **ImportCSLBuffer()**
+                                        end note
+                                    camximagebuffer->camximagebuffermanager: return
+                                    deactivate camximagebuffer
+
+                                camximagebuffermanager->camximagebuffermanager: return
+                                deactivate camximagebuffermanager
+
+                            camximagebuffermanager->camxchi: return
+                            deactivate camximagebuffermanager
+
+                        camxchi->chxusecaseutils: return
+                        deactivate camxchi
+
+                    chxusecaseutils->chxusecaseutils: return
+                    deactivate chxusecaseutils
+                chxusecaseutils->chxadvancedcamerausecase: return
+                deactivate chxusecaseutils
+              end
+          end loop
+      end loop
+    chxadvancedcamerausecase->chxadvancedcamerausecase: return
+    deactivate chxadvancedcamerausecase
+
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **CreateSessionWithInputHalStream(pCallbacks)**
+    activate chxadvancedcamerausecase
+      note over chxadvancedcamerausecase
+        the callbacks:
+          typedef struct ChiCallBacks
+          /// @brief CHI app callback method to send back the capture results
+          **void (*ChiProcessCaptureResult)**
+          /// @brief Asynchronous notification callback method
+          **void (*ChiNotify)**
+          /// @brief CHI app callback method to send back the partial capture results
+          **void (*ChiProcessPartialCaptureResult)**
+      end note
+    chxadvancedcamerausecase->chxadvancedcamerausecase: return
+    deactivate chxadvancedcamerausecase
+
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **()**
+    activate chxadvancedcamerausecase
+    chxadvancedcamerausecase->chxadvancedcamerausecase: return
+    deactivate chxadvancedcamerausecase
+
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **()**
+    activate chxadvancedcamerausecase
+    chxadvancedcamerausecase->chxadvancedcamerausecase: return
+    deactivate chxadvancedcamerausecase
+  end loop
+[o<-chxadvancedcamerausecase: return
+deactivate chxadvancedcamerausecase
+
+@enduml

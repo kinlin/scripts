@@ -1,0 +1,51 @@
+@startuml
+title <size:18>camx multicamcontroller class Arch</size>\n     Lin Jin
+
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+
+class MultiCamController {
+__public__
+<color:orange>**static**</color> **GetControllerType()**
+<color:orange>**static**</color> **ConsolidateCameraInfo()**
+virtual **Reconfigure()**
+virtual **TranslateRequestSettings()**
+virtual **ProcessResultMetadata()**
+virtual **Destroy()**=0;
+virtual **GetResult()**
+inline GetType()
+virtual **FillOfflinePipelineInputMetadata()**
+ExtractCameraMetadata()
+UpdateVendorTags()
+virtual **UpdateScalerCropForSnapshot**
+}
+
+class DualFovController {
+}
+class RTBController {
+}
+class BayerMonoController {
+}
+class VRController {
+}
+
+MultiCamController<|-down-DualFovController
+MultiCamController<|-down-RTBController 
+MultiCamController<|-down-BayerMonoController 
+MultiCamController<|-down-VRController 
+
+
+class MultiCamControllerManager {
+__public__
+<color:orange>**static**</color> **GetInstance()**
+**GetController()**
+**DestroyController()**
+**Destroy()**
+}
+/'end   awb control'/
+
+
+
+
+@enduml

@@ -1,0 +1,171 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6. 
+'/
+
+@startuml
+/'
+My Question:
+What's Uniform FD?
+1. where is the data source?
+2. how many consumer?
+3. what it changes when compare to older design?
+4. any problem for design now?
+'/
+participant aec
+participant awb
+participant af_core
+participant af_fdprio
+participant af_haf
+participant camxstatsroiprocessor
+
+participant camxfdmanagernode
+participant MetadataPool
+
+== <color:blue> When ROIPriority init </color>==
+af_core->af_fdprio: **FDPrio::process(FDPRIO_CMD_INIT)**
+activate af_fdprio
+af_fdprio->af_core: return
+deactivate af_fdprio
+
+af_core->camxstatsroiprocessor: **CAMX_NEW ROIPriority**
+activate camxstatsroiprocessor
+camxstatsroiprocessor->af_core: return
+deactivate camxstatsroiprocessor
+
+af_core->camxstatsroiprocessor: **m_pFaceROIPriority->SetLogFunction**
+activate camxstatsroiprocessor
+  note over camxstatsroiprocessor
+    finally, the LogFunction is <color:red>**StatsLoggerFunction**</color>
+    this is come from Init. **aec/af/asd/awb** All use this
+  end note
+camxstatsroiprocessor->af_core: return
+deactivate camxstatsroiprocessor
+
+af_core->camxstatsroiprocessor: **m_pFaceROIPriority->SetTuningData**
+activate camxstatsroiprocessor
+camxstatsroiprocessor->af_core: return
+deactivate camxstatsroiprocessor
+
+af_core->af_haf: **af_haf_set_roi_priority**
+activate af_haf
+  note over af_haf
+    will use **HAFSetParamFaceROIPriority** set to caf/pdaf
+    and caf/pdaf will make use of FaceROI info
+  end note
+af_haf->af_core: return
+deactivate af_haf
+
+== <color:blue> What ROIPriority do </color>==
+af_haf->af_haf: **af_haf_set_face_information**
+activate af_haf
+  note over af_haf
+    **HAFSetParamFaceROIInformation**, will set to caf/pdaf
+    will see what happen, when face roi info change
+  end note
+af_haf->af_core: return
+deactivate af_haf
+
+o->camxstatsroiprocessor: ROIStableChecker::\n**UpdateROIData**
+note over camxstatsroiprocessor
+  now we have **ROI stable** and **ROI Change**
+  for <color:red>**CAF**</color>:
+      we have pROIStable/pROIChange
+  for <color:red>**PDAF**</color>:
+      we have pROIRoubhStable/pROIStrictStable
+      ROIStableChecker
+end note
+activate camxstatsroiprocessor
+  camxstatsroiprocessor->camxstatsroiprocessor: ConvertToROIData
+  activate camxstatsroiprocessor
+    note over camxstatsroiprocessor
+      will push_back to a **vector**
+      which contain inputROIData
+    end note
+  camxstatsroiprocessor->camxstatsroiprocessor: return
+  deactivate camxstatsroiprocessor
+
+  camxstatsroiprocessor->camxstatsroiprocessor: <color:red>**UpdateROIStable**</color>
+  activate camxstatsroiprocessor
+
+    camxstatsroiprocessor->camxstatsroiprocessor: **UpdateThreshold**
+    activate camxstatsroiprocessor
+      note over camxstatsroiprocessor
+        will **GetAECGain** and tuning trigger data
+        got the trigger index m_TuningIndex
+      end note
+    camxstatsroiprocessor->camxstatsroiprocessor: return
+    deactivate camxstatsroiprocessor
+
+  camxstatsroiprocessor->camxstatsroiprocessor: return
+  deactivate camxstatsroiprocessor
+
+o<-camxstatsroiprocessor: return
+deactivate camxstatsroiprocessor
+
+... ...
+== <color:blue> What does FD Node output? (means face data source) </color>==
+o->camxfdmanagernode: **PublishFDResultstoUsecasePool**
+activate camxfdmanagernode
+  camxfdmanagernode->MetadataPool: **WriteDataList**\n**PropertyIDUsecaseFDResults**
+  activate MetadataPool
+  MetadataPool->camxfdmanagernode: return
+  deactivate MetadataPool
+camxfdmanagernode->o: return
+deactivate camxfdmanagernode
+
+
+note over camxfdmanagernode
+Result from Code:
+1. in fdmanagernode, run **DoFDFramePreprocessing**,
+   We can choose GTM、LTM for Preprocessing。but 8150 may
+   not need
+2. FD node get image from **FDManagerInputPortImage**
+3. we can choose if publish the FD result(sw or hw)
+   the tag is **StatisticsFaceDetectMode**
+   **StatisticsFaceRectangles**
+   **StatisticsFaceScores**
+end note
+@enduml

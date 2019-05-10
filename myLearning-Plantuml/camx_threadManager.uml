@@ -1,0 +1,142 @@
+@startuml
+title ThreadManager
+
+box "user" #LightGoldenRodYellow
+collections ThreadUsers
+end box
+participant camxthreadmanager
+participant camxthreadjobregistry
+participant camxthreadjoblist
+participant camxthreadcore
+
+
+== thread Pool create ==
+[->camxthreadmanager: **ThreadManager::Create**\n(pName, **numThreads**)
+activate camxthreadmanager
+
+  camxthreadmanager->camxthreadmanager: Initialize
+  activate camxthreadmanager
+
+    camxthreadmanager->camxthreadjobregistry: **m_pJobRegistry->Initialize()**
+    activate camxthreadjobregistry
+      rnote over camxthreadjobregistry
+        <color:blue>Mutex::Create("JobRegistry")
+        <color:blue>Mutex::Create("FlushJobSubmitLock")
+      end rnote
+    camxthreadjobregistry->camxthreadmanager: return
+    deactivate camxthreadjobregistry
+
+
+    camxthreadmanager->camxthreadjoblist: **m_pJobList->Initialize(m_pJobRegistry)**
+    activate camxthreadjoblist
+      rnote over camxthreadjoblist
+        <color:blue>Mutex::Create("JobList")
+      end rnote
+    camxthreadjoblist->camxthreadmanager: return
+    deactivate camxthreadjoblist
+
+
+    camxthreadmanager->camxthreadcore: **m_pCore->Initialize**(m_pJobRegistry,\n m_pJobList,\npName,\nm_numThreads)
+    activate camxthreadcore
+      camxthreadcore->camxthreadcore: <color:red>**ThreadCore::StartThreads**
+      rnote over camxthreadcore
+        OsUtils::ThreadCreate
+        workThreadFunc
+        create numThreads thread and run **ThreadCore::DoWork**
+      end rnote
+
+      group ThreadCore::DoWork loop
+        alt if **p_jobPending==FALSE**
+          rnote over camxthreadcore
+            <color:blue>**m_pReadOK->Wait()**</color>
+          end rnote
+        end
+        camxthreadcore->camxthreadcore: **ProcessJobQueue**
+        activate camxthreadcore
+          alt JobStatus::Ready
+            camxthreadcore->camxthreadcore: **DispatchJob**
+            activate camxthreadcore
+              rnote over camxthreadcore
+              This is the place run callback
+              func = m_pJobregistry->GetJobFunc
+              <color:red>**func(pJob->pData[0]);**
+              end rnote
+            camxthreadcore->camxthreadcore: return
+            deactivate camxthreadcore
+          else JobStatus::Stopped
+            camxthreadcore->camxthreadcore: **OnJobStopped**
+          end
+        camxthreadcore->camxthreadjoblist: **ReleaseJobEntry**
+        camxthreadcore->camxthreadcore: return
+        deactivate camxthreadcore
+      end
+
+    camxthreadcore->camxthreadmanager: return
+    deactivate camxthreadcore
+
+  camxthreadmanager->camxthreadmanager: return
+  deactivate camxthreadmanager
+[<-camxthreadmanager: return
+deactivate camxthreadmanager
+
+==<size:14> **thread job register** </size>==
+ThreadUsers->camxthreadmanager: **RegisterJobFamily**\n jobFuncAddr\n jobFuncName\n flushDoneCb\n priority\n isSerialize\n phJob
+activate camxthreadmanager
+camxthreadmanager->camxthreadjobregistry: **RegisterNewJob**
+rnote right ThreadUsers
+param Explain:
+  <color:red>jobFuncAddr</color> thread func, that always waiting for process
+  <color:red>jobFuncName</color> call ThreadSetName set name
+  <color:red>flushDoneCb</color> when ThreadCore::StopThreads will CheckAllFlushDOne,
+         This cb will tell the user now the thread is stoped and flush done
+  <color:red>priority   </color> in ProcessJobQueue, we will check from
+         0-critical to 1-High; 2-Normal, and process onebyone
+  <color:red>isSerialize</color> if set True,for the same family will process onebyone first in first process
+         otherwise will may not follow this  ?? need confirm
+  <color:red>phJob</color>
+end rnote
+camxthreadmanager->ThreadUsers: return
+deactivate camxthreadmanager
+
+==<size:14> **thread PostJob** </size>==
+ThreadUsers->camxthreadmanager: **PostJob**
+activate camxthreadmanager
+camxthreadmanager->camxthreadcore: **AcceptNewJob**
+rnote right ThreadUsers
+  param Explain:
+  <color:red>hJob</color> Handle to the job returned from <color:red>RegisterJobFamily</color>
+  <color:red>stoppedCb</color> Job Stopped CB for this job, if this job family is flushed <color:red>RegisterJobFamily</color>
+  <color:red>ppData</color> Array or 1 or more partitioned data <color:red>RegisterJobFamily</color>
+      this param is used as callback param, <color:red>func(pJob->pData[0])
+  <color:red>isSplitable</color> If the job can be partitioned <color:red>RegisterJobFamily</color>
+  <color:red>isBlocking</color> If the caller of the job blocks on its completion <color:red>RegisterJobFamily</color>
+  
+  Mainly task:
+    1. add the to JobQueue   
+       <color:red>**AddToPriorityQueue**</color>
+    2. start Trigger thread loop,  which wait in <color:red>**DoWork**</color>
+       <color:blue>**m_jobPending=TRUE**</color>
+       <color:blue>**m_pReadOK->Signal**</color>
+end rnote
+
+camxthreadmanager->ThreadUsers: return
+deactivate camxthreadmanager
+
+== How many place create thread pool ==
+
+note left camxthreadmanager
+  ThreadManager:Create
+  camxchicontext.cpp: 94
+  camxcslcommonutils.cpp: 478
+  camxsyncmanager.cpp: 212
+end note
+
+
+
+/'Question:'/
+/'1. when signal to wake a func to run, what will happen when all thread are full or all thread are empty and start run?'/
+/'线程获取信号执行时的情况没有讲清楚'/
+/'即这几个线程执行jobqueue时的情况'/
+/'m_pQueueLock->Lock 实际上还有这个来限制同时获取jobqueue的情形'/
+/'2. Flush情况'/
+@enduml

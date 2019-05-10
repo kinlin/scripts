@@ -1,0 +1,50 @@
+@startuml
+participant QCameraPAAF.cpp as QCameraPAAF
+participant af_sw_stats.c as af_sw_stats
+participant af_port.c as af_port
+participant af_biz.c as af_biz
+participant af_core.c as af_core
+participant stats_port.c as stats_port
+participant af_single.c as af_single
+participant af_util.c as af_util #00FF00
+
+== <color #ff0000> where sw stats comes? </color>==
+[->QCameraPAAF: img_algo_process
+QCameraPAAF->QCameraPAAF: QCameraPAAF::processData
+
+note over QCameraPAAF : Step1:Get PAAF cfg info from meta(IMG_META_PAAF_CFG) 
+
+alt FIR filter
+  QCameraPAAF->af_sw_stats: FIR_Frame
+else IIR filter
+  alt ifdef NEON_OPTIMIZATION
+    QCameraPAAF->af_sw_stats:af_sw_stats_iir_float_neon
+  else
+    QCameraPAAF->af_sw_stats:af_sw_stats_iir_float
+  end
+end
+
+note over QCameraPAAF: return PAAF info into meta(IMG_META_PAAF_RESULT)
+
+== how af port get sw stats ? ==
+[o->af_port: msg **MCT_EVENT_MODULE_IMGLIB_AF_OUTPUT**
+af_port->af_port: af_port_handle_imglib_output
+af_port->af_biz: msg AF_SET_PARAM_IMGLIB_OUTPUT
+af_biz->af_core: AF_CORE_SET_PARAM_PREVIEW_STATS
+af_core->af_core: af_core_preview_stats
+
+== which param decide where use this? ==
+[o->stats_port: msg CAM_INTF_PARM_STATS_AF_PAAF
+stats_port->af_biz: msg AF_SET_PARAM_PAAF
+note over af_biz: set force_paaf_enable=true/false
+
+== which algo use this stats ==
+[o->af_single:af_single_start_srch
+note over af_single: ignore other flow...
+ref over af_single: usePaaf=(tuning->PAAF_enable)&&(force_paaf_enable)
+alt over af_single: if usePaaf=True
+af_single->af_util: af_util_sw_stats_switch
+
+else
+end
+@enduml

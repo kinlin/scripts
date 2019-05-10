@@ -1,0 +1,27 @@
+@startuml
+participant q3a_module.c as q3a_module
+participant mct_module.c as mct_module
+participant af_module.c as af_module
+participant awb_module.c as awb_module
+participant aec_module.c as aec_module
+participant af_port.c as af_port
+
+group q3a_module_stop_session detail
+
+  [->q3a_module: q3a_module_stop_session
+  q3a_module->mct_module: mct_module_remove_port
+  q3a_module->q3a_module: q3a_port_deinit
+  q3a_module->af_module: af_module_stop_session
+
+  group **af_module_stop_session detail**
+    q3a_module->mct_module: mct_module_remove_port
+    q3a_module->af_port: af_port_deinit
+    q3a_module->mct_module: mct_port_destory
+  end
+
+  q3a_module->awb_module: **TODO: **
+  q3a_module->aec_module: **TODO: **
+
+end
+
+@enduml

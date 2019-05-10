@@ -1,0 +1,22 @@
+@startuml
+participant af_util.cpp as af_util
+
+note over chxadvanceusecase
+  how we choose Usecase?
+  1. in chxextensionmodule.cpp, use StreamConfigMode [android + Qti self's]
+  2. in chxusecaseutils.cpp, we can create usecase like
+     UsecaseId::PreviewZSL
+     UsecaseId::MultiCamera
+     UsecaseId::MultiCameraVR
+     UsecaseId::MFNR
+     UsecaseId::QuadCFA
+     UsecaseId::Torch
+     UsecaseId::AdvancedCameraUsecase    <This need static settings advanceFeatureMask >
+     below is Advance usecase
+end note
+
+==<color:red><b>Advance Usecase initialze</b></color>==
+
+==<color:red><b>Advance Usecase create</b></color>==
+
+@enduml

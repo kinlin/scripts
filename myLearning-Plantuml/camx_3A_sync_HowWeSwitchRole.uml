@@ -1,0 +1,35 @@
+@startuml
+title 3A sync of 845 [[https://confluence.qualcomm.com/confluence/display/3AWIDETELE/3A+Sync+Design ReferencePage]]
+
+participant HAL
+participant MetaTag
+participant af #00ff00
+participant aec #GreenYellow
+participant awb #Chartreuse
+
+== <color:red><size:14> Af </size></color> ==
+HAL->MetaTag: Role Switch
+af->MetaTag: VendorTagManager::QueryVendorTagLocation
+note over af
+"com.qti.chi.multicamerainfo" "MultiCameraIdRole"
+"com.qti.chi.multicamerainfo" "MasterCamera"
+
+af logic in CAFIOUtil::ReadDualCameraInfo
+pStatsCameraInfo->algoRole = **StatsAlgoRoleMaster**/**StatsAlgoRoleSlave**
+end note
+
+... ...
+== <color:red><size:14> Aec </size></color> ==
+aec->MetaTag: VendorTagManager::QueryVendorTagLocation
+note over aec
+read tag in StatsProcessingNode::PrepareStatsProcessRequestData
+end note
+
+... ...
+== <color:red><size:14> Awb </size></color> ==
+awb->MetaTag: VendorTagManager::QueryVendorTagLocation
+note over awb
+read tag in AWBNode::PrepareStatsProcessRequestData
+end note
+
+@enduml

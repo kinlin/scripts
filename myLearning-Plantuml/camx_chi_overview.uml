@@ -1,0 +1,190 @@
+@startuml
+
+
+participant GoogleCameraFramework as cam_framework
+box "HAL" #LightBlue
+participant camxhal3entry.cpp as camx_hal3entry
+participant camxhal3.cpp as camx_hal3
+participant camxhal3module.cpp as camx_hal3module
+participant camxhaldevice.cpp as camx_haldevice
+end box
+
+box "CHI" #LightGreen
+participant camxchicontext.cpp as camxchi
+participant chi_interf.cpp as chi_interf
+participant chxextensionmodule.cpp as chxextensionmodule
+participant chxusecaseutils.cpp as chxusecaseutils
+
+end box
+
+participant camxthreadmanager.cpp as camxthreadM
+participant camxthreadjobregistry.cpp as camxthreadjobreg
+participant camxthreadjoblist.cpp as camxthreadjoblist
+participant camxthreadcore.cpp as camxthreadcore
+
+title  chi API Overview [[https://confluence.qualcomm.com/confluence/display/CamNext/Documents RefDoc]]
+
+== <color #0000ff>GetNumCameras </color>==
+cam_framework->camx_hal3entry: get_number_of_cameras
+note over camx_hal3entry
+  get JumpTableHAL3 it contain all operation func
+  JumpTableHAL3 g_jumpTableHAL3 = 
+  {
+     open,
+     get_number_of_cameras,
+     get_camera_info,
+     set_callbacks,
+     get_vendor_tag_ops,
+     open_legacy,
+     set_torch_mode,
+     init,
+     get_tag_count,
+     get_all_tags,
+     get_section_name,
+     get_tag_name,
+     get_tag_type,
+     close,
+     initialize,
+     configure_streams,
+     construct_default_request_settings,
+     process_capture_request,
+     dump,
+     flush,
+     camera_device_status_change,
+     torch_mode_status_change,
+     process_capture_result,
+     notify
+
+  }
+end note
+camx_hal3entry->camx_hal3: **get_number_of_cameras**
+camx_hal3->camx_hal3module: **GetNumCameras**
+note left camx_hal3module
+  **actually the number get from**
+  **chi_get_num_cameras**
+end note
+camx_hal3module->camx_hal3: return m_numFwCameras
+camx_hal3->camx_hal3entry: return
+camx_hal3entry->cam_framework: return
+
+...** How this number is filled? **...
+[o->camx_hal3module: HAL3Module()
+camx_hal3module->chi_interf: <color:OrangeRed><b><size:14>chi_hal_override_entry</size></b></color>
+note left chi_interf
+  callbacks->chi_get_num_cameras              = chi_get_num_cameras;
+  callbacks->chi_get_camera_info              = chi_get_camera_info;
+  callbacks->chi_initialize_override_session  = chi_initialize_override_session;
+  callbacks->chi_finalize_override_session    = chi_finalize_override_session;
+  callbacks->chi_override_process_request     = chi_override_process_request;
+  callbacks->chi_teardown_override_session    = chi_teardown_override_session;
+  callbacks->chi_extend_open                  = chi_extend_open;
+  callbacks->chi_extend_close                 = chi_extend_close;
+  callbacks->chi_remap_camera_id              = chi_remap_camera_id;
+  callbacks->chi_modify_settings              = chi_modify_settings;
+  callbacks->chi_get_default_request_settings = chi_get_default_request_settings;
+  callbacks->chi_override_flush               = chi_override_flush;
+  
+  after calling this , the pointer name is
+  m_ChiAppCallbacks.CHIGetNumCameras
+  m_ChiAppCallbacks.CHIGetCameraInfo
+  m_ChiAppCallbacks.CHIFinalizeOverrideSession
+  m_ChiAppCallbacks.CHIInitializeOverrideSession
+  m_ChiAppCallbacks.CHIOverrideProcessRequest
+  m_ChiAppCallbacks.CHIOverrideFlush
+  m_ChiAppCallbacks.CHITeardownOverrideSession
+  m_ChiAppCallbacks.CHIExtendOpen
+  m_ChiAppCallbacks.CHIExtendClose
+  m_ChiAppCallbacks.CHIRemapCameraId
+  m_ChiAppCallbacks.CHIModifySettings
+
+end note
+
+
+
+==<color #ff0000> get_camera_info </color>==
+
+==<color #00ff00> configure_stream() </color>==
+cam_framework->camx_hal3entry: **configure_streams()**
+camx_hal3entry->camx_hal3: **configure_streams**
+note over camx_hal3
+  get Number of streams: pStreamConfigsAPI->num_streams
+  and config one by one
+end note
+camx_hal3->camx_haldevice: ConfigureStreams
+activate camx_haldevice
+
+camx_haldevice->chi_interf: chi_teardown_override_session
+chi_interf->chxextensionmodule: TeardownOverrideSession
+chxextensionmodule->chi_interf: return
+chi_interf->camx_haldevice: return
+camx_haldevice->camx_haldevice: QueryCHIModuleOverride
+camx_haldevice->chi_interf: chi_initialize_override_session
+chi_interf->chxextensionmodule: InitializeOverrideSession
+activate chxextensionmodule
+
+chxextensionmodule->chxusecaseutils: GetMatchingUsecase
+chxusecaseutils->chxextensionmodule: return UsecaseId
+chxextensionmodule->chxusecaseutils: CreateUsecaseObject
+note over chxusecaseutils
+  usecaseId::PreviewZSL
+  usecaseId: MultiCamera
+  usecaseId: MultiCameraVR
+  usecaseId: MFNR
+  usecaseId: QuadCFA
+  default
+enum class UsecaseId
+{
+    NoMatch         = 0,
+    Default         = 1,
+    Preview         = 2,
+    PreviewZSL      = 3,
+    MFNR            = 4,
+    MFSR            = 5,
+    MultiCamera     = 6,
+    QuadCFA         = 7,
+    RawJPEG         = 8,
+    MultiCameraVR   = 9,
+    Torch           = 10,
+    YUVInBlobOut    = 11,
+    MaxUsecases     = 12,
+};
+  configure this according to HowManyStreams and configs[enable some feature]
+  
+  <color:red><b>This Part's detail in camx 3A sync</b></color>
+end note
+chxusecaseutils->chxextensionmodule: return pUsecase
+chxextensionmodule->camx_hal3: return
+deactivate chxextensionmodule
+deactivate camx_haldevice
+== <color #0000ff> process_capture_request(Preview Only) </color> ==
+
+== <color #0000ff> process_capture_request(Snapshot) </color> ==
+
+
+== <color:red><b>ChiContext::Create </b></color> ==
+[o->camxchi: ChiContext::Create
+camxchi->camxthreadM:ThreadManager::Create
+
+camxthreadM->camxthreadM: new ThreadManager
+
+camxthreadM->camxthreadM: Initialize
+opt ThreadManager Initialize
+
+
+camxthreadM->camxthreadjobreg: new JobRegistry
+
+camxthreadjobreg->camxthreadjobreg: JobRegistry->Initialize()
+
+
+
+camxthreadM->camxthreadjoblist:new JobList
+camxthreadjoblist->camxthreadjoblist:JobList->Initialize()
+
+
+camxthreadM->camxthreadcore:new ThreadCore
+camxthreadcore->camxthreadcore:ThreadCore->Initialize()
+
+end
+
+
+@end

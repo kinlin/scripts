@@ -1,0 +1,158 @@
+@startuml
+title
+<size:16><color:blue>AEC sync strategy</color></size> [[https://confluence.qualcomm.com/confluence/display/3AWIDETELE/3A+Sync+Design ReferencePage]] 
+Strategy:
+  1. MtrIndepExpIndep
+  2. MtrIndepExpFollow
+  3. MtrMixExpIndep
+  4. MtrIndepExpDynamic
+  AECAlgoExposureIndependent --Independent compute the exposure settings by using its metering info
+  AECAlgoExposureFollow --Mapped other camera exposure settings to current camera
+  AECAlgoExposureDynamic --Dynamic change of exposure behavior based on target differences
+  Tuning File: <color:red><size:14>AECMultiCamSync.xml</size></color>
+end title
+
+participant caeccore #GreenYellow
+participant caeccoredatamanager as caeccore_datam #Chartreuse
+participant caecmodmetering  #PaleGreen
+participant caecmodconvergence as caecmod_conv #PaleGoldenRod
+participant caecmodarbitration as caecmod_arb #Salmon
+
+
+== <color:red><size:14> aec tuning and strategy </size></color> ==
+[->caeccore: case AECAlgoSetParamCameraInfo
+activate caeccore #greenyellow
+  caeccore->caeccore_datam: setCameraInfo
+  activate caeccore_datam #Chartreuse
+
+    alt if prevRole!=newRole
+      caeccore_datam->caeccore_datam: MapTuningToMtrExpConfig
+      note left caeccore_datam
+        mtrAndExpMode = **MtrIndepExpIndep**
+          meteringType:**AECAlgoMeteringIndependent**
+          exposureType:**AECAlgoExposureIndependent**
+
+        mtrAndExpMode = **MtrIndepExpFollow**
+          meteringType:**AECAlgoMeteringIndependent**
+          exposureType:**AECAlgoExposureFollow**
+
+        mtrAndExpMode = **MtrMixExpIndep**
+          meteringType:**AECAlgoMeteringMix**
+          exposureType:**AECAlgoExposureIndependent**
+
+        mtrAndExpMode = **MtrIndepExpDynamic**
+          meteringType:**AECAlgoMeteringIndependent**
+          exposureType:**AECAlgoExposureDynamic**
+
+      end note
+    end
+  caeccore_datam->caeccore: return
+  deactivate caeccore_datam
+[<-caeccore: return
+deactivate caeccore
+
+== <color:red><size:14> aec Metering </size></color> ==
+[->caeccore: CAECCore::process
+activate caeccore
+  caeccore->caeccore_datam: processROIsPerFrame
+  activate caeccore_datam
+  caeccore_datam->caeccore: return
+  deactivate caeccore_datam
+
+  caeccore->caeccore: <color:blue>**runMetering**
+  activate caeccore
+    alt **!=AECAlgoMeteringDisabled**
+      caeccore->caecmodmetering: ProcessFrameStats
+      activate caecmodmetering #PaleGreen
+        alt <color:red>**AECAlgoMeteringMix**</color> == getMeteringType
+          caecmodmetering->caecmodmetering: MultiCamMtrMixCalc
+          note left
+            for mix metering, will interpolate
+            current luma with peer luma (avg and final)
+            and interpolate short/safe/long lumaTargets
+          end note
+        else <color:red>**AECAlgoExposureDynamic**</color> == getExposureType
+          caecmodmetering->caecmodmetering: MultiCamExpDynamicCalc
+          note left
+            if DRCGain is TRUE
+                will interp the shortTarget and longTarget with **current** and **Peer**
+            otherwise
+                will use the largest DRCGain
+          end note
+        end
+      caecmodmetering->caeccore: return
+      deactivate caecmodmetering
+    end
+
+    alt exposureType==<color:red>**AECAlgoExposureFollow**</color>
+      caeccore->caecmod_arb: <color:red>**ComputeTargetIndexInMultiCam**
+      note right of caeccore
+        will do <color:red>**sensitivity map**</color> between master and slave, Explain later
+        and then cul Exp index with new Sensitivity
+      end note
+      activate caecmod_arb
+        caecmod_arb->caecmod_arb: <color:red><size:14>MapSensitivityInMultiCam
+        activate caecmod_arb
+        caecmod_arb->caecmod_arb: return
+        deactivate caecmod_arb
+
+        caecmod_arb->caecmod_arb: <color:red><size:14>QuerySensitivity2ExpIndex
+        activate caecmod_arb
+        note left of caecmod_arb
+          will use the new <color:red>Sensitivity</color> got cooresponding expIndices
+        end note
+        caecmod_arb->caecmod_arb: return
+        deactivate caecmod_arb
+      caecmod_arb->caeccore: return
+      deactivate caecmod_arb
+      caeccore->caecmodmetering: ExtimateLuxIndexForSlave
+    end
+  caeccore->caeccore: return
+  deactivate caeccore
+
+== <color:red><size:14> aec Exposure </size></color> ==
+  caeccore->caeccore: <color:blue>**runConvergence**
+  activate caeccore
+    caeccore->caecmod_conv: ConvergeFrameExposure
+    activate caecmod_conv #PaleGoldenRod
+      alt bFollowMode==TRUE
+        caecmod_conv->caecmod_conv: UpdateFixedTargetIndices
+        note over caecmod_conv
+          directly set aecSettled TRUE
+          and set ExpIndexDelta to metering Target
+        end note
+      end
+    caecmod_conv->caeccore: return
+    deactivate caecmod_conv
+  caeccore->caeccore: return
+  deactivate caeccore
+
+== <color:red><size:14> aec Arbitration </size></color> ==
+  caeccore->caeccore: runArbitration
+  activate caeccore
+  alt <color:red>**streaming case**</color>
+    caeccore->caecmod_arb: ArbitrateExposure
+    activate caecmod_arb #Salmon
+      note left caecmod_arb
+        ExposureType is <color:red>**AECAlgoExposureFollow**</color>
+      end note
+      caecmod_arb->caecmod_arb: SyncUpExposureTimeForMultiCam
+      note left caecmod_arb
+        sync Exposure time and Gain
+      end note
+    caecmod_arb->caeccore: return
+    deactivate caecmod_arb
+  else <color:red>**snapshot casae**</color>
+    caeccore->caecmod_arb: ArbitrateExposure
+  end
+
+  caeccore->caeccore: return
+  deactivate caeccore
+
+[<-caeccore: return
+deactivate caeccore
+
+legend right
+    Lin Jin
+end legend
+@enduml

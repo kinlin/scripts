@@ -1,0 +1,112 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+collections ABC
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+'/
+
+@startuml
+title metadata
+
+collections Nodes
+participant camxnode
+participant camxmetadatapool as meta_pool
+participant camxhal3metadatautil as hal3_meta_util
+
+== <color:blue> Metadata Listener </color>==
+Nodes->camxnode: **WriteDataList**(\npDataList,\nppData,\npDataSize,\nlength)
+activate camxnode
+  loop length
+    camxnode->camxnode: **WriteData**()
+    activate camxnode
+      alt case 0
+        camxnode->camxnode: **EarlyReturnTag**
+        activate camxnode
+          camxnode->meta_pool:**SetMetadataByTag(**\ntag,\npData,\ncount)
+          activate meta_pool
+            meta_pool->hal3_meta_util: **UpdateMetaData**
+            activate hal3_meta_util
+            hal3_meta_util->meta_pool: return
+            deactivate hal3_meta_util
+          meta_pool->camxnode: return
+          deactivate meta_pool
+
+          alt **GetCurrentEarlyTagsCountForSlot**\n>=\n**SizeOfFixedList**
+            camxnode->camxnode: **ProcessEarlyMetadataDone**
+            activate camxnode
+            camxnode->camxnode: return
+            deactivate camxnode
+          end
+        camxnode->camxnode: return
+        deactivate camxnode
+      else case **InputMetadataSectionMask**
+      else case **UsecaseMetadataSectionMask**
+      else case **StaticMetadataSectionMask**
+      else case **PropertyGroup::Result << 16**
+      else case **PropertyGroup::Internal << 16**
+      else case **PropertyGroup::Usecase << 16**
+      end
+
+      note over camxnode
+        <color:blue>**1. pSlot->WriteLock**</color>
+        **Utils::Memcpy(pPoolData, pData, size)**
+        <color:blue>**2. pSlot->Unlock**</color>
+      end note
+      camxnode->meta_pool: **PublishProperty()**
+      activate meta_pool
+        note over meta_pool
+          <color:red>TODO: this need check further</color>
+          <color:blue>**m_pPool->LockPropertySubscribers()**</color>
+        end note
+
+        meta_pool->meta_pool: **NotifyImmediate()**
+        activate meta_pool
+          note over meta_pool
+            <color:red>**Important**</color>
+            For Property, call <color:red>**OnPropertyUpdate**</color>
+            For Metadata, call <color:red>**OnMetadataUpdate**</color>
+            Other Class which listen to the Prop or Meta will be trigger
+            like <color:red>class Actuator final : public IPropertyPoolObserver</color>
+            and This message will update for
+            <color:red>All Node</color>
+          end note
+        meta_pool->meta_pool: return
+        deactivate meta_pool
+
+        note over meta_pool
+          <color:blue>**m_pPool->UnlockPropertySubscribers()**</color>
+        end note
+      meta_pool->camxnode: return
+      deactivate meta_pool
+    camxnode->camxnode: return
+    deactivate camxnode
+  end
+
+camxnode->Nodes: return
+deactivate camxnode
+
+
+== <color:blue>Partial Metadata </color>==
+/'Partial Meta: 1. SeperatePartialMeta    2. CombinedPartialMeta'/
+/'
+m_pCallbacks[i].ChiNotify               = AdvancedCameraUsecase::ProcessMessageCb;
+m_pCallbacks[i].ChiProcessCaptureResult = AdvancedCameraUsecase::ProcessResultCb;
+m_pCallbacks[i].ChiProcessPartialCaptureResult =
+    AdvancedCameraUsecase::ProcessDriverPartialCaptureResultCb;
+'/
+@enduml
