@@ -91,6 +91,10 @@ let NERDChristmasTree=1
 let NERDTreeWinPos="right"
 let NERDTreeStatusline=1
 let NERDTreeAutoCenter=1
+"https://superuser.com/questions/195022/vim-how-to-synchronize-nerdtree-with-current-opened-tab-file-path/567013
+"Actually , this make ctrip only search current folder
+"autocmd BufEnter * lcd %:p:h
+"NERDTree % can also have similar effect
 
 
 " cscope settings
@@ -256,6 +260,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 
 Plug 'godlygeek/tabular'
+
 Plug 'plasticboy/vim-markdown'
 
 
@@ -272,8 +277,47 @@ Plug 'SirVer/ultisnips'
 "Plug 'sjl/gundo.vim'
 "This is not good. Use new one
 Plug 'mbbill/undotree'
+
+
+"surround.vim
+"http://zuyunfei.com/2013/04/17/killer-plugin-of-vim-surround/
+Plug 'tpope/vim-surround'
+
+"plantuml syntax highlight
+Plug 'aklt/plantuml-syntax'
+
+"color scheme
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
 
+
+"tabular key
+" 冒号对齐
+" :Tab /:
+
+"surround key
+"Normal mode
+"-----------
+"ds  - delete a surrounding
+"cs  - change a surrounding
+"ys  - add a surrounding
+"yS  - add a surrounding and place the surrounded text on a new line + indent it
+"yss - add a surrounding to the whole line
+"ySs - add a surrounding to the whole line, place it on a new line + indent it
+"ySS - same as ySs
+"
+"Visual mode
+"-----------
+"s   - in visual mode, add a surrounding
+"S   - in visual mode, add a surrounding but place text on new line + indent it
+"
+"Insert mode
+"-----------
+"<CTRL-s> - in insert mode, add a surrounding
+"<CTRL-s><CTRL-s> - in insert mode, add a new line + surrounding + indent
+"<CTRL-g>s - same as <CTRL-s>
+"<CTRL-g>S - same as <CTRL-s><CTRL-s>
 
 "undotree config
 if has("persistent_undo")
@@ -351,7 +395,7 @@ let wiki = {}
 let wiki.path = '/mnt/c/mygithub/mywiki/vimwiki/'
 let wiki.export_path = '/mnt/c/mygithub/mywiki/vimwiki/vimwiki_assets'
 let wiki.path_html = '/mnt/c/mygithub/mywiki/vimwiki_html'
-let wiki.nested_syntaxes = {'js':'javascript', 'python': 'python', 'c++': 'cpp', 'md':'markdown'}
+let wiki.nested_syntaxes = {'js':'javascript', 'python': 'python', 'c++': 'cpp', 'md':'markdown', 'mk':'makefile', 'shell':'shell'}
 "let wiki.template_path=wiki.path_html.'/template'
 let wiki.template_path=wiki.export_path.'vimwiki-assets'
 let wiki.template_default='default'
@@ -402,5 +446,8 @@ nmap tt :TagbarToggle<CR><CR>
 
 "map Gblame
 nmap gb :Gblame<cr>
+
+"map syntax sync fromstart
+nmap tu :syntax sync fromstart<cr>
 
 
