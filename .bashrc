@@ -1,5 +1,15 @@
 cur_dir=$PWD
-alias ls='ls -lart --color=tty'
+Color_Off='\033[0m'       # Text Reset
+# Regular Colors
+Black='\033[0;30m'        # Black
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
+
 alias ll="ls -lart --color=tty --show-control-chars"
 alias grep='grep --color=auto'
 alias ..='cd ..'
@@ -7,6 +17,7 @@ alias ..2='cd ../../'
 alias ..3='cd ../../../'
 alias ..4='cd ../../../../'
 alias ..5='cd ../../../../../'
+alias glog='git log --pretty=oneline|head -n 10'
 
 alias cmm='cd $ANDROID_BUILD_TOP/vendor/qcom/proprietary/mm-camera'
 alias ccore='cd $ANDROID_BUILD_TOP/vendor/qcom/proprietary/mm-camera-core'
@@ -40,6 +51,11 @@ function ssh-gv() {
 }
 
 
+alias cleancamx='rm -irf ./chi-cdk/cdk/generated/g_*'
+
+alias ag='ag -p='~/' -if'
+
+alias rm='rm -i'
 
 function man() {
   env \
@@ -58,6 +74,13 @@ function camxsetting() {
   echo "set $c_settings"
   adb shell "echo "$c_settings" >>/vendor/etc/camera/camxoverridesettings.txt"
   adb shell cat /vendor/etc/camera/camxoverridesettings.txt|grep $c_settings|tail -1
+}
+
+function adb_reboot() {
+    adb reboot;
+    adb wait-for-device root;
+    adb wait-for-device remount;
+    adb shell logcat -G 256M;
 }
 
 #path

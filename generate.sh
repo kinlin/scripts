@@ -17,17 +17,13 @@ White='\033[0;37m'        # White
 #step 3: generate cscope
 
 #step 1
-#TODO  TODO  TODO: please set the right dir and project name so it can work normally
 #cpath=/local/mnt/workspace/Mycode
 cpath=/local/mnt/workspace/jinlin
 #cname=LA.UM.7.1
-cname=LA.UM.7.1-20190509154339
+cname=8150_AU
 #ckernel=msm-4.9 #msm-3.18
 ckernel=msm-4.14 #msm-3.18
-
 index=1
-
-#This is for normal AU
 Dirs=(
     "vendor/qcom/proprietary/camx-lib-3a"
     "vendor/qcom/proprietary/camx-lib-stats"
@@ -43,12 +39,12 @@ Dirs=(
     "frameworks/av/services/camera/libcameraservice"
     "system/media/camera"
     "hardware/libhardware"
-    "packages/apps/SnapdragonCamera"
-    "hardware/interfaces/camera"
-    "kernel/$ckernel/arch/arm64/boot/dts/qcom"
 )
+#
+#分别是camx ， kernel， frameworks-camera， camera-app， kernel-dts， sensor-hal
+#    "vendor/qcom/proprietary/sensors-see"
+#
 
-# This is for AU + del origin camx + git clone camx
 Dirs=(
     "vendor/qcom/proprietary/camx"
     "kernel/$ckernel/drivers/media/platform/msm/camera"
