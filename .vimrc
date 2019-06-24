@@ -114,7 +114,7 @@ if has("cscope")
 	set csverb
 endif
 
-set csprg=~/cscope.sh
+"set csprg=~/cscope.sh
 
 "ctrl+] search func name
 map g<C-]> :cs find 3 <C-R>=expand(“<cword>”)<CR><CR>
@@ -289,6 +289,11 @@ Plug 'aklt/plantuml-syntax'
 "color scheme
 Plug 'altercation/vim-colors-solarized'
 
+"a light-weight Git commit reader
+"" :GV open commit browser
+" :GV! only open list commits that affect current file
+" " :GV? fills the location list with revisions of the current file
+Plug 'junegunn/gv.vim'
 call plug#end()
 
 
