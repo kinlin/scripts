@@ -175,14 +175,15 @@ let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc|whn)$',
     \ }
-let g:ctrlp_working_path_mode=0
+let g:ctrlp_working_path_mode='w'  " this can be set as 'c'  'a'  'r'  'w'  0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=2
+let g:ctrlp_switch_buffer = 'et'  " if current file opened, open it again
 
 "set case ignore when search.
 set ignorecase smartcase
@@ -294,6 +295,22 @@ Plug 'altercation/vim-colors-solarized'
 " :GV! only open list commits that affect current file
 " " :GV? fills the location list with revisions of the current file
 Plug 'junegunn/gv.vim'
+
+"Color Theme
+"github theme
+Plug 'endel/vim-github-colorscheme'
+
+"vim-slash 
+"auto clear search highlight when cursor is moved
+"Improve star-search(visual-mode, highlighting without moving)
+Plug 'junegunn/vim-slash'
+            \
+
+
+Plug 'airblade/vim-gitgutter'
+"Plug 'mhinz/vim-signify'
+
+
 call plug#end()
 
 
@@ -455,4 +472,17 @@ nmap gb :Gblame<cr>
 "map syntax sync fromstart
 nmap tu :syntax sync fromstart<cr>
 
+"GV plugin Map
+nmap gll :GV --no-merges<CR>
+nmap glc :GV!<CR>
+nmap gla :GV --no-merges --author<space>
+nmap glg :GV --no-merges --grep<space>
 
+"vim slash
+noremap <plug>(slash-after) zz
+
+"gitgutter
+nmap gge :GitGutterEnable<CR>
+nmap ggd :GitGutterDisable<CR>
+nmap ggt :GitGutterToggle<CR>
+nmap ggl :GitGutterLineHighlightsToggle<CR>
