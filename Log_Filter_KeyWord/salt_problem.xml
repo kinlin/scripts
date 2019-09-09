@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText color="red" comment="SALT problem">kinlin</SearchText>
+    <SearchText doSearch="false" color="red" comment="SALT problem">af_default_mixer</SearchText>
+    <SearchText doSearch="false" color="red" comment="SALT problem">af_haf_default_mixer_active_algo_selection</SearchText>
+    <SearchText color="purple" comment="SALT problem">af_pdaf_set</SearchText>
+    <SearchText color="blue" comment="SALT problem">disablePDAF</SearchText>
+    <SearchText color="blue" comment="SALT problem">isTuningModeChanged</SearchText>
+    <SearchText color="orange" comment="SALT problem">af_haf_pdaf_tof_mixer</SearchText>
+    <SearchText doSearch="false" bgColor="veryLiteBlue" comment="SALT problem">_process_search</SearchText>
+    <SearchText bgColor="yellow" comment="SALT problem">af_haf_default_mixer_active_algo_selection</SearchText>
+    <SearchText doSearch="false" color="blue" comment="SALT problem">af_tof_set</SearchText>
+</AnalyseDoc>

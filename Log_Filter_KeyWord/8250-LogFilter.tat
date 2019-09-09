@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextAnalysisTool.NET version="2018-01-03" showOnlyFilteredLines="True">
+  <filters>
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="executing base request flow" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="======================================分割线 以下为chi debug=============================" />
+    <filter enabled="y" excluding="n" description="选了哪个usecase" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="usecase.*selected" />
+    <filter enabled="y" excluding="n" description="" foreColor="008000" type="matches_text" case_sensitive="n" regex="n" text="configure_streams" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff1493" type="matches_text" case_sensitive="n" regex="n" text="ProbeChiFeature2Features" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="chifeature2" />
+    <filter enabled="y" excluding="n" description="" backColor="f0e68c" type="matches_text" case_sensitive="n" regex="n" text="CreateDescriptor() Pipeline" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="process_capture_result\(\) frame_number|stream  : [a-zA-Z0-9]{8,}|process_capture_result\(\)     output_buffers" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="process_capture_request\(\) frame_number|stream  : [a-zA-Z0-9]{8,}|process_capture_request\(\)     output_buffers" />
+    <filter enabled="n" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="y" text="ProcessMetadataDone\(\) Node" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="ProcessResults() Processing Result" />
+    <filter enabled="y" excluding="n" description="" backColor="7fffd4" type="matches_text" case_sensitive="n" regex="n" text=" has returned all results" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff1493" type="matches_text" case_sensitive="n" regex="n" text="Finalized metadata result for Sequence ID" />
+    <filter enabled="y" excluding="n" description="" foreColor="800080" type="matches_text" case_sensitive="n" regex="n" text="ClassifyStream" />
+    <filter enabled="y" excluding="n" description="" foreColor="008b8b" type="matches_text" case_sensitive="n" regex="y" text="chifeature2graph.cpp:[0-9]+ Initialize" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="FRO-URO" />
+    <filter enabled="n" excluding="n" description="" backColor="87cefa" type="matches_text" case_sensitive="n" regex="n" text="Descriptor Name :" />
+    <filter enabled="n" excluding="n" description="" foreColor="dc143c" type="matches_text" case_sensitive="n" regex="n" text="SetupRequestOutputPortFence" />
+    <filter enabled="y" excluding="n" description="pool v4l2 event" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="CSLHwInternalSendRequestManagerEvent" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="======================================分割线 以下为Session Log=============================" />
+    <filter enabled="y" excluding="n" description="" foreColor="8b008b" type="matches_text" case_sensitive="n" regex="y" text="camxsession.cpp:[0-9]+ ProcessRequest\(\) chiFrameNum" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="======================================分割线 以下为Node Log=============================" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="camxnode.cpp:[0-9]+ Initialize()" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="======================================分割线 以下为报错信息=============================" />
+    <filter enabled="y" excluding="n" description="dump 信息" backColor="ffb6c1" type="matches_text" case_sensitive="n" regex="y" text="\[ DUMP\]" />
+    <filter enabled="n" excluding="n" description="" backColor="ffb6c1" type="matches_text" case_sensitive="n" regex="y" text="\[ERROR" />
+    <filter enabled="y" excluding="n" description="kernel 报错" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="CAM_ERR" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="flush\(\).*(begin|end)" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="y" text="close\(\)" />
+    <filter enabled="y" excluding="n" description="错误" backColor="ffb6c1" type="matches_text" case_sensitive="n" regex="y" text="serious error|\(-110\)|\(-38\)|TriggerRecovery|F DEBUG| Tombstone" />
+    <filter enabled="y" excluding="n" description="连续多帧没有收到sof就要重置" backColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="CheckForRecovery" />
+  </filters>
+</TextAnalysisTool.NET>

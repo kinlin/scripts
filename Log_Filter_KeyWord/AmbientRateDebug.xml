@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText color="blue" comment="Ioctl failed">st_tof</SearchText>
+    <SearchText bgColor="darkYellow" comment="Ioctl failed">vl53l</SearchText>
+    <SearchText color="red" comment="Ioctl failed">GetLastNSamples() m_TOFData</SearchText>
+    <SearchText bgColor="yellow" comment="Ioctl failed">ABS_WHEEL</SearchText>
+    <SearchText bgColor="cyan" comment="Ioctl failed">push_data_multiobject</SearchText>
+</AnalyseDoc>

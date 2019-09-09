@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextAnalysisTool.NET version="2018-01-03" showOnlyFilteredLines="False">
+  <filters>
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="af_process_frame" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="AF_FOCUS_STATUS " />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="Result: refocus TRUE" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="af_haf_focus_converge() Entering State" />
+    <filter enabled="n" excluding="n" description="haf trigger" foreColor="00008b" type="matches_text" case_sensitive="n" regex="n" text="af_haf_monitor Result: refocus TRUE" />
+    <filter enabled="y" excluding="n" description="" foreColor="800080" type="matches_text" case_sensitive="n" regex="n" text="LeD AF: 1" />
+    <filter enabled="n" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="is_trig_refocus: 1| is_trig_refocus 1" />
+    <filter enabled="y" excluding="n" description="flash" foreColor="8b008b" type="matches_text" case_sensitive="n" regex="y" text="SENSOR_FLASH_DEBUG: Flash Operation: (High|OFF|Low)" />
+    <filter enabled="n" excluding="n" description="" foreColor="dc143c" type="matches_text" case_sensitive="n" regex="n" text="af_haf_analyze_process_search_output() AF search done" />
+    <filter enabled="y" excluding="n" description="af_util_move_lens " foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="af_util_move_lens_safe() " />
+    <filter enabled="y" excluding="n" description="" foreColor="00008b" type="matches_text" case_sensitive="n" regex="n" text="af_caf_process_monitor() CAF monitor output :" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="af_util_lock" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="y" text="af_util_lock_af Update AF lock|JDEBUG af locked" />
+    <filter enabled="n" excluding="n" description="" backColor="ffa500" type="matches_text" case_sensitive="n" regex="n" text="camxafstatemachine" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="OnPropertyUpdate|MoveFocus" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="runConvergence " />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="SNAP_KPI" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="printFrameControl " />
+    <filter enabled="y" excluding="n" description="" foreColor="ff1493" type="matches_text" case_sensitive="n" regex="n" text="SENSOR_FLASH_DEBUG: PreFlashState Change" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="camxflash.cpp" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="AF Settle count" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="AEC_DEBUG_STATE" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="CSLFenceCallback() Node:65539 [BPS]" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="printframeinfo" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="process_capture_request\(\) frame_number|process_capture_result\(\) frame_number|stream  : [a-zA-Z0-9]{8,}" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="TransitToNextPreFlashState" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="Got Snapshot request for frame" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="AEC_DEBUG_CAPTURE" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="SetFlashTrigger" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="AECStateMachineFlashStart" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="HandleCommand() AEC" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="AEC_DEBUG_OUTPUT" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="ReadHALAECParam" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="VAF" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="retrievefocusregions" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="af_util_lock_af" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="af_util_adjust_roi" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="MapSetParamAFControlCommandToLegacy" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="HandleAFStateTransition" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="af_core_proc_control_command" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="af_core_map_roi_from_input" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="ReadStatsNodesUpdates" />
+  </filters>
+</TextAnalysisTool.NET>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText color="blue" comment="HFR">maxFPSValue</SearchText>
+    <SearchText color="pink" comment="HFR">CSLMessageHandler</SearchText>
+    <SearchText searchType="regex" bgColor="veryLiteBlue" comment="HFR">process_capture_result\(\) frame_number|stream  : [a-zA-Z0-9]{8,}|process_capture_result\(\)     output_buffers</SearchText>
+    <SearchText searchType="regex" bgColor="yellow" comment="HFR">process_capture_request\(\) frame_number|stream  : [a-zA-Z0-9]{8,}|process_capture_request\(\)     output_buffers</SearchText>
+</AnalyseDoc>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextAnalysisTool.NET version="2018-01-03" showOnlyFilteredLines="False">
+  <filters>
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="malloc_debug" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="malloc_debug: +++ total size" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff1493" type="matches_text" case_sensitive="n" regex="n" text="+++ Backtrace at time of allocation" />
+  </filters>
+</TextAnalysisTool.NET>

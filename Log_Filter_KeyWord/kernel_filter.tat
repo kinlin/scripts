@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextAnalysisTool.NET version="2018-01-03" showOnlyFilteredLines="False">
+  <filters>
+    <filter enabled="y" excluding="n" description="" backColor="ffa07a" type="matches_text" case_sensitive="n" regex="n" text="__cam_isp_ctx_send_sof_timestamp" />
+    <filter enabled="y" excluding="n" description="" backColor="87cefa" type="matches_text" case_sensitive="n" regex="n" text="__cam_isp_ctx_handle_buf_done_in_activated_state: " />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="__cam_isp_ctx_apply_req_in_activated_state" />
+    <filter enabled="y" excluding="n" description="" backColor="008000" type="matches_text" case_sensitive="n" regex="n" text="request id:0" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="err|Fail|fail" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="cam_ife_csid_" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="smmu|fault" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="lowmemorykiller" />
+    <filter enabled="y" excluding="n" description="page fault handler" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="cam_isp_context_dump_active_request" />
+  </filters>
+</TextAnalysisTool.NET>

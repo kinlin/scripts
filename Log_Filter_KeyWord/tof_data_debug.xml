@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText searchType="regex" comment="Ioctl failed">tofsensorintf</SearchText>
+    <SearchText searchType="regex" color="orange" comment="Ioctl failed">cam_sensor_match_id</SearchText>
+    <SearchText searchType="regex" color="red" comment="Ioctl failed">fail</SearchText>
+    <SearchText searchType="regex" color="pink" comment="Ioctl failed">Zygote</SearchText>
+    <SearchText searchType="regex" bgColor="liteRed" comment="Ioctl failed">Timed Wait</SearchText>
+    <SearchText searchType="regex" color="blue" comment="Ioctl failed">proximitysensor</SearchText>
+    <SearchText searchType="regex" bgColor="yellow" comment="Ioctl failed">Ioctl failed|cam_cci</SearchText>
+</AnalyseDoc>

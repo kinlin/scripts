@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText doSearch="false" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">populatetof</SearchText>
+    <SearchText select="text" bgColor="purple" comment="AF set parameter &#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x5230;&#x7B97;&#x6CD5;">_set_parameter</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="cyan" comment="haf &#x5B8C;&#x6210;/&#x7ED3;&#x675F;&#x5BF9;&#x7126;">af_haf_util_end_search</SearchText>
+    <SearchText bgColor="darkYellow" comment="fullsweep">af_fullsweep</SearchText>
+    <SearchText select="text" color="liteRed" comment="Tof &#x6570;&#x636E;">getlastnsamples() m_TOFData</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="TOF &#x6570;&#x636E;&#x4E0D;&#x53EF;&#x9760;">TOF is not Confident|not_conf_cnt|tof is confident</SearchText>
+    <SearchText searchType="regex" bgColor="liteBlue" comment="Ioctl failed">not enabled</SearchText>
+    <SearchText color="blue" comment="&#x540C;&#x65F6;&#x5F00;&#x4E86;PDAF TOF">af_pdaf_tof_mix_search_result</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="Ioctl failed">progress</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="VM &#x89E6;&#x53D1;">af_value_monitor_get_trigger</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="HAF &#x72B6;&#x6001;&#x673A;&#x8D70;&#x5230;&#x7EC8;&#x70B9;">AF_HAF_SEARCH_DONE|GO_TO_DEST</SearchText>
+    <SearchText select="text" color="liteGreen" comment="af_default_mixer_process">af_default_mixer_process</SearchText>
+    <SearchText select="text" bgColor="liteBeige" comment="af_default_mixer_process">af_haf_default_mixer</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="af_default_mixer_process">AF search done</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="af_default_mixer_process">af_haf_analyze_process_search_output</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="af_default_mixer_process">process_search</SearchText>
+    <SearchText bgColor="green" comment="Ioctl failed">af_haf_process state:</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="Ioctl failed">for monitor decision</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="veryLitePurple" comment="Ioctl failed">lens pos</SearchText>
+    <SearchText select="text" color="red" comment="Ioctl failed">HAF dest_pos</SearchText>
+    <SearchText doSearch="false" select="text" color="blue" comment="Ioctl failed">af_single_hj_util_move_lens</SearchText>
+    <SearchText select="text" bgColor="green" comment="Ioctl failed">af_haf_analyze_monitor_data pHAF</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="Ioctl failed">af_caf_process</SearchText>
+    <SearchText select="text" comment="Ioctl failed">af_default_mixer_process_sequential_search</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="Ioctl failed">refocus</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Ioctl failed">af_tof_set_inputs</SearchText>
+    <SearchText doSearch="false" select="text" color="darkBlue" comment="Ioctl failed">af_util_adjust_roi</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">af_tof_reset_data</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">_rebase_monitor</SearchText>
+    <SearchText doSearch="false" bgColor="yellow" comment="Ioctl failed">kinlin</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Ioctl failed">af_haf_follower</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="AF">SensorName</SearchText>
+</AnalyseDoc>

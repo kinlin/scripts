@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextAnalysisTool.NET version="2018-01-03" showOnlyFilteredLines="True">
+  <filters>
+    <filter enabled="n" excluding="n" description="用于临时关键字搜索， 如pid号查询" backColor="90ee90" type="matches_text" case_sensitive="n" regex="n" text="26334 30955" />
+    <filter enabled="y" excluding="n" description="" backColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="Fatal|backtrace" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="err|error|fail" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="[DEBUG][FD     ]" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text=" [ERROR][HAL    ]" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="Adreno-GSL|shardmem|mem err" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="========================general Error Msg================================================" />
+    <filter enabled="n" excluding="y" description="" type="matches_text" case_sensitive="n" regex="n" text="InitializeMultiStats() FATAL" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="CAM_CaptureModule" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="Camera3-Device|CameraDeviceClient" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="Camera3-OutputStream" />
+    <filter enabled="n" excluding="n" description="capture" backColor="90ee90" type="matches_text" case_sensitive="n" regex="y" text="CameraCaptureSession|CAM_CaptureModule" />
+    <filter enabled="n" excluding="n" description="" backColor="7fffd4" type="matches_text" case_sensitive="n" regex="n" text="CAM_" />
+    <filter enabled="n" excluding="n" description="May have java crash" foreColor="d2691e" type="matches_text" case_sensitive="n" regex="n" text="java" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="ONE_" />
+    <filter enabled="n" excluding="n" description="" foreColor="4b0082" type="matches_text" case_sensitive="n" regex="n" text="ImageReader" />
+    <filter enabled="n" excluding="n" description="" backColor="9400d3" type="matches_text" case_sensitive="n" regex="n" text="abortCaptures" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="Connection timed out" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="CAM_FocusUIManager|CAM_FocusAnimation" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="=============================frame work==================================================" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="camxhal3.cpp" />
+    <filter enabled="n" excluding="n" description="3rd parth" backColor="ffa500" type="matches_text" case_sensitive="n" regex="n" text="amera3rd-" />
+    <filter enabled="n" excluding="n" description="" backColor="ffb6c1" type="matches_text" case_sensitive="n" regex="n" text="mCamera.close" />
+    <filter enabled="n" excluding="n" description="" foreColor="008000" type="matches_text" case_sensitive="n" regex="y" text="stereosdk|opencl|graphic_algorithm" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="returnBufferCheckedLocked: " />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="maxExpectedDuration" />
+  </filters>
+</TextAnalysisTool.NET>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextAnalysisTool.NET version="2018-01-03" showOnlyFilteredLines="True">
+  <filters>
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="============================AF==============================" />
+    <filter enabled="y" excluding="n" description="print some dpd hardware info" type="matches_text" case_sensitive="n" regex="n" text="dpd_hardware_flow" />
+    <filter enabled="y" excluding="n" description="print depth map, current is pdlib_dpd_depth_map_wrapper" type="matches_text" case_sensitive="n" regex="n" text="depth_map" />
+    <filter enabled="y" excluding="n" description="adaptive_k debug info" type="matches_text" case_sensitive="n" regex="n" text="adaptive_k" />
+    <filter enabled="y" excluding="n" description="adaptive_k state trans" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="adaptive_k_process_estimation" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="============================AEC==============================" />
+    <filter enabled="y" excluding="n" description="" foreColor="00008b" type="matches_text" case_sensitive="n" regex="n" text="runConvergence " />
+    <filter enabled="y" excluding="n" description="" foreColor="800080" type="matches_text" case_sensitive="n" regex="n" text="InitializeFrameSkip " />
+    <filter enabled="y" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="querySnapshotExposure " />
+    <filter enabled="y" excluding="n" description="" foreColor="d2691e" type="matches_text" case_sensitive="n" regex="n" text="OnOperationModeChange" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="printframecontrol CID:[0-9] FID:[0-9]+ Mode:[a-z]+ State:[Preflash|Main]" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="UpdateSettleBasedOnExtInput" />
+    <filter enabled="y" excluding="n" description="" backColor="87cefa" type="matches_text" case_sensitive="n" regex="n" text="updateFrameCounters" />
+    <filter enabled="y" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="n" text=" Converge tgt" />
+    <filter enabled="y" excluding="n" description="" backColor="9400d3" type="matches_text" case_sensitive="n" regex="n" text="ConvergeFrameExposure Skip convergence" />
+    <filter enabled="y" excluding="n" description="" foreColor="ffffff" backColor="000000" type="matches_text" case_sensitive="n" regex="n" text="InitializeFrameSkip" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="CAM_CaptureModule" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="printframeinfo" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="calculateTarget " />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="calculateTarget Target: refluma " />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="CalculateLuxIndex Index Compensation sen" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="FLASH_DEBUG" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="runArbitration" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="runMetering " />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="AECStateMachineFlashStart" />
+    <filter enabled="y" excluding="n" description="" backColor="87cefa" type="matches_text" case_sensitive="n" regex="n" text="CAM_FrontScreenAddition" />
+    <filter enabled="y" excluding="n" description="" backColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="waitForAEConvergence" />
+    <filter enabled="y" excluding="n" description="" type="matches_text" case_sensitive="n" regex="y" text="camxflash.cpp:[0-9]+ ExecuteProcessRequest()" />
+    <filter enabled="y" excluding="n" description="" foreColor="00008b" type="matches_text" case_sensitive="n" regex="y" text="maxGain|CalculatePrediction" />
+    <filter enabled="y" excluding="n" description="" foreColor="dc143c" type="matches_text" case_sensitive="n" regex="n" text="SetConvEvent" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="============================AWB==============================" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="============================Stats ROI Processor==============================" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="UpdateROIChange|UpdateROIStable" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="AF-PDAF-Rouch-Stable|AF-PDAF-Strict-Stable" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="af_pdaf_face_tracking_move_suppression_check" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="==============================sensor node======================" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="PublishPerFrameSensorMetaData" />
+  </filters>
+</TextAnalysisTool.NET>

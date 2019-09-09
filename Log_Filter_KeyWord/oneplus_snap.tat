@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextAnalysisTool.NET version="2018-01-03" showOnlyFilteredLines="False">
+  <filters>
+    <filter enabled="n" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="y" text="26334 30955|processCaptureRequest" />
+    <filter enabled="n" excluding="n" description="" foreColor="000000" backColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="SessionCbNotifyMessage()|ReturnFrameworkMessage|Creating Pipeline Reprocess" />
+    <filter enabled="n" excluding="n" description="" foreColor="008000" type="matches_text" case_sensitive="n" regex="y" text="AdvancedCameraUsecase::ExecuteCaptureRequest|ExecuteCaptureRequest" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="chxusecasemc.cpp" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="OfflineRequestProcess" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="y" text="SNAP_KPI request Snapshot frame|SNAP_KPI" />
+    <filter enabled="n" excluding="n" description="" foreColor="800080" type="matches_text" case_sensitive="n" regex="n" text="FeatureVZSL getbayer2YUV" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="FeatureVZSL SNAP_KPI get Alg" />
+    <filter enabled="n" excluding="n" description="" foreColor="d2691e" type="matches_text" case_sensitive="n" regex="n" text="CSLHwInternalSendRequestManagerEvent" />
+    <filter enabled="n" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="n" text="CSLFenceCallback() Node:" />
+    <filter enabled="n" excluding="n" description="" backColor="afeeee" type="matches_text" case_sensitive="n" regex="n" text="CSLFenceCallback() Node:65538 [IPE]" />
+    <filter enabled="n" excluding="n" description="" backColor="f0e68c" type="matches_text" case_sensitive="n" regex="n" text="CSLFenceCallback() Node:65539 [BPS]" />
+    <filter enabled="n" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="CSLFenceCallback() Node:65536 [IFE]" />
+    <filter enabled="n" excluding="n" description="" backColor="778899" type="matches_text" case_sensitive="n" regex="y" text="CSLFenceCallback() Node:255 [ChiNodeWrapper]|ChiNodeWrapper" />
+    <filter enabled="n" excluding="n" description="" backColor="7fffd4" type="matches_text" case_sensitive="n" regex="n" text="ProcessRequest() IPE" />
+    <filter enabled="n" excluding="n" description="" backColor="ffa500" type="matches_text" case_sensitive="n" regex="n" text="ExecuteProcessRequest() IPE" />
+    <filter enabled="n" excluding="n" description="" backColor="f08080" type="matches_text" case_sensitive="n" regex="n" text="Submitted packets with requestId" />
+    <filter enabled="n" excluding="n" description="" backColor="9400d3" type="matches_text" case_sensitive="n" regex="n" text="signaled with failure" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="ExecuteProcessRequest() FeatureVivoZSL" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="ChiNodeWrapper:(\d) ProcessMetadataDone" />
+    <filter enabled="n" excluding="n" description="" foreColor="dc143c" type="matches_text" case_sensitive="n" regex="n" text="ProcessMetadataDone" />
+    <filter enabled="n" excluding="n" description="" backColor="008000" type="matches_text" case_sensitive="n" regex="n" text="ProcessMetadataDone() IPE" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="Initialize() Creating Pipeline|PipelineCreated" />
+    <filter enabled="n" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="y" text="(CreateNodes\(\) Topology: )(Node|Link)" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff1493" type="matches_text" case_sensitive="n" regex="n" text=" failed when submitting requests." />
+    <filter enabled="n" excluding="n" description="" backColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="vivo3rdPreviewNode|vivogpunode|Camera3rd-SensetimeProc" />
+    <filter enabled="n" excluding="n" description="capture" foreColor="0000ff" backColor="f08080" type="matches_text" case_sensitive="n" regex="y" text="ProcessCaptureRequest|process_capture_request" />
+    <filter enabled="n" excluding="n" description="" backColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="FreeLastKnownRequestSetting|chxextensionmodule" />
+    <filter enabled="n" excluding="n" description="" backColor="778899" type="matches_text" case_sensitive="n" regex="n" text="chxmulticamcontroller.cpp" />
+    <filter enabled="n" excluding="n" description="" backColor="7fffd4" type="matches_text" case_sensitive="n" regex="n" text="process_capture_request() num_output_buffers" />
+    <filter enabled="y" excluding="n" description="how many feature selected." foreColor="800080" type="matches_text" case_sensitive="n" regex="n" text="BuildUsecase() feature index:" />
+    <filter enabled="n" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="featureSWMF|Bayer2Yuv" />
+    <filter enabled="n" excluding="n" description="feature ZSL" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="InternalZSLYuv2Jpeg|Merge3YuvCustomTo1Yuv|ZSLSnapshotYUV|ZSLPreviewRaw" />
+    <filter enabled="n" excluding="n" description="RTB" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="OfflineRTBJPEGResult|RTBOfflinePreview" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="configure_streams" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="FillPipelineCreateData" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="Initialize() Pipeline" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="FindBestSensorMode() SelectedMode" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="y" text="chxadvancedcamerausecase.cpp:[0-9]+ Initialize()" />
+    <filter enabled="n" excluding="n" description="" foreColor="d2691e" backColor="dcdcdc" type="matches_text" case_sensitive="n" regex="n" text="process_capture_result" />
+    <filter enabled="n" excluding="n" description="" backColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="Lets do a Reset" />
+    <filter enabled="n" excluding="n" description="" backColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="TeardownOverrideUsecase|chi_teardown_override_session" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="n" text="SetupDeviceResource" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="y" text="Generate[a-z|A-Z]+Request()" />
+    <filter enabled="n" excluding="n" description="" backColor="f0e68c" type="matches_text" case_sensitive="n" regex="n" text="GPUOpenCL" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff1493" type="matches_text" case_sensitive="n" regex="n" text="vivogpunode.cpp" />
+    <filter enabled="n" excluding="n" description="" backColor="9400d3" type="matches_text" case_sensitive="n" regex="n" text="FeatureSWMF Received " />
+    <filter enabled="n" excluding="n" description="" backColor="9400d3" type="matches_text" case_sensitive="n" regex="n" text="ProcessResult() FeatureHDR Received " />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="y" text="camxhal close|notify\(\) type|camxhal open|camxhaldevic" />
+    <filter enabled="n" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="process_capture_request\(\) frame_number|process_capture_result\(\) frame_number|stream  : [a-zA-Z0-9]{8,}| status  : [0-9]{8}" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="process_capture_result\(\) frame_number|stream  : [a-zA-Z0-9]{8,}| status  : [0-9]{8}" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="y" text="process_capture_request\(\) frame_number|stream  : [a-zA-Z0-9]{8,}| status  : [0-9]{8}" />
+    <filter enabled="n" excluding="n" description="" backColor="ffa500" type="matches_text" case_sensitive="n" regex="n" text="ProcessRequestIdDone() Node Name:" />
+    <filter enabled="n" excluding="n" description="camxsession.cpp     Buffer trans" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="InjectResult|DispatchResults|SinkPortFenceSignaled" />
+    <filter enabled="n" excluding="n" description="ProcessAndReturnFinishedResults    " backColor="9400d3" type="matches_text" case_sensitive="n" regex="y" text="has returned all results|current queue state is empty|ReturnFrameworkMessage" />
+    <filter enabled="n" excluding="n" description="chi cb" backColor="afeeee" type="matches_text" case_sensitive="n" regex="n" text="SessionCbCaptureResult" />
+    <filter enabled="n" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="ReturnFrameworkResult" />
+    <filter enabled="n" excluding="n" description="" backColor="f08080" type="matches_text" case_sensitive="n" regex="n" text="flush" />
+    <filter enabled="n" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="n" text="deleting Pending result" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="ReturnFrameworkMessageFlushError() Sending errorMessageCode| Exited|Flush()|camxpipeline.cpp" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="Destroy() Destroying session" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="Flush() Flush is done|Destroy()|chxpipeline|Pipeline::Destroy" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="process_capture_result() num_output_buffers" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="ProcessAndReturnFinishedResults" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="ParseResultMetadata" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="camxchinodedummysat.cpp" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="HandleProcessRequestErrorAllPCRs" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="flush array not empty FRAME" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="Saving buffer for chiFrame" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="HandleProcessRequestErrorAllPCRs" />
+    <filter enabled="n" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="n" text="GetDataListFromPipeline()" />
+    <filter enabled="y" excluding="n" description="" backColor="ffff00" type="matches_text" case_sensitive="n" regex="n" text="OP_EXT" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="======================AF seperate==========================" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff00ff" type="matches_text" case_sensitive="n" regex="n" text="PrintDebugPDAFData" />
+    <filter enabled="y" excluding="n" description="" foreColor="0000ff" type="matches_text" case_sensitive="n" regex="y" text="PDLibPhaseDetection|pdlib_sparse_wrapper" />
+    <filter enabled="y" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="n" text="pdlib_lcr_utils" />
+    <filter enabled="y" excluding="n" description="" backColor="9400d3" type="matches_text" case_sensitive="n" regex="y" text="setDigitalZoomProp|SAT debug log" />
+    <filter enabled="y" excluding="n" description="" backColor="90ee90" type="matches_text" case_sensitive="n" regex="n" text="chxmulticamcontroller" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="====================ERROR====================" />
+    <filter enabled="y" excluding="n" description="" foreColor="ff0000" type="matches_text" case_sensitive="n" regex="y" text="Unable|timeout|time out" />
+    <filter enabled="y" excluding="n" description="" foreColor="000000" backColor="f08080" type="matches_text" case_sensitive="n" regex="n" text="[ERROR]" />
+    <filter enabled="n" excluding="n" description="" type="matches_text" case_sensitive="n" regex="n" text="===================Oneplus SAT===============" />
+    <filter enabled="y" excluding="n" description="" foreColor="008000" type="matches_text" case_sensitive="n" regex="n" text="ARC_SAT" />
+  </filters>
+</TextAnalysisTool.NET>
