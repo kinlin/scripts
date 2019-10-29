@@ -1,15 +1,5 @@
 cur_dir=$PWD
-Color_Off='\033[0m'       # Text Reset
-# Regular Colors
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
-
+alias ls='ls -lart --color=tty'
 alias ll="ls -lart --color=tty --show-control-chars"
 alias grep='grep --color=auto'
 alias ..='cd ..'
@@ -17,7 +7,15 @@ alias ..2='cd ../../'
 alias ..3='cd ../../../'
 alias ..4='cd ../../../../'
 alias ..5='cd ../../../../../'
-alias glog='git log --pretty=oneline|head -n 10'
+
+export HISTTIMEFORMAT='%F %T '
+export HISTCONTROL=ignoredups
+#export HISTSIZE=20000
+
+HISTFILESIZE=4000000
+HISTSIZE=10000
+PROMPT_COMMAND="history -a"
+export HISTSIZE PROMPT_COMMAND
 
 alias cmm='cd $ANDROID_BUILD_TOP/vendor/qcom/proprietary/mm-camera'
 alias ccore='cd $ANDROID_BUILD_TOP/vendor/qcom/proprietary/mm-camera-core'
@@ -36,11 +34,18 @@ alias jout='cd $ANDROID_BUILD_TOP/out/target/product/sdm845/vendor/lib'
 alias jbug='cd /mnt/c/Bug_Log'
 alias juser='cd /mnt/c/Users/jinlin'
 
-alias glog='git log --pretty=oneline|head -5'
+alias glog='git log --pretty=oneline|head -10'
+alias gloga='git log --pretty=oneline'
+
 
 
 eval `ssh-agent`
 ssh-add ~/.ssh/jinlin
+
+function restoreCamServer() {
+    adb.exe shell "mv /system/bin/cameraserver.old /system/bin/cameraserver"
+    adb.exe shell "mv /vendor/bin/hw/android.hardware.camera.provider@2.4-service_64.old /vendor/bin/hw/android.hardware.camera.provider@2.4-service_64"
+}
 
 function mmcamx() {
    mm  CAMX_PATH_PREFIX=vendor/qcom/proprietary/camx  KERNEL_DEFCONFIG=sdm845-perf_defconfig -j8 2>&1 | tee makelog.txt
@@ -51,11 +56,6 @@ function ssh-gv() {
 }
 
 
-alias cleancamx='rm -irf ./chi-cdk/cdk/generated/g_*'
-
-alias ag='ag -p='~/' -if'
-
-alias rm='rm -i'
 
 function man() {
   env \
@@ -72,31 +72,51 @@ function man() {
 function camxsetting() {
   c_settings=$1
   echo "set $c_settings"
-  adb shell "echo "$c_settings" >>/vendor/etc/camera/camxoverridesettings.txt"
-  adb shell cat /vendor/etc/camera/camxoverridesettings.txt|grep $c_settings|tail -1
-}
-
-function adb_reboot() {
-    adb reboot;
-    adb wait-for-device root;
-    adb wait-for-device remount;
-    adb shell logcat -G 256M;
+  adb.exe shell "echo "$c_settings" >>/vendor/etc/camera/camxoverridesettings.txt"
+  adb.exe shell cat /vendor/etc/camera/camxoverridesettings.txt|grep $c_settings|tail -1
 }
 
 #path
 #export PATH=/mnt/c/Tools/adb:$PATH
-export PATH=/mnt/c/Tools/ADB_and_Fastboot:$PATH
+#export PATH=/mnt/c/Tools/adb_latest_190806:$PATH
+#export PATH=/mnt/c/Tools/ADB_and_Fastboot:$PATH
+export PATH=/mnt/c/Tools/platform-tools_r29.0.2-windows/platform-tools:$PATH
 export PATH=/mnt/c/Bug_Log/Tools/bin:$PATH
 #declare -x PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 #declare -x LANG="zh_CN.GB18030"
 #declare -x LANGUAGE="zh_CN.GB18030:zh_CN.GB2312:zh_CN"
-declare -x HISTSIZE="5000"
+export LANGUAGE="en_US.UTF-8"
+export LANG=en_US:zh_CN.UTF-8
+export LC_ALL=C
+
+#declare -x HISTSIZE="5000"
 
 cd /mnt/c/Code/Camx
 
 alias ag='ag -p='~/' -if'
 
 alias adb='adb.exe'
+alias fastboot='fastboot.exe'
+
+function remountDevice() {
+    deviceID=""
+    if  [ $# -eq 1 ]; then
+        echo "will root and remount device: $1"
+        deviceID=$1
+        adb -s $deviceID root
+        adb -s $deviceID remount
+        adb logcat -G 256m
+    else
+        adb wait-for-device root
+        adb wait-for-device remount
+        adb logcat -G 256m
+    fi
+}
+
+function boostPhone() {
+    adb shell stop perf-hal-1-0
+    adb shell "echo 1 > /proc/sys/kernel/sched_boost"
+}
 
 function resetcam() {
 #     pid_1=`adb shell ps| grep 'camera.provider' | grep -v grep | awk '{print $2}'`; echo "camera.provider Pid:"$pid_1;
@@ -112,6 +132,26 @@ function resetcam() {
      echo "kill thread done..., new server is below"
      adb shell "ps -e|grep cameraserver"
 }
+
+killcscope ()
+{
+    ps -e|grep cscope;
+    pid_cscope=`ps -e| grep cscope | grep -v grep | awk '{print $1}'`;
+    echo "pis_cscope Pid:"$pid_cscope;
+    arr=(${pid_cscope//,/ });
+    echo "${arr[0]}  ${arr[1]}";
+
+    for var in ${arr[@]};
+    do
+        echo "kill thread $var";
+        kill -9 $var;
+    done
+    echo "kill thread done";
+
+    ps -e|grep cscope
+}
+
+
 
 function adb_reboot() {
     date
@@ -170,18 +210,12 @@ alias afbf='ssh lcc-sha01'
 #    cd $curDir
 #}
 
-wikisync()
+wikibackup()
 {
-    curDir=$PWD
-    cd /mnt/c/mygithub/mywiki
-    rsync -avr --progress --exclude "*pptx" --excludu ".git" /mnt/c/vimwiki/  ./vimwiki/
-    rsync -avr --progress  --exclude "*pptx"  --excludu ".git" /mnt/c/vimwiki_html/   ./vimwiki_html
-    #rsync -avr --progress  --exclude "*pptx" /mnt/c/vimwiki-assets/   ./vimwiki-assets
     cd /mnt/c/mygithub/
     time=$(date +%Y-%m-%d)
-    zip -r mywiki-$time.zip mywiki/
+    zip -qr mywiki-$time.zip mywiki/
     cp mywiki-$time.zip /mnt/c/Users/jinlin/OneDrive/
-    cd curDir
 }
 
-cd $cur_dir
+

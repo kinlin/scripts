@@ -191,10 +191,11 @@ set ignorecase smartcase
 set incsearch
 
 
-"===============================
 
 
-"==============================
+"===================================================
+"Plug End
+"===================================================
 "Do this First
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
@@ -310,9 +311,34 @@ Plug 'junegunn/vim-slash'
 Plug 'airblade/vim-gitgutter'
 "Plug 'mhinz/vim-signify'
 
+"LeetCode
+Plug 'iandingx/leetcode.vim'
 
 call plug#end()
+"===================================================
+"Plug End
+"===================================================
 
+
+"===================================================
+"PlugIn Config Start
+"===================================================
+
+"Leetcode
+"when open split window, :only, will open only question
+let g:leetcode_solution_filetype='cpp'
+let g:leetcode_china = 1
+let g:leetcode_username = '13246650386'
+nnoremap <leader>ll :LeetCodeList<cr>
+nnoremap <leader>lt :LeetCodeTest<cr>
+nnoremap <leader>ls :LeetCodeSubmit<cr>
+nnoremap <leader>li :LeetCodeSignIn<cr>
+
+
+
+
+"default close gitgutter
+au VimEnter * :GitGutterDisable
 
 "tabular key
 " 冒号对齐
