@@ -512,3 +512,8 @@ nmap gge :GitGutterEnable<CR>
 nmap ggd :GitGutterDisable<CR>
 nmap ggt :GitGutterToggle<CR>
 nmap ggl :GitGutterLineHighlightsToggle<CR>
+
+
+" don't need Ex mode
+map q: <Nop>
+nnoremap Q <nop>
