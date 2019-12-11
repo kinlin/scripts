@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
     <SearchText doSearch="false" select="text" bgColor="yellow" comment="chi feature2 study">dependency</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="chi feature2 study">DispatchResults</SearchText>
     <SearchText searchType="regex" select="text" color="veryLiteBlue" bgColor="purple" comment="chi feature2 study">SetPipelineStatus|SetRequestState</SearchText>
     <SearchText select="text" color="veryLiteBlue" bgColor="purple" comment="chi feature2 study">CompleteRequest</SearchText>
-    <SearchText searchType="regex" select="text" color="darkBlue" comment="chi feature2 study">camxsession.cpp:[0-9]+ ProcessCaptureRequest</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteBlue" comment="chi feature2 study">camxsession.cpp:[0-9]+ ProcessCaptureRequest</SearchText>
     <SearchText select="text" bgColor="cyan" comment="chi feature2 study">PopulatePortConfiguration</SearchText>
-    <SearchText doSearch="false" select="text" comment="chi feature2 study">FRO-URO</SearchText>
-    <SearchText select="text" color="red" comment="chi feature2 study">CSLMessageHandler</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="chi feature2 study">FRO-URO</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow" comment="chi feature2 study">process_capture_request\(\)|process_capture_result\(\)|configure_streams\(\)</SearchText>
+    <SearchText select="text" bgColor="red" comment="chi feature2 study">CSLMessageHandler</SearchText>
     <SearchText select="text" color="blue" comment="chi feature2 study">SetConfigInfo</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="chi feature2 study">SearchFeatureGraphinTable\(\) descriptorName</SearchText>
     <SearchText doSearch="false" searchType="regex" select="text" color="blue" comment="chi feature2 study">ProcessMetadataRequestIdDone|NotifyNodeMetadataDone|ProcessMetadataDone</SearchText>
-    <SearchText searchType="regex" select="text" color="liteGreen" comment="chi feature2 study">chifeature2wrapper.cpp:[0-9]+ Process</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="chi feature2 study">chifeature2wrapper.cpp:[0-9]+ Process</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="chi feature2 study">chifeature2base.cpp:[0-9]+ OnProcessRequest</SearchText>
     <SearchText doSearch="false" searchType="regex" select="text" color="darkYellow" bgColor="deepPurple" comment="chi feature2 study">searchfeaturegraphintable</SearchText>
-    <SearchText searchType="regex" select="text" color="deepPurple" comment="chi feature2 study">walkallextsinklinks|walkallextsrclinks</SearchText>
-    <SearchText searchType="regex" select="text" color="blue" comment="chi feature2 study">Initialize\(\)   featureName|created with features</SearchText>
+    <SearchText searchType="regex" select="text" color="veryLiteBlue" bgColor="purple" comment="chi feature2 study">walkallextsinklinks|walkallextsrclinks</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="pink" comment="chi feature2 study">Initialize\(\)   featureName|created with features|Selected feature graph</SearchText>
     <SearchText searchType="regex" select="text" color="liteRed" bgColor="veryLiteBlue" comment="chi feature2 study">For PortName|PopulateDependencySettings</SearchText>
     <SearchText searchType="regex" select="text" color="red" comment="chi feature2 study">ProcessResultMetadataMessage</SearchText>
     <SearchText searchType="regex" bgColor="yellow" comment="chi feature2 study">MoveToNextProcessSequenceInfo|PopulateDependencyPorts</SearchText>

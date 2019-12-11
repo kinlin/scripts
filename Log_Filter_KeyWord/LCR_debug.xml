@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="yellow" comment="L C R case">QDEBUG</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="L C R case">_software_flow</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="L C R case">CreatePDLib</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="L C R case">AF Node execute request for req</SearchText>
+    <SearchText searchType="regex" bgColor="green" comment="L C R case">IFE[0-9]_OutputPortId27_LCR</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="pink" comment="L C R case">sparse_hardware_flow</SearchText>
+    <SearchText bgColor="liteRed" comment="L C R case">PDLibInit()</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="L C R case">StreamingOn for pipeline</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="L C R case">Streaming Off successful</SearchText>
+    <SearchText color="red" bgColor="yellow" comment="L C R case">SensorName:</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="L C R case">PublishHWPDConfig</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="liteRed" comment="L C R case">Topology</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="pink" comment="L C R case">DumpRegConfig</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="L C R case">AF Processor execute request for id</SearchText>
+    <SearchText bgColor="pink" comment="L C R case">kinlin</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="L C R case">DisableUnwanted</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="L C R case">PopulatePDInputData</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="L C R case">IsDualPDHWEnabled</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="L C R case">IsSparsePDHWEnabled</SearchText>
+    <SearchText select="text" bgColor="liteBlue" comment="L C R case">LCRhwenabled</SearchText>
+    <SearchText select="text" bgColor="green" comment="L C R case">SetPDHWLCRHWEnableFromPDLib</SearchText>
+    <SearchText select="text" bgColor="red" comment="L C R case">PDLibGetHardwareConfig</SearchText>
+</AnalyseDoc>

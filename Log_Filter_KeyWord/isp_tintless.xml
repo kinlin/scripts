@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="litePink" comment="chi feature2 study">tintless</SearchText>
+    <SearchText select="text" bgColor="beige" comment="chi feature2 study">RealTime</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="chi feature2 study">GetTargetStream</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="red" comment="chi feature2 study">GetCaptureIntentForRequest|capture intent</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="chi feature2 study">SnapshotYUV</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="chi feature2 study">lsc</SearchText>
+    <SearchText select="text" bgColor="liteBeige" comment="chi feature2 study">SetPipelineStatus</SearchText>
+    <SearchText searchType="regex" bgColor="liteGreen" comment="chi feature2 study">camxsession.cpp:[0-9]+ ProcessRequest</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="orange" comment="chi feature2 study">configure_streams</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteBlue" comment="chi feature2 study">OutputPortId19_StatsTLBG</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="green" comment="chi feature2 study">CalculateTintlessSetting</SearchText>
+</AnalyseDoc>

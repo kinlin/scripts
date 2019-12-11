@@ -35,7 +35,11 @@ alias jbug='cd /mnt/c/Bug_Log'
 alias juser='cd /mnt/c/Users/jinlin'
 
 alias glog='git log --pretty=oneline|head -10'
-alias gloga='git log --pretty=oneline'
+#alias gloga='git log --pretty=oneline'
+function gloga()
+{
+    git log --pretty=oneline $1
+}
 
 
 
