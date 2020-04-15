@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="orange" comment="Ioctl failed">StatsParse[0-9]+ : [0-9]+ ProcessRequestIdDone</SearchText>
+    <SearchText select="text" bgColor="purple" comment="Ioctl failed">hasAny</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">s end of stream enabled</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Ioctl failed">AutoFocus[0-9]+ Complete ProcessRequest</SearchText>
+    <SearchText select="text" bgColor="pink" comment="Ioctl failed">AutoFocus[0-9]+ ProcessRequest</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="Ioctl failed">kinlin DRQ dispatching node</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="Ioctl failed">kinlin RequestStatus</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow" comment="Ioctl failed">AutoFocus[0-9]+ ProcessRequest</SearchText>
+    <SearchText searchType="regex" bgColor="litePink" comment="Ioctl failed">execute request for req</SearchText>
+    <SearchText bgColor="red" comment="Ioctl failed">Recording stopped on reqId</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="Ioctl failed">camxnode.cpp:[0-9]+ ProcessRequestIdDone.*AutoFocus</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="yellow" comment="Ioctl failed">kinlin</SearchText>
+</AnalyseDoc>

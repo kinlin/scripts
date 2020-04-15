@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">Master camera id</SearchText>
+    <SearchText searchType="regex" bgColor="liteGreen" comment="Ioctl failed">camxaecengine|caeccore|camxstats</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="purple" comment="Ioctl failed">Skipping AF Algo processing</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">IsInValidUsageState</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="orange" comment="Ioctl failed">camxpipeline.cpp:[0-9]+ StreamOn|camxsession.cpp:[0-9]+ StreamOn</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="orange" comment="Ioctl failed">ERROR</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="Ioctl failed">process_capture_request\(\) frame_number|process_capture_request\(\)     output_buffers</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="cyan" comment="Ioctl failed">Submitted to HW: Realtime</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="Ioctl failed">camxhal3.cpp:[0-9]+ process_capture_request|process_capture_request\(\)</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="pink" comment="Ioctl failed">IFE[0-9]+ : isMasterCamera=</SearchText>
+    <SearchText doSearch="false" searchType="regex" bgColor="darkGreen" comment="Ioctl failed">Set slavepending flag|Send additional FOVC</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="blue" comment="Ioctl failed">FlushPipeline</SearchText>
+    <SearchText bgColor="darkYellow" comment="Ioctl failed">status is now PipelineStatus</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">marked as an error</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">Failed to find valid</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="Ioctl failed">ActivateDeactivateRealtimePipeline</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="Ioctl failed">AutoFocus[0-9]+ Complete ProcessRequest</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="darkYellow" comment="Ioctl failed">PopulatePDInputData</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteRed" comment="Ioctl failed">camxautofocusnode.cpp:[0-9]+ ExecuteProcessRequest</SearchText>
+    <SearchText doSearch="false" searchType="regex" bgColor="yellow" comment="Ioctl failed">Recording stopped</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="deepPurple" comment="Ioctl failed">NotifyNodeRequestIdDone</SearchText>
+    <SearchText bgColor="red" comment="Ioctl failed">Fatal</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="Ioctl failed">camxnode.cpp:[0-9]+ ProcessRequestIdDone.*Realtime</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="Ioctl failed">Flushing Node AutoFocus</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="Ioctl failed">seqid</SearchText>
+    <SearchText bgColor="red" comment="Ioctl failed">Lets do a Reset</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="Ioctl failed">UpdateVendorTags() primary CameraId</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="Ioctl failed">configure_streams</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="Ioctl failed">ActivateDeactivateRealtimePipeline</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="Ioctl failed">camxcafioutil.cpp:[0-9]+ PublishFrameInfo</SearchText>
+    <SearchText doSearch="false" bgColor="liteGreen" comment="Ioctl failed">DisableFOVC</SearchText>
+    <SearchText bgColor="purple" comment="Ioctl failed">kinlin remove Dependency</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">kinlin</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="Ioctl failed">All nodes complete metadata with requestId</SearchText>
+    <SearchText bgColor="liteBlue" comment="Ioctl failed">Process Seq:</SearchText>
+    <SearchText bgColor="blueGreen" comment="Ioctl failed">GenerateRealtimeRequest() camera id</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="Ioctl failed">GenerateRealtimeRequest() NumReq:</SearchText>
+    <SearchText select="text" bgColor="pink" comment="Ioctl failed">GetUsecaseMode() numbuffers</SearchText>
+    <SearchText bgColor="yellow" comment="Ioctl failed">QDEBUG</SearchText>
+    <SearchText bgColor="cyan" comment="Ioctl failed">CheckForRecovery</SearchText>
+    <SearchText bgColor="cyan" comment="Ioctl failed">pipeline pointer</SearchText>
+    <SearchText select="text" bgColor="orange" comment="Ioctl failed">Selected Usecase</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="Ioctl failed">camxautofocusnode.cpp:[0-9]+ ExecuteProcessRequest\(\) AF</SearchText>
+    <SearchText searchType="regex" bgColor="cyan" comment="Ioctl failed">Sensor:Act</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="green" comment="Ioctl failed">ProcessRequest\(\) chiFrameNum</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="purple" comment="Ioctl failed">DumpDebugInfo</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Ioctl failed">has not been published</SearchText>
+    <SearchText bgColor="red" comment="Ioctl failed">OEM_SetSensorName</SearchText>
+</AnalyseDoc>

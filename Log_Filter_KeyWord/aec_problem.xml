@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="yellow" comment="debug">handlepreFlash</SearchText>
+    <SearchText select="text" bgColor="red" comment="debug">ReadHALAECParam</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="debug">configure_streams</SearchText>
+    <SearchText select="text" bgColor="pink" comment="debug">SetAECState</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="debug">SetAECPreFlashState</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="debug">camxflash</SearchText>
+    <SearchText select="text" bgColor="orange" comment="debug">UpdateAEStateBasedOnAlgo</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow" comment="debug">process_capture_request\(\) frame_number|process_capture_request\(\)     output_buffers</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="debug">Command = </SearchText>
+    <SearchText searchType="regex" select="text" bgColor="red" comment="debug">kinlin</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="debug">CancelPreFlash</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="green" comment="debug">process_capture_result\(\) frame_number.*num_output_buffers 1</SearchText>
+    <SearchText select="text" bgColor="purple" comment="debug">printframecontrol</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="debug">Is AEC Settled</SearchText>
+</AnalyseDoc>

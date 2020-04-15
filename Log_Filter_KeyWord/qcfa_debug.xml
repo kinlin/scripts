@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
-    <SearchText doSearch="false" select="text" bgColor="yellow" comment="chi feature2 study">camxresourcemanager</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="chi feature2 study">camxresourcemanager</SearchText>
+    <SearchText bgColor="red" comment="chi feature2 study">calling client</SearchText>
+    <SearchText bgColor="orange" comment="chi feature2 study">calling ReleaseResourceFunc</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow" comment="chi feature2 study">client resource cost|ReleaseResourceReference|WaitTillResourceAvailabe</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="purple" comment="chi feature2 study">camxsession.cpp:[0-9]+ ProcessRequest</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="chi feature2 study">ProcessCaptureRequest() Received</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="chi feature2 study">RegisterResourceWithClient</SearchText>
     <SearchText select="text" bgColor="liteGreen" comment="chi feature2 study">PipelineStatus::</SearchText>
-    <SearchText select="text" bgColor="cyan" comment="chi feature2 study">QuadCFA</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="cyan" comment="chi feature2 study">QuadCFA</SearchText>
     <SearchText doSearch="false" select="text" bgColor="liteGreen" comment="chi feature2 study">remosaic</SearchText>
     <SearchText bgColor="darkYellow" comment="chi feature2 study">streamon|streamoff</SearchText>
     <SearchText select="text" bgColor="pink" comment="chi feature2 study">Selected feature graph.*RTBayer2YUVJPEG|resourcemanager|pipeline.*link|streamon|streamoff&#x000A;</SearchText>
