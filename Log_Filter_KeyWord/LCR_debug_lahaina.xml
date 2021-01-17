@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">populatepdinput</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="debug">ProcessingNodeFinalizeInitialization</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="debug">PrintLCREnableConditions</SearchText>
+    <SearchText select="text" bgColor="liteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">printdebugpdafdata</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">dumpaf</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ableConditions</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">kinlin</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDAFInit() Initializing PDAF</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessRequestIdDone.*auto</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessRequestIdDone.*IFE</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">fatal sig|DEBUG   </SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="CSLFenceCallback.*IFE">CSLFenceCallback.*PortId_25|CSLFenceCallback.*PortId_27</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="red" comment="CSLFenceCallback.*IFE">PopulateSensorPDAFInformation</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">lcr_hardware_flow</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">sparse_hardware_flow.*Init|lcr_hardware_flow.*Init</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PopulatePDHWConfiguration</SearchText>
+    <SearchText select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDAF parsing PD stats</SearchText>
+    <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">disableunwa</SearchText>
+    <SearchText searchType="regex" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PrintPDHW|PrintLCR</SearchText>
+    <SearchText bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DumpPDInfo</SearchText>
+    <SearchText bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibInit</SearchText>
+    <SearchText color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">LoadPDlibrary</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen" comment="OutputPortId27_LCR|OutputPortId20_StatsBF|OutputPortId25_StatsDualPD|OutputPortId8_RDI0|OutputPortId9_RDI">===&#x5206;&#x5272;&#x7EBF;====</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen" comment="OutputPortId27_LCR|OutputPortId20_StatsBF|OutputPortId25_StatsDualPD|OutputPortId8_RDI0|OutputPortId9_RDI">OutputPortId27_LCR|OutputPortId25_StatsDualPD</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">kinlin</SearchText>
+    <SearchText bgColor="veryLitePurple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessRequest() chiFrameNum</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="CSLFenceCallback.*IFE">ProcessRequestIdDone.*ife</SearchText>
+</AnalyseDoc>

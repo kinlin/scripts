@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
     <SearchText doSearch="false" select="text" bgColor="yellow" comment="chi feature2 study">dependency</SearchText>
+    <SearchText bgColor="cyan" comment="chi feature2 study">CompleteRequest</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="chi feature2 study">SetOutputGeneratedForPort</SearchText>
+    <SearchText select="text" color="purple" comment="chi feature2 study">ProcessFeatureGraphResultCb</SearchText>
+    <SearchText select="text" color="pink" comment="chi feature2 study">PopulatePortConfiguration</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="chi feature2 study">ProcessResultMetadataMessage</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="chi feature2 study">OnBufferResult</SearchText>
     <SearchText select="text" bgColor="liteGreen" comment="chi feature2 study">DispatchResults</SearchText>
     <SearchText searchType="regex" select="text" color="veryLiteBlue" bgColor="purple" comment="chi feature2 study">SetPipelineStatus|SetRequestState</SearchText>
     <SearchText select="text" color="veryLiteBlue" bgColor="purple" comment="chi feature2 study">CompleteRequest</SearchText>

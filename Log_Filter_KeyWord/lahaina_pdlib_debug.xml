@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText searchType="regex" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">fatal sig|DEBUG   </SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibInit()</SearchText>
+    <SearchText bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibDeinit</SearchText>
+    <SearchText select="text" bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">kinlin</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteBeige" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ChiPDLibraryEntry</SearchText>
+    <SearchText bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PD Lib is NULL</SearchText>
+    <SearchText bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">LoadPDLib</SearchText>
+    <SearchText searchType="regex" color="purple" comment="~AF|~Auto|AFDestroy|CreateNodes.*Au">~AF|~Auto|AFDestroy</SearchText>
+    <SearchText bgColor="liteBlue" comment="~AF|~Auto|AFDestroy|CreateNodes.*Au">Initialize() cameraId</SearchText>
+    <SearchText wholeWord="true" bgColor="pink" comment="~AF|~Auto|AFDestroy|CreateNodes.*Au">LoadPDlib</SearchText>
+    <SearchText bgColor="darkYellow" comment="~AF|~Auto|AFDestroy|CreateNodes.*Au">PopulateSensorPDAFInformation() currentResolutionIndex</SearchText>
+    <SearchText bgColor="veryLitePurple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CreatePDLib() </SearchText>
+    <SearchText bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibDestroy()</SearchText>
+    <SearchText searchType="regex" bgColor="liteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DeinitializePDLib</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">android.hardware.camera.provider</SearchText>
+    <SearchText doSearch="false" searchType="regex" bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">TwoFrameMFHDR</SearchText>
+    <SearchText doSearch="false" searchType="regex" bgColor="liteBeige" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">~Pipeline</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Selected feature graph</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">autofocus</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">AF Processor execute request for id</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">numberOfSplits</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">888 14808</SearchText>
+</AnalyseDoc>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">dpd_hardware_flow</SearchText>
+    <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDAF not enabled</SearchText>
+    <SearchText bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">pdlib_dpd_wrapper</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">core dump</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">LoadPDlibrary</SearchText>
+    <SearchText select="text" bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">fatal sig</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DEBUG   </SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DisableUnwantedPDAFLink</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibPhaseDetection</SearchText>
+    <SearchText select="text" bgColor="liteBeige" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PopulatePDInputData</SearchText>
+    <SearchText select="text" bgColor="liteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">pdlib_dpd_wrapper</SearchText>
+    <SearchText select="text" bgColor="beige" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">dpd_software_flow</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">pdlib.cpp</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="pink" comment="debug">af_update_roi_updated|af_core_map_roi_from_input</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="debug">af_util_adjust_roi</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="debug">&lt;==&gt;</SearchText>
+    <SearchText select="text" bgColor="orange" comment="Debug">SensorName</SearchText>
+    <SearchText bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">printPDHWConfig</SearchText>
+    <SearchText bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibInit</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">pdlib.cpp</SearchText>
+    <SearchText bgColor="liteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxpdlibinterface</SearchText>
+</AnalyseDoc>

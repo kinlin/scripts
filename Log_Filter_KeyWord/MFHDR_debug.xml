@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">&lt;==&gt;  requestId</SearchText>
+    <SearchText select="text" bgColor="pink" comment="aec debug capture">AEC_DEBUG_CAPTURE</SearchText>
+    <SearchText doSearch="false" select="text" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">MFHDRRealTimeFeatureZSLPreviewRaw</SearchText>
+    <SearchText searchType="regex" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">session.*processCaptureRequest</SearchText>
+    <SearchText searchType="regex" select="text" color="blueGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">advanceMinExpectedResult.*Results processed</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="mfhdr debug">populatePipelineSplitsInfo</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="mfhdr debug">onpopulateConfiguration</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Creating pipeline</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">OnInitializeStream</SearchText>
+    <SearchText select="text" bgColor="liteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">AddOutputNodes</SearchText>
+    <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">disable requestId</SearchText>
+    <SearchText bgColor="veryLitePurple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">GetMatchingUsecase</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">chifeature.*Selected</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="orange" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Result from Request:[0-9]+ for port:[Short|Long|]+Raw</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">OnMetadataResult.*Result from Request</SearchText>
+    <SearchText select="text" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Selected feature graph</SearchText>
+    <SearchText doSearch="false" select="text" color="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">~~~~~AEC&#x5206;&#x754C;======</SearchText>
+    <SearchText doSearch="false" select="text" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">submitinitpacket</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ValidateHWStats</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PrintFrameControl CID</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ArbitrateOneExposureType</SearchText>
+    <SearchText doSearch="false" searchType="regex" color="purple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">runMetering</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">SetHWStats</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">STATS_AEC</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">====== AEC Process|===== Convergence</SearchText>
+    <SearchText doSearch="false" select="text" color="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">====== AEC Process</SearchText>
+    <SearchText doSearch="false" select="text" color="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">~~~~~ISP&#x5206;&#x754C;======</SearchText>
+    <SearchText doSearch="false" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">tmc13interpolation</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxipehdr40</SearchText>
+</AnalyseDoc>

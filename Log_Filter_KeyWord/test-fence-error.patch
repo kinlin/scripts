@@ -1,0 +1,16 @@
+diff --git a/camx/src/hwl/ipe/camxipenode.cpp b/camx/src/hwl/ipe/camxipenode.cpp
+index 4df0967..789d303 100644
+--- a/camx/src/hwl/ipe/camxipenode.cpp
++++ b/camx/src/hwl/ipe/camxipenode.cpp
+@@ -4569,7 +4569,11 @@ CamxResult IPENode::ExecuteProcessRequest(
+                 if (CamxResultSuccess == result)
+                 {
+                     CAMX_LOG_VERBOSE(CamxLogGroupPProc, "Submit packets");
++                    if(requestId == 100){
++                    CAMX_LOG_ERROR(CamxLogGroupPProc, "JinLin Force not submit at requestId:%d", requestId);
++                    }else{
+                     result = GetHwContext()->Submit(m_hDevice, pIQPacket);
++                    }
+                     if (CamxResultSuccess == result)
+                     {
+                         CAMX_LOG_INFO(CamxLogGroupPProc, "IPE:%d Submitted packets with requestId = %llu",

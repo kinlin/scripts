@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">GetHWPDConfig</SearchText>
+    <SearchText bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">af_util_stats_config_pdaf</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibROI type</SearchText>
+    <SearchText select="text" bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">populatepdin</SearchText>
+    <SearchText searchType="regex" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CSLFenceCallback.*IFE.*portId=25</SearchText>
+    <SearchText searchType="regex" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CSLFenceCallback.*IFE.*portId=8</SearchText>
+    <SearchText searchType="regex" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CSLFenceCallback.*IFE.*portId=20</SearchText>
+    <SearchText bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">af_util_adjust_roi</SearchText>
+    <SearchText bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">LoadPDlibrary</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">autofocusnode</SearchText>
+    <SearchText select="text" bgColor="deepPurple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxcafstatsprocessor</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">&lt;==&gt;</SearchText>
+    <SearchText select="text" bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CreateAFCore</SearchText>
+    <SearchText select="text" bgColor="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxpdlibinterface</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDAFInit</SearchText>
+    <SearchText select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PopulateSensorPDAFInformation</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DisableUnwantedPDAFLink</SearchText>
+</AnalyseDoc>

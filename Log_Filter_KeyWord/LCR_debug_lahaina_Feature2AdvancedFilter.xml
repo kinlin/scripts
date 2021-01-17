@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">populatepdinput</SearchText>
+    <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">pdaf20</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Submitting Request</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">SetSequencePortDescriptor.*RealTimeMCX</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Adding ZSL Por</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="veryLiteBlue" comment="debug">setuptargetbuffer.*:RAW</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="debug">AddImageReference.*:RAW</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="debug">SetupRequestOutputPortImageBuffer.*Output Port ID: 9</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="purple" comment="debug">Release.*Id9_RDI1</SearchText>
+    <SearchText searchType="regex" select="text" color="blue" comment="debug">ImportChiNativeBuffer.*IFE0_OutputPortId9</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDAFInit() Initializing PDAF</SearchText>
+    <SearchText searchType="regex" select="text" color="pink" comment="debug">BindImportedBuffer.*IFE0_OutputPortId9</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="debug">PopulatePortConfiguration.*Realtime</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">kinlin 3.*IFE0 Output Port ID: 9</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">kinlin.*IFE0 Output Port ID: 9</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">QDEBUG</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">QDEBUG.*call</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">IFE.*ProcessFenceCallback RequestId</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessRequestIdDone.*auto</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessRequestIdDone.*IFE</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">fatal sig|DEBUG   </SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="CSLFenceCallback.*IFE">CSLFenceCallback.*PortId_25|CSLFenceCallback.*PortId_27</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="red" comment="CSLFenceCallback.*IFE">PopulateSensorPDAFInformation</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">lcr_hardware_flow</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">sparse_hardware_flow.*Init|lcr_hardware_flow.*Init</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PopulatePDHWConfiguration</SearchText>
+    <SearchText bgColor="veryLitePurple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ReleaseImageReference.*IFE0_OutputPortId9_RDI1</SearchText>
+    <SearchText searchType="regex" bgColor="liteBeige" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">IFE0_OutputPortId9.*Busy B</SearchText>
+    <SearchText select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDAF parsing PD stats</SearchText>
+    <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">disableunwa</SearchText>
+    <SearchText searchType="regex" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PrintPDHW|PrintLCR</SearchText>
+    <SearchText bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DumpPDInfo</SearchText>
+    <SearchText bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDLibInit</SearchText>
+    <SearchText color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">LoadPDlibrary</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen" comment="OutputPortId27_LCR|OutputPortId20_StatsBF|OutputPortId25_StatsDualPD|OutputPortId8_RDI0|OutputPortId9_RDI">===&#x5206;&#x5272;&#x7EBF;====</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen" comment="OutputPortId27_LCR|OutputPortId20_StatsBF|OutputPortId25_StatsDualPD|OutputPortId8_RDI0|OutputPortId9_RDI">OutputPortId27_LCR|OutputPortId25_StatsDualPD</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">kinlin</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">IFE0 Output Port ID: 9</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">SetupRequestOutputPortFence.*IFE</SearchText>
+    <SearchText bgColor="veryLitePurple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessRequest() chiFrameNum</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="CSLFenceCallback.*IFE">ProcessRequestIdDone.*ife</SearchText>
+</AnalyseDoc>

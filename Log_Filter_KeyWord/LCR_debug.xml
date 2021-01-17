@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
     <SearchText select="text" bgColor="red" comment="Ioctl failed">Master camera id</SearchText>
+    <SearchText bgColor="red" comment="Ioctl failed">af_haf_util_end_search ALGO Complete</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">topology</SearchText>
     <SearchText select="text" bgColor="darkYellow" comment="Ioctl failed">camxpdlibinterface</SearchText>
     <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="Ioctl failed">process_capture_result.*num_output_buffers [1-9]+</SearchText>
     <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="Ioctl failed">ReleaseBufferManagerCompositeImageReference.*Port Id 9</SearchText>
@@ -8,6 +10,7 @@
     <SearchText select="text" bgColor="darkYellow" comment="Ioctl failed">enter again after</SearchText>
     <SearchText select="text" bgColor="purple" comment="Ioctl failed">Skipping AF Algo processing</SearchText>
     <SearchText select="text" bgColor="red" comment="Ioctl failed">IsInValidUsageState</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PDAFInit() Initializing PDAF</SearchText>
     <SearchText searchType="regex" select="text" bgColor="litePink" comment="Ioctl failed">camxpipeline.cpp:[0-9]+ StreamOn|camxsession.cpp:[0-9]+ StreamOn</SearchText>
     <SearchText searchType="regex" select="text" bgColor="yellow" comment="Ioctl failed">process_capture_request\(\) frame_number|process_capture_request\(\)     output_buffers</SearchText>
     <SearchText select="text" bgColor="cyan" comment="Ioctl failed">Submitted to HW: Realtime</SearchText>

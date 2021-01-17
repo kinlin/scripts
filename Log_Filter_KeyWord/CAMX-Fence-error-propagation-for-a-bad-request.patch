@@ -1,0 +1,59 @@
+diff --git a/src/core/camxdeferredrequestqueue.cpp b/src/core/camxdeferredrequestqueue.cpp
+index ac31a39..7c0db11 100755
+--- a/src/core/camxdeferredrequestqueue.cpp
++++ b/src/core/camxdeferredrequestqueue.cpp
+@@ -772,6 +772,9 @@ VOID DeferredRequestQueue::HandleFenceError(
+     CSLHandle  hCSL,
+     UINT64     requestId)
+ {
++    CAMX_UNREFERENCED_PARAM(pHwContextPtr);
++    CAMX_UNREFERENCED_PARAM(hCSL);
++
+     if (FALSE == RequestInErrorState(requestId))
+     {
+         m_pDeferredQueueLock->Lock();
+@@ -856,7 +859,7 @@ VOID DeferredRequestQueue::HandleFenceError(
+ 
+         m_pDeferredQueueLock->Unlock();
+ 
+-        pHwContextPtr->FlushRequest(hCSL, requestId);
++//        pHwContextPtr->FlushRequest(hCSL, requestId);
+     }
+ }
+ 
+diff --git a/src/core/camxsession.cpp b/src/core/camxsession.cpp
+index 32b707a..cd0d93c 100644
+--- a/src/core/camxsession.cpp
++++ b/src/core/camxsession.cpp
+@@ -1874,9 +1874,20 @@ BOOL Session::ProcessResultBuffers(
+ {
+     BOOL gotResult = FALSE;
+     UINT currentResult = *pNumResults;
++    BOOL isBufferError = FALSE;
++
++    for (UINT32 bufIndex = 0; bufIndex < MaxNumOutputBuffers; bufIndex++)
++    {
++        if (NULL != pResultHolder->bufferHolder[bufIndex].pBufferError)
++        {
++            isBufferError = TRUE;
++            break;
++        }
++    }
+ 
+     // Need to have procesed the metadata before we can send any buffer(s) back
+-    if ((TRUE == metadataAvailable) || (0 == pResultHolder->pendingMetadataCount))
++    if ((TRUE == metadataAvailable) || (0 == pResultHolder->pendingMetadataCount) ||
++        (TRUE == isBufferError))
+     {
+         // Dispatch buffers with both OK and Error status
+         UINT numBuffersOut = 0;
+@@ -1891,7 +1902,8 @@ BOOL Session::ProcessResultBuffers(
+             }
+ 
+             if ((NULL != pResultHolder->bufferHolder[bufIndex].pBuffer) &&
+-                (TRUE == pResultHolder->bufferHolder[bufIndex].valid))
++                ((TRUE == pResultHolder->bufferHolder[bufIndex].valid) ||
++                (NULL != pResultHolder->bufferHolder[bufIndex].pBufferError)))
+             {
+                 if ((NULL != pResultHolder->bufferHolder[bufIndex].pStream) &&
+                     (TRUE == BufferReadyToFly(pResultHolder->sequenceId, pResultHolder->bufferHolder[bufIndex].pStream)))

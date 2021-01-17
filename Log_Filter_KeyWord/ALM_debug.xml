@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="blue" comment="Ioctl failed"> Final Lens Position</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Ioctl failed">UpdateZonePrediction </SearchText>
+    <SearchText doSearch="false" select="text" bgColor="yellow" comment="Ioctl failed">af_adaptive_lensmap</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="Ioctl failed">ProcessStateUpdateModel</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="Ioctl failed">SetFocusStatus</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="Ioctl failed">ProcessSampleUpdate</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="Ioctl failed">RemoveSampleByScore</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="Ioctl failed">AFLensMapProcessStateTable</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="pink" comment="Ioctl failed">adaptive_lens</SearchText>
+    <SearchText select="text" bgColor="red" comment="Ioctl failed">CompareMappingResult</SearchText>
+</AnalyseDoc>

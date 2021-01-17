@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" bgColor="veryLiteBlue" comment="debug">InitializeStaticMetadata</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="debug">camxactuator</SearchText>
+    <SearchText select="text" color="darkYellow" bgColor="darkGreen" comment="debug">sensornode</SearchText>
+    <SearchText searchType="regex" bgColor="darkYellow" comment="debug">sensornode.*ConfigureSensor|sensornode.*subModule|sensornode.*InitializeSensor</SearchText>
+    <SearchText color="blue" comment="debug">CreateSensorSubmodules</SearchText>
+    <SearchText bgColor="liteBeige" comment="debug">SetPipelineStatus</SearchText>
+    <SearchText bgColor="yellow" comment="debug">&lt;==&gt;</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="cyan" comment="debug">sensornode</SearchText>
+    <SearchText bgColor="orange" comment="debug">Returning framework result Frame</SearchText>
+    <SearchText bgColor="litePink" comment="debug">setstreamintent</SearchText>
+    <SearchText bgColor="litePink" comment="debug">PrepareStreamOn</SearchText>
+    <SearchText select="text" bgColor="pink" comment="debug">StreamOn</SearchText>
+    <SearchText bgColor="veryLiteBlue" comment="debug">process_capture_request</SearchText>
+    <SearchText searchType="regex" bgColor="veryLitePurple" comment="debug">process_capture_result.*num_output_buffers 1</SearchText>
+    <SearchText select="text" bgColor="green" comment="debug">chxextensionmodule</SearchText>
+    <SearchText bgColor="darkYellow" comment="debug">FillHwDeviceInformation</SearchText>
+    <SearchText color="liteGrey" bgColor="blue" comment="debug">kinlin</SearchText>
+    <SearchText select="text" bgColor="orange" comment="debug">chxlogicalcameras</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="debug">chimcxdevicecaps</SearchText>
+    <SearchText select="text" bgColor="liteBlue" comment="debug">camxhal3</SearchText>
+    <SearchText select="text" bgColor="purple" comment="debug">camxhaldevice</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="debug">camxhal3module</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="debug">process_capture_result.*num_output_buffers 1</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="liteGreen" comment="debug">HwEnvironment</SearchText>
+</AnalyseDoc>

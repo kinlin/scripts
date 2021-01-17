@@ -1,0 +1,144 @@
+diff --git a/vendor/chioverride/default/chxadvancedcamerausecase.cpp b/vendor/chioverride/default/chxadvancedcamerausecase.cpp
+index da8615e..f460475 100644
+--- a/vendor/chioverride/default/chxadvancedcamerausecase.cpp
++++ b/vendor/chioverride/default/chxadvancedcamerausecase.cpp
+@@ -1516,6 +1516,7 @@ VOID CameraUsecaseBase::ProcessErrorMessage(
+ 
+     UINT64 resultFrame = pMessageDescriptor->message.errorMessage.frameworkFrameNum;
+     UINT64 frameIndex  = resultFrame % MaxOutstandingRequests;
++    BOOL   isErrorRequest = FALSE;
+ 
+     switch (pMessageDescriptor->message.errorMessage.errorMessageCode)
+     {
+@@ -1530,6 +1531,7 @@ VOID CameraUsecaseBase::ProcessErrorMessage(
+         case MessageCodeBuffer:
+             CHX_LOG("Frame %" PRIu64 ": Buffer error for stream %p", resultFrame, pMessageDescriptor->message.errorMessage.pErrorStream);
+             CHX_ASSERT(0 < m_numAppPendingOutputBuffers[frameIndex]);
++            isErrorRequest = TRUE;
+             break;
+         case MessageCodeDevice:
+             CHX_LOG("Not handling device errors");
+@@ -1554,7 +1556,15 @@ VOID CameraUsecaseBase::ProcessErrorMessage(
+         m_lastResultMetadataFrameNum++;
+     }
+ 
+-    ReturnFrameworkMessage((camera3_notify_msg_t*)pMessageDescriptor, m_cameraId);
++    if (isErrorRequest == FALSE)
++    {
++        ReturnFrameworkMessage((camera3_notify_msg_t*)pMessageDescriptor, m_cameraId);
++    }
++    else
++    {
++        HandleProcessRequestErrorAllPCRs(resultFrame);
++    }
++
+ }
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+diff --git a/vendor/chioverride/default/chxadvancedcamerausecase.h b/vendor/chioverride/default/chxadvancedcamerausecase.h
+index 7c727fb..ba69965 100644
+--- a/vendor/chioverride/default/chxadvancedcamerausecase.h
++++ b/vendor/chioverride/default/chxadvancedcamerausecase.h
+@@ -90,7 +90,11 @@ struct RequestMapInfo
+ class CameraUsecaseBase : public Usecase
+ {
+ public:
+-    CHX_INLINE const PipelineData* GetPipelineData(
++
++    VOID ProcessErrorMessage(
++		const ChiMessageDescriptor* pMessageDescriptor);
++
++	CHX_INLINE const PipelineData* GetPipelineData(
+         UINT sessionId,
+         UINT pipelineId
+     ) const
+@@ -274,9 +278,6 @@ public:
+         Usecase::ReturnFrameworkResult(pResult, m_cameraId);
+     }
+ 
+-    VOID ProcessErrorMessage(
+-        const ChiMessageDescriptor* pMessageDescriptor);
+-
+     CHX_INLINE UINT32* GetEffectMode()
+     {
+         return &m_effectModeValue;
+diff --git a/vendor/chioverride/default/chxusecase.cpp b/vendor/chioverride/default/chxusecase.cpp
+index 94b26dd..1addef1 100644
+--- a/vendor/chioverride/default/chxusecase.cpp
++++ b/vendor/chioverride/default/chxusecase.cpp
+@@ -441,6 +441,26 @@ VOID Usecase::ReturnFrameworkResultFlush(
+ // Usecase::HandleProcessRequestErrorAllPCRs
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ VOID Usecase::HandleProcessRequestErrorAllPCRs(
++    UINT32 chiOverrideFrameNum)
++{
++    UINT32 resultFrameIndexChi = chiOverrideFrameNum % MaxOutstandingRequests;
++    m_pMapLock->Lock();
++
++    if (0 != m_pendingPCRs[resultFrameIndexChi].num_output_buffers)
++    {
++        // old request not returned yet. return result for the same.
++        camera3_capture_request_t request = m_pendingPCRs[resultFrameIndexChi];
++        CHX_LOG(" flush array not empty FRAME =%d", m_pendingPCRs[resultFrameIndexChi].frame_number);
++        HandleProcessRequestErrorAllPCRs(&request);
++    }
++    m_pMapLock->Unlock();
++}
++
++
++////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
++// Usecase::HandleProcessRequestErrorAllPCRs
++////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
++VOID Usecase::HandleProcessRequestErrorAllPCRs(
+     camera3_capture_request_t* pRequest)
+ {
+     ChiMessageDescriptor        messageDescriptor;
+diff --git a/vendor/chioverride/default/chxusecase.h b/vendor/chioverride/default/chxusecase.h
+index dbe1096..eb4f989 100644
+--- a/vendor/chioverride/default/chxusecase.h
++++ b/vendor/chioverride/default/chxusecase.h
+@@ -170,6 +170,9 @@ protected:
+     VOID HandleProcessRequestErrorAllPCRs(
+         camera3_capture_request_t* pRequest);
+ 
++	VOID HandleProcessRequestErrorAllPCRs(
++        UINT32 chiOverrideFrameNum);
++
+     virtual VOID Destroy(BOOL isForced) = 0;
+ 
+     Usecase() = default;
+diff --git a/vendor/chioverride/default/chxusecasemc.cpp b/vendor/chioverride/default/chxusecasemc.cpp
+index ad1b473..8ec6c45 100644
+--- a/vendor/chioverride/default/chxusecasemc.cpp
++++ b/vendor/chioverride/default/chxusecasemc.cpp
+@@ -1152,17 +1152,24 @@ VOID UsecaseMultiCamera::SessionCbNotifyMessage(
+         internalFrameNum,
+         pMessageDescriptor->messageType, pMessageDescriptor->message.shutterMessage.timestamp);
+ 
+-    if (pSessionPrivateData->sessionID == REALTIMESESSIONIDX)
++    if (ChiMessageTypeError == pMessageDescriptor->messageType)
+     {
+-        pUsecase->ProcessRealTimeNotifyMessage(pMessageDescriptor);
++        pUsecase->ProcessErrorMessage(pMessageDescriptor);
+     }
+     else
+     {
+-        //  Send only the realtime pipeline 0 shutter message
+-        if ((pSessionPrivateData->sessionID == OFFLINESESSIONIDX) ||
+-            (pSessionPrivateData->sessionID == OFFLINERTBJPEGSESSION))
++        if (pSessionPrivateData->sessionID == REALTIMESESSIONIDX)
+         {
+-            pUsecase->m_shutterFrameNum = internalFrameNum;
++            pUsecase->ProcessRealTimeNotifyMessage(pMessageDescriptor);
++        }
++        else
++        {
++            //  Send only the realtime pipeline 0 shutter message
++            if ((pSessionPrivateData->sessionID == OFFLINESESSIONIDX) ||
++                (pSessionPrivateData->sessionID == OFFLINERTBJPEGSESSION))
++            {
++                pUsecase->m_shutterFrameNum = internalFrameNum;
++            }
+         }
+     }
+ 

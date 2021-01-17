@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText select="text" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxcaecstatsprocessor</SearchText>
+    <SearchText select="text" color="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxaecengine</SearchText>
+    <SearchText select="text" color="yellow" bgColor="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CreateAECAlgoHandler</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">SetBankBasedOnContext</SearchText>
+</AnalyseDoc>

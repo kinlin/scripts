@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
-    <SearchText doSearch="false" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">populatetof</SearchText>
+    <SearchText color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">populatetof</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="pdlib_">pdlib_</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">_pdaf_tof_</SearchText>
     <SearchText select="text" bgColor="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxpdafdata</SearchText>
     <SearchText select="text" bgColor="purple" comment="AF set parameter &#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x5230;&#x7B97;&#x6CD5;">_set_parameter</SearchText>
     <SearchText doSearch="false" select="text" bgColor="cyan" comment="haf &#x5B8C;&#x6210;/&#x7ED3;&#x675F;&#x5BF9;&#x7126;">af_haf_util_end_search</SearchText>

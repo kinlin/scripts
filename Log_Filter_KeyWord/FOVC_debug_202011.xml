@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText bgColor="liteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">AF Node execute request for req</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ReleaseImageReference.*IFE</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">IFE0_OutputPortId8</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Allocate.*IFE0_OutputPortId8</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CSLFenceCallback.*MultiCameraRealtime[0-9]_IFE.*portId=8</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">IFE0_OutputPortId25</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CSLFenceCallback.*MultiCameraRealtime[0-9]_IFE.*portId=25</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="purple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CSLFenceCallback.*MultiCameraRealtime[0-9]_IFE.*portId=20</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="debug">BindBufferManagerImageBuffer.*IFE0_OutputPortId8|BindBufferManagerImageBuffer.*IFE0_OutputPortId25</SearchText>
+    <SearchText doSearch="false" searchType="regex" bgColor="yellow" comment="debug">Get3AFrameConfig</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="blue" comment="debug">m_isBacked</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="debug">DumpDebugInfo</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="debug">CanSkipAlgoProcessing</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="pink" comment="debug">IFE0_OutputPortId[8|20|25].*m_hMemPoolBufMgrHandle=</SearchText>
+    <SearchText searchType="regex" select="text" color="blue" bgColor="veryLitePurple" comment="debug">ProcessRequestIdDone.*IFE</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Allocate.*IFE0_OutputPortId25</SearchText>
+    <SearchText searchType="regex" color="darkRed" bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Recording stopped on reqId</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PopulatePDInputData</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DEBUG   :</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessRequestIdDone.*AutoFocus</SearchText>
+    <SearchText select="text" bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">timed out</SearchText>
+    <SearchText select="text" bgColor="pink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ProcessResultBuffers</SearchText>
+    <SearchText select="text" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Flush call of session</SearchText>
+    <SearchText bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">kinlin</SearchText>
+    <SearchText bgColor="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Sync CSL links</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="cyan" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PublishFOVC.*id</SearchText>
+    <SearchText bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">got pre-empted</SearchText>
+    <SearchText select="text" bgColor="liteBeige" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ExecuteProcessRequest() requestId</SearchText>
+    <SearchText select="text" bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ExecuteProcessRequest() ProcessRequestDone</SearchText>
+    <SearchText bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">WaitForAllNodesRequest</SearchText>
+    <SearchText doSearch="false" bgColor="yellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">camxautofocusnode</SearchText>
+    <SearchText bgColor="orange" comment="debug">CheckAndSyncWaitForAllNodes</SearchText>
+    <SearchText bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">PreemptAndWaitForNodes</SearchText>
+    <SearchText bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DeActivatePipeline</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">FillMCCResult</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">chimcxmflpolicy</SearchText>
+    <SearchText doSearch="false" bgColor="litePink" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">CSLMessageHandler</SearchText>
+    <SearchText bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">ErrorBubble</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="orange" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">GetHDRFeatureMode.*AutoFocus</SearchText>
+    <SearchText select="text" color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">streamon</SearchText>
+    <SearchText select="text" color="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">streamoff</SearchText>
+    <SearchText searchType="regex" bgColor="green" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">&lt;==&gt;.*MultiCameraRealtime</SearchText>
+    <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;"> Entering Recovery thread</SearchText>
+    <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Hit SOF threshold of</SearchText>
+</AnalyseDoc>

@@ -11,16 +11,16 @@ do
   #left->right
   if (($i%5==0))
   then
-      flag=$flag*(-1)
+      flag=-1*$flag
   fi
   
   if (($flag>0))
   then
-      input swipe 320 1200 1100 1200 600
+      adb.exe shell input swipe 320 1200 900 1200 100
   else
-      input swipe 1100 1200 320 1200 600
+      adb.exe shell input swipe 900 900 320 900 100
   fi
-  #sleep 0.8
+  sleep 1
   #input tap 406 172
   #sleep 0.8
   echo "Iteration $i Finished"

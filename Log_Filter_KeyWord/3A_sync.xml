@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText doSearch="false" select="text" color="blue" comment="Ioctl failed">camxmultistatsoperator</SearchText>
+    <SearchText select="text" color="pink" comment="type0 is AEC;type1 is AF;type2 is AWB;">ParseMultiRequestInfo() Type:1</SearchText>
+    <SearchText searchType="regex" select="text" color="liteRed" comment="Ioctl failed">UpdateStatsDependencies.*AutoFo</SearchText>
+</AnalyseDoc>

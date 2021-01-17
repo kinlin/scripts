@@ -1,0 +1,88 @@
+From a272a7e6d613cbd8110879ea9c8da955a75c763c Mon Sep 17 00:00:00 2001
+From: Kousik Nandi Modak <kmodak@qti.qualcomm.com>
+Date: Thu, 17 May 2018 17:04:13 -0700
+Subject: [PATCH] CHX: Added timed wait to wait for RDI buffer to be available
+
+Change-Id: Idc95c493dfb035e7ed25e38a464b0b0da2374b97
+---
+ .../default/chxadvancedcamerausecase.cpp           | 25 +++++++++++++++++++++-
+ .../vendor/chioverride/default/chxusecaseutils.cpp |  2 --
+ .../vendor/chioverride/default/chxusecaseutils.h   |  2 ++
+ 3 files changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/chi-cdk/vendor/chioverride/default/chxadvancedcamerausecase.cpp b/chi-cdk/vendor/chioverride/default/chxadvancedcamerausecase.cpp
+index da8615e..d202033 100644
+--- a/chi-cdk/vendor/chioverride/default/chxadvancedcamerausecase.cpp
++++ b/chi-cdk/vendor/chioverride/default/chxadvancedcamerausecase.cpp
+@@ -1021,10 +1021,33 @@ CDKResult CameraUsecaseBase::GetTargetBuffer(
+     camera_metadata_t*       pMetadata,
+     camera3_stream_buffer_t* inputBuffer)
+ {
++    CDKResult result   = CDKResultSuccess;
+     UINT32 bufferIndex = frameNumber % BufferQueueDepth;
+ 
+     pTargetBuffer->pMutex->Lock();
+ 
++    while ((pTargetBuffer->bufferQueue[bufferIndex].pRdiOutputBuffer->phBuffer == NULL) &&
++        ((pTargetBuffer->bufferQueue[bufferIndex].frameNumber < frameNumber) ||
++        (FALSE == pTargetBuffer->bufferQueue[bufferIndex].isBufferReady) ||
++        (FALSE == pTargetBuffer->bufferQueue[bufferIndex].isMetadataReady)))
++    {
++        CHX_LOG_WARN("buffer or metadata (buffervalid:%d, metdatavalid:%d) is not ready! frameNumber = %d"
++            "lastReadySequenceID = %d bufferQueue[%d].frameNumber = %d",
++            pTargetBuffer->bufferQueue[bufferIndex].isBufferReady,
++            pTargetBuffer->bufferQueue[bufferIndex].isMetadataReady,
++            frameNumber,
++            pTargetBuffer->lastReadySequenceID,
++            bufferIndex,
++            pTargetBuffer->bufferQueue[bufferIndex].frameNumber);
++
++        result = pTargetBuffer->pCondition->TimedWait(pTargetBuffer->pMutex->GetNativeHandle(), WAIT_BUFFER_TIMEOUT);
++        if (CDKResultSuccess != result)
++        {
++            CHX_LOG_ERROR("Wait for buffer timed out! frameNumber = %d", frameNumber);
++            break;
++        }
++    }
++
+     CHX_LOG("Merging metadata %p into %p to use for RDI", pMetadata, pTargetBuffer->bufferQueue[bufferIndex].pMetadata);
+ 
+     if (NULL != pMetadata)
+@@ -1040,7 +1063,7 @@ CDKResult CameraUsecaseBase::GetTargetBuffer(
+ 
+     pTargetBuffer->pMutex->Unlock();
+ 
+-    return CDKResultSuccess;
++    return result;
+ }
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+diff --git a/chi-cdk/vendor/chioverride/default/chxusecaseutils.cpp b/chi-cdk/vendor/chioverride/default/chxusecaseutils.cpp
+index 9d40989..b89697ed 100644
+--- a/chi-cdk/vendor/chioverride/default/chxusecaseutils.cpp
++++ b/chi-cdk/vendor/chioverride/default/chxusecaseutils.cpp
+@@ -19,8 +19,6 @@
+ #include "chxusecasetorch.h"
+ #include "chxusecasevrmc.h"
+ 
+-#define WAIT_BUFFER_TIMEOUT 700 // should be less than the timeout used for each request (800ms)
+-
+ UINT UsecaseSelector::NumImplDefinedFormats = 4;
+ 
+ ChiBufferFormat UsecaseSelector::AllowedImplDefinedFormats[] =
+diff --git a/chi-cdk/vendor/chioverride/default/chxusecaseutils.h b/chi-cdk/vendor/chioverride/default/chxusecaseutils.h
+index 3026767..e776703 100644
+--- a/chi-cdk/vendor/chioverride/default/chxusecaseutils.h
++++ b/chi-cdk/vendor/chioverride/default/chxusecaseutils.h
+@@ -21,6 +21,8 @@
+ struct ChiUsecase;
+ class  Usecase;
+ 
++#define WAIT_BUFFER_TIMEOUT 700 // should be less than the timeout used for each request (800ms)
++
+ /// Constants
+ static const UINT32 MaxOutstandingRequests = 128;                    ///< Number is bigger to prevent throttling of the preview
+                                                                     ///  pipeline
+-- 
+1.8.2.1
+
