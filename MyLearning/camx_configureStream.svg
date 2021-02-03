@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="673px" preserveAspectRatio="none" style="width:1706px;height:673px;" version="1.1" viewBox="0 0 1706 673" width="1706px" zoomAndPan="magnify"><defs><filter height="300%" id="f12f1v7q8ea2l0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#DDDDDD" height="658.6484" style="stroke: #A80036; stroke-width: 1.0;" width="277" x="1116" y="4"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="65" x="1222" y="16.0669">Features</text><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="357.8594" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="298" y="247.3594"/><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="299.5938" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="507" y="276.4922"/><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="83.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="703" y="305.625"/><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="128.7969" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="703" y="418.1563"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="303" x2="303" y1="58.4297" y2="624.3516"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="512" x2="512" y1="58.4297" y2="624.3516"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="707.5" x2="707.5" y1="58.4297" y2="624.3516"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="981.5" x2="981.5" y1="58.4297" y2="624.3516"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="1177" x2="1177" y1="58.4297" y2="624.3516"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="1316" x2="1316" y1="58.4297" y2="624.3516"/><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="166" x="218" y="23.1328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="152" x="225" y="43.1279">chxextensioninterface</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="166" x="218" y="623.3516"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="152" x="225" y="643.3467">chxextensioninterface</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="158" x="431" y="23.1328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="144" x="438" y="43.1279">chxextensionmodule</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="158" x="431" y="623.3516"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="144" x="438" y="643.3467">chxextensionmodule</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="125" x="643.5" y="23.1328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="111" x="650.5" y="43.1279">chxusecaseutils</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="125" x="643.5" y="623.3516"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="111" x="650.5" y="643.3467">chxusecaseutils</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="215" x="872.5" y="23.1328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="201" x="879.5" y="43.1279">chxadvancedcamerausecase</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="215" x="872.5" y="623.3516"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="201" x="879.5" y="643.3467">chxadvancedcamerausecase</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="110" x="1120" y="23.1328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="96" x="1127" y="43.1279">chxfeaturehdr</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="110" x="1120" y="623.3516"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="96" x="1127" y="643.3467">chxfeaturehdr</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="141" x="1244" y="23.1328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="127" x="1251" y="43.1279">chxfeaturerawjpeg</text><rect fill="#FEFECE" filter="url(#f12f1v7q8ea2l0)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="141" x="1244" y="623.3516"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="127" x="1251" y="643.3467">chxfeaturerawjpeg</text><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="357.8594" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="298" y="247.3594"/><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="299.5938" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="507" y="276.4922"/><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="83.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="703" y="305.625"/><rect fill="#FFFFFF" filter="url(#f12f1v7q8ea2l0)" height="128.7969" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="703" y="418.1563"/><rect fill="#EEEEEE" filter="url(#f12f1v7q8ea2l0)" height="3" style="stroke: #EEEEEE; stroke-width: 1.0;" width="1691" x="3" y="88.9961"/><line style="stroke: #000000; stroke-width: 1.0;" x1="3" x2="1694" y1="88.9961" y2="88.9961"/><line style="stroke: #000000; stroke-width: 1.0;" x1="3" x2="1694" y1="91.9961" y2="91.9961"/><rect fill="#EEEEEE" filter="url(#f12f1v7q8ea2l0)" height="23.1328" style="stroke: #000000; stroke-width: 2.0;" width="125" x="786" y="78.4297"/><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="797" y="94.4966"/><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="101" x="797" y="94.4966">ConfigStream</text><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="903" y="94.4966"/><polygon fill="#FBFB77" filter="url(#f12f1v7q8ea2l0)" points="8,116.5625,8,216.5625,294,216.5625,294,126.5625,284,116.5625,8,116.5625" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="284" x2="284" y1="116.5625" y2="126.5625"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="294" x2="284" y1="126.5625" y2="126.5625"/><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="60" x="14" y="133.6294">Call Seq</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="237" x="14" y="148.7622">HALDevice::ConfigureStreams-&gt;</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="22" y="163.895">|--</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="216" x="36" y="163.895">CHITeardownOverrideSession</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="22" y="179.0278">|--</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="156" x="36" y="179.0278">CHIModuleInitialize-&gt;</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="38" y="194.1606">|--</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="221" x="52" y="194.1606">CHIInitializeOverrideSession-&gt;</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="46" y="209.2935">|--</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="219" x="60" y="209.2935">chi_initialize_override_session</text><ellipse cx="10.5" cy="246.6094" fill="none" rx="4" ry="4" style="stroke: #A80036; stroke-width: 1.5;"/><polygon fill="#A80036" points="286,243.3594,296,247.3594,286,251.3594,290,247.3594" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="15" x2="292" y1="247.3594" y2="247.3594"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="219" x="18" y="242.4263">chi_initialize_override_session</text><polygon fill="#A80036" points="495,272.4922,505,276.4922,495,280.4922,499,276.4922" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="308" x2="501" y1="276.4922" y2="276.4922"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="180" x="315" y="271.5591">InitializeOverrideSession</text><polygon fill="#A80036" points="691,301.625,701,305.625,691,309.625,695,305.625" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="517" x2="697" y1="305.625" y2="305.625"/><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="167" x="524" y="300.6919">GetMatchingUsecase()</text><polygon fill="#FBFB77" filter="url(#f12f1v7q8ea2l0)" points="472,318.7578,472,358.7578,940,358.7578,940,328.7578,930,318.7578,472,318.7578" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="930" x2="930" y1="318.7578" y2="328.7578"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="940" x2="930" y1="328.7578" y2="328.7578"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="442" x="483" y="335.8247">If physical cam &gt;1 &amp;&amp; num_streams&gt;1 choose MultiCamera</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="382" x="483" y="350.9575">others may according to num of Streams and Flags</text><polygon fill="#A80036" points="528,385.0234,518,389.0234,528,393.0234,524,389.0234" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="522" x2="707" y1="389.0234" y2="389.0234"/><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="534" y="384.0903">return</text><polygon fill="#A80036" points="691,414.1563,701,418.1563,691,422.1563,695,418.1563" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="517" x2="697" y1="418.1563" y2="418.1563"/><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="158" x="524" y="413.2231">CreateUsecaseObject</text><polygon fill="#FBFB77" filter="url(#f12f1v7q8ea2l0)" points="478,431.2891,478,516.2891,934,516.2891,934,441.2891,924,431.2891,478,431.2891" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="924" x2="924" y1="431.2891" y2="441.2891"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="934" x2="924" y1="441.2891" y2="441.2891"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="87" x="484" y="448.356">UsecaseID&lt;</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="line-through" textLength="5" x="571" y="448.356">-</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="line-through" textLength="5" x="576" y="448.356">-</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="line-through" textLength="5" x="581" y="448.356">-</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="line-through" textLength="5" x="586" y="448.356">-</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="line-through" textLength="5" x="591" y="448.356">-</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="line-through" textLength="5" x="596" y="448.356">-</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="83" x="601" y="448.356">--&gt;Instance</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="417" x="484" y="463.4888">PreviewZSL/VideoLiveShot&lt;--&gt;AdvancedCameraUsecase</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="435" x="484" y="478.6216">MultiCamera&lt;--&gt;UsecaseDualCamera/UsecaseMultiCamera</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="435" x="484" y="493.7544">QuadCFA&lt;--&gt;AdvancedCameraUsecase/UsecaseQuadCFA:/</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="173" x="484" y="508.8872">Torch&lt;--&gt;UsecaseTorch</text><polygon fill="#A80036" points="696,542.9531,706,546.9531,696,550.9531,700,546.9531" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="517" x2="702" y1="546.9531" y2="546.9531"/><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="39" x="524" y="542.02">return</text><polygon fill="#A80036" points="319,572.0859,309,576.0859,319,580.0859,315,576.0859" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="313" x2="511" y1="576.0859" y2="576.0859"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="325" y="571.1528">return</text><polygon fill="#A80036" points="22,601.2188,12,605.2188,22,609.2188,18,605.2188" style="stroke: #A80036; stroke-width: 1.0;"/><ellipse cx="302.5" cy="604.4688" fill="none" rx="4" ry="4" style="stroke: #A80036; stroke-width: 1.5;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="16" x2="298" y1="605.2188" y2="605.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="39" x="28" y="600.2856">return</text><line style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="3" x2="1694" y1="613.3516" y2="613.3516"/><!--
+@startuml
+
+participant chxextensioninterface
+
+participant chxextensionmodule
+
+participant chxusecaseutils
+
+participant chxadvancedcamerausecase
+
+box "Features"
+participant chxfeaturehdr
+participant chxfeaturerawjpeg
+end box
+
+== <color:blue> **ConfigStream** </color>==
+note left chxextensioninterface
+  <color:Blue>**Call Seq**</color>
+  **HALDevice::ConfigureStreams->**
+    |- -**CHITeardownOverrideSession**
+    |- -**CHIModuleInitialize->**
+        |- -**CHIInitializeOverrideSession->**
+          |- -**chi_initialize_override_session**
+end note
+
+[o->chxextensioninterface: **chi_initialize_override_session**
+activate chxextensioninterface
+    chxextensioninterface->chxextensionmodule: **InitializeOverrideSession**
+    activate chxextensionmodule
+        chxextensionmodule->chxusecaseutils: <color:blue>**GetMatchingUsecase()**</color>
+        activate chxusecaseutils
+            note over chxusecaseutils
+              ** If physical cam >1 && num_streams>1 choose MultiCamera**
+              ** others may according to num of Streams and Flags**
+            end note
+        chxextensionmodule<-chxusecaseutils: <color:blue>**return**</color>
+        deactivate chxusecaseutils
+
+        chxextensionmodule->chxusecaseutils: <color:blue>**CreateUsecaseObject**</color>
+        activate chxusecaseutils
+            note over chxusecaseutils
+              **UsecaseID<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->Instance**
+              **PreviewZSL/VideoLiveShot<- ->AdvancedCameraUsecase**
+              **MultiCamera<- ->UsecaseDualCamera/UsecaseMultiCamera**
+              **QuadCFA<- ->AdvancedCameraUsecase/UsecaseQuadCFA:/**
+              **Torch<- ->UsecaseTorch**
+            end note
+        chxextensionmodule->chxusecaseutils: <color:blue>return</color>
+        deactivate chxusecaseutils
+    chxextensioninterface<-chxextensionmodule: **return**
+    deactivate chxextensionmodule
+[o<-chxextensioninterface: return
+deactivate chxextensioninterface
+
+newpage AdvancedCameraUsecase create
+
+chxusecaseutils->chxadvancedcamerausecase: <color:blue>**AdvancedCameraUsecase::Create**</color>
+activate chxadvancedcamerausecase
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **Initialize()**
+    activate chxadvancedcamerausecase
+        note right chxadvancedcamerausecase
+          1. **Malloc m_pRdiStream m_pFdStream m_pBayer2YuvStream m_pJPEGInputStream**
+          2. **if the stream_type is CAMERA3_STREAM_INPUT, m_isReprocessUsecase=TRUE**
+          3. **For QuadCFA, preview use binning size**
+        end note
+        chxadvancedcamerausecase->chxadvancedcamerausecase: **FeatureSetup()**
+        activate chxadvancedcamerausecase
+        chxadvancedcamerausecase<-chxadvancedcamerausecase: return
+        deactivate chxadvancedcamerausecase
+
+        chxadvancedcamerausecase->chxadvancedcamerausecase: **SelectUsecaseConfig()**
+        activate chxadvancedcamerausecase
+            alt usecaseId=PreviewZSL || YUVInBlobOut || VideoLiveShot || MultiCamera || QuadCFA
+              chxadvancedcamerausecase->chxadvancedcamerausecase: **BuildUsecase()**
+              activate chxadvancedcamerausecase
+                note right chxadvancedcamerausecase
+                  1. **assign the m_pPreviewStream m_pSnapshotStream from StreamConfig**
+                  2. **run getSensorDimension()**
+                  3. **query unique pipeline of feature(GetRequiredPipelines), and inset to pipelines array**
+                  4. **SetPipelineToSessionMapping**
+                  5. **SetPipelineToCameraMapping**
+                  6. <color:blue>**m_enabledFeatures->OverrideUsecase()**</color>
+                     take HDR as example
+                end note
+                alt loop **m_enabledFeaturesCount**
+                  chxadvancedcamerausecase->chxfeaturehdr: **OverrideUsecase()**
+                  activate chxfeaturehdr
+                    note right chxfeaturehdr
+                    end note
+                  chxadvancedcamerausecase->chxfeaturehdr: return
+                  deactivate chxfeaturehdr
+                end
+              chxadvancedcamerausecase->chxadvancedcamerausecase: **return**
+              deactivate chxadvancedcamerausecase
+            else usecaseId == **RawJPEG**
+              chxadvancedcamerausecase->chxfeaturerawjpeg: **OverrideUsecase()**
+              activate chxfeaturerawjpeg
+              chxadvancedcamerausecase<-chxfeaturerawjpeg: return
+              deactivate chxfeaturerawjpeg
+            end
+        chxadvancedcamerausecase<-chxadvancedcamerausecase: return
+        deactivate chxadvancedcamerausecase
+    chxadvancedcamerausecase->chxadvancedcamerausecase: **return**
+    deactivate chxadvancedcamerausecase
+chxusecaseutils<-chxadvancedcamerausecase: **return**
+deactivate chxadvancedcamerausecase
+@enduml
+
+PlantUML version 1.2017.20(Mon Dec 11 16:57:05 GMT 2017)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_171-8u171-b11-0ubuntu0.16.04.1-b11
+Operating System: Linux
+OS Version: 4.4.0-43-Microsoft
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

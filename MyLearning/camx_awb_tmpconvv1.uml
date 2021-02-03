@@ -1,0 +1,150 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6. 
+'/
+
+@startuml
+title <size:18>camx awb scenechangev1</size>
+
+participant awbmain
+participant awbtmpconvv1
+participant awbscenechangev1
+
+== **AWB Tmp Conv: RunConvergence** ==
+note over awbtmpconvv1
+  after awbmain run **RunAWB()**
+end note
+awbmain->awbtmpconvv1: **RunConvergence()**
+activate awbtmpconvv1
+  awbtmpconvv1->awbscenechangev1: **m_SCBasedConverge**\n**.Run**
+  activate awbscenechangev1
+
+
+    /'1. '/
+    awbscenechangev1->awbscenechangev1: **SetDetectorInput()**
+    note right awbscenechangev1
+      Set input to all detectors
+      based on its type
+      <color:blue>awbSCDTriggerType::PercGain</color>
+      <color:blue>awbSCDTriggerType::CCT</color>
+      <color:blue>awbSCDTriggerType::Lux</color>
+    end note
+    activate awbscenechangev1 #Salmon
+    awbscenechangev1->awbscenechangev1: return
+    deactivate awbscenechangev1
+  
+    /'2. '/
+    awbscenechangev1->awbscenechangev1: **RunDetectors()**
+    note right awbscenechangev1
+      for PerGain type, the pSCDetector is **CAWBSCDetectorGainsV1**
+      for other type, the pSCDetector is **CAWBSCDetectorV1**
+      as the CAWBSCDetectorGainsV1 is derived from CAWBSCDetectorV1
+      take **CAWBSCDetectorV1** as example
+    end note
+    activate awbscenechangev1 #Salmon
+
+      awbscenechangev1->awbscenechangev1: **CAWBSCDetectorV1::Run**
+      activate awbscenechangev1
+        
+        awbscenechangev1->awbscenechangev1: **CAWBFilterV1::Run()**
+        activate awbscenechangev1
+          note right awbscenechangev1
+            1. history count reach 10 currently
+            2. can run FIRFilter/MedianFilter/IIRFilter
+          end note
+        awbscenechangev1->awbscenechangev1: return
+        deactivate awbscenechangev1
+
+        alt **FALSE == bHistoryFull**
+          note right awbscenechangev1
+            Rebase the history
+          end note
+        else **TRUE == bHistoryFull**
+          note right awbscenechangev1
+            <color:blue><size:15>if m_sceneChangeCount>m_tuning.cosCountTh</size></color>
+            <color:blue><size:15>bSceneChange = TRUE</size></color>
+          end note
+        end
+      awbscenechangev1->awbscenechangev1: return
+      deactivate awbscenechangev1
+
+    awbscenechangev1->awbscenechangev1: return
+    deactivate awbscenechangev1
+
+    /'3. '/
+    awbscenechangev1->awbscenechangev1: CAWBSCDBasedConvergeV1::**Analyze()**
+    activate awbscenechangev1 #Salmon
+      note right awbscenechangev1
+        1. count AWBSceneMonitor/AWBSceneChangeDetected/AWBSceneChangePostStable
+        2. got HoldingTime
+      end note
+    awbscenechangev1->awbscenechangev1: return
+    deactivate awbscenechangev1
+
+    /'4. '/
+    awbscenechangev1->awbscenechangev1: CAWBSCDBasedConvergeV1::**ComputeCF()**
+    activate awbscenechangev1 #Salmon
+      note right awbscenechangev1
+        1. How we judge if converged?
+         >>in **IsConverged** -> <color:green>**GetPercMaxGainChange**</color>
+         >>if the diff <= threshold, **bConverged**=TRUE
+        2. if  not converged, the Factor use <color:green>**fastConvBoostFactor**</color>
+        3. if scene change detected, check holding time and select Factor
+        4. For old AWB tuning, only have fast(0.6)/face(0.05)/normal factor
+      end note
+    awbscenechangev1->awbscenechangev1: return
+    deactivate awbscenechangev1
+    
+    /'5. '/
+    awbscenechangev1->awbscenechangev1: CAWBSCDBasedConvergeV1::**UpdateDebugInfo()**
+    activate awbscenechangev1 #Salmon
+    awbscenechangev1->awbscenechangev1: return
+    deactivate awbscenechangev1
+
+  awbscenechangev1->awbtmpconvv1: return
+  deactivate awbscenechangev1
+awbtmpconvv1->awbmain: return
+deactivate awbtmpconvv1
+@enduml

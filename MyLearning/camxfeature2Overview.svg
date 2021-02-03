@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="199px" preserveAspectRatio="none" style="width:535px;height:199px;" version="1.1" viewBox="0 0 535 199" width="535px" zoomAndPan="magnify"><defs><filter height="300%" id="f1cqdkongap8p2" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f1cqdkongap8p2)" height="29.1328" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="454" y="112.5625"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="459" x2="459" y1="38.2969" y2="159.6953"/><rect fill="#FEFECE" filter="url(#f1cqdkongap8p2)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="114" x="400" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="100" x="407" y="22.9951">feature2Graph</text><rect fill="#FEFECE" filter="url(#f1cqdkongap8p2)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="114" x="400" y="158.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="100" x="407" y="178.6904">feature2Graph</text><rect fill="#FFFFFF" filter="url(#f1cqdkongap8p2)" height="29.1328" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="454" y="112.5625"/><rect fill="#EEEEEE" filter="url(#f1cqdkongap8p2)" height="3" style="stroke: #EEEEEE; stroke-width: 1.0;" width="520" x="3" y="68.8633"/><line style="stroke: #000000; stroke-width: 1.0;" x1="3" x2="523" y1="68.8633" y2="68.8633"/><line style="stroke: #000000; stroke-width: 1.0;" x1="3" x2="523" y1="71.8633" y2="71.8633"/><rect fill="#EEEEEE" filter="url(#f1cqdkongap8p2)" height="23.1328" style="stroke: #000000; stroke-width: 2.0;" width="148" x="189" y="58.2969"/><text fill="#0000FF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="129" x="200" y="74.3638">feature2 Initialize</text><ellipse cx="10.5" cy="111.8125" fill="none" rx="4" ry="4" style="stroke: #A80036; stroke-width: 1.5;"/><polygon fill="#A80036" points="442,108.5625,452,112.5625,442,116.5625,446,112.5625" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="15" x2="448" y1="112.5625" y2="112.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="424" x="18" y="107.4966">WalkAllExtSinkLinks(ChiFeature2UsecaseRequestObject*)</text><polygon fill="#A80036" points="22,137.6953,12,141.6953,22,145.6953,18,141.6953" style="stroke: #A80036; stroke-width: 1.0;"/><ellipse cx="458.5" cy="140.9453" fill="none" rx="4" ry="4" style="stroke: #A80036; stroke-width: 1.5;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="16" x2="454" y1="141.6953" y2="141.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="28" y="136.6294">return</text><!--
+@startuml
+== <color:blue> feature2 Initialize</color>==
+participant feature2Graph
+[o->feature2Graph: **WalkAllExtSinkLinks(ChiFeature2UsecaseRequestObject*)**
+activate feature2Graph
+[o<-feature2Graph: **return**
+deactivate feature2Graph
+@enduml
+
+PlantUML version 1.2019.04(Fri Mar 29 15:44:36 GMT 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_171-8u171-b11-0ubuntu0.16.04.1-b11
+Operating System: Linux
+OS Version: 4.4.0-17763-Microsoft
+Default Encoding: ANSI_X3.4-1968
+Language: en
+Country: US
+--></g></svg>

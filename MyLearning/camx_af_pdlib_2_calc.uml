@@ -1,0 +1,40 @@
+@startuml
+
+title <size:18>PD Lib</size>
+
+participant pdlib.cpp as pdlib
+participant pdlib_flow_factory.cpp as pdlib_factory
+participant dpd_software_flow.cpp as dpd
+participant sparse_horizontal_flow.cpp as sparse_h
+participant sparse_vertical_flow.cpp as sparse_v
+participant sparse_hv_flow.cpp as sparse_hv
+participant dpd_hardware_flow.cpp as dpd_hw
+
+
+== <color:red><size:14>pdlib flow create</size></color> ==
+pdlib->pdlib_factory: CreatePDLibFlow()
+activate pdlib_factory
+  alt case DualPD
+    pdlib_factory->dpd: **CreateDPDFlow()**
+  else case SparsePD
+    pdlib_factory->sparse_h: **CreateSparseHorizontalFlow()**
+  else case VerticalPD
+    pdlib_factory->sparse_v: **CreateSparseVerticalFlow()**
+  else case HVPD
+    pdlib_factory->sparse_hv: *CreateSparseHVFlow()**
+  else case HardwareDualPD
+    pdlib_factory->dpd_hw: *CreateHardwareDPDFlow()**
+  end
+deactivate pdlib_factory
+
+
+== <color:red><size:14>pdlib flow create</size></color> ==
+participant pdlib_utils.cpp as pdlib_utils
+participant pdlib_sparse_wrapper.cpp as pdlib_sparse_wrapper
+sparse_h->pdlib_utils: PDMetaOutput
+note over sparse_h, pdlib_utils
+  dump raw/meta
+end note
+
+sparse_h->pdlib_sparse_wrapper: **configure_pd_context_info**
+@enduml

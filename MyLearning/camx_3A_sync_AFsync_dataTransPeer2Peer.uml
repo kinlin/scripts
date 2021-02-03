@@ -1,0 +1,53 @@
+@startuml
+title <size:16>**af Peer data Trans**</size> [[https://confluence.qualcomm.com/confluence/display/3AWIDETELE/3A+Sync+Design ReferencePage]]
+
+participant camxnode #ff0000
+participant afnode #00ff00
+participant camxmultistatsoperator as camx_multistats #RoyalBlue
+participant camxcafstatsprocessor as camx_cafstats #Violet
+participant camxcafioutil as camx_cafio #Yellow
+
+
+== <color:red><size:14> MultiStatsDependency </size></color> ==
+[->afnode: ExecuteProcessRequest
+activate afnode #00ff00
+  afnode->afnode: GetMultiStatsDependencies
+  afnode->camx_multistats: UpdateStatsDependcies
+  activate camx_multistats #royalblue
+    camx_multistats->camx_multistats: ReadVendorTag
+    note over camx_multistats
+      read Tag "com.qti.chi.multicamerainfo"
+      
+      search <color:red>**qtiDependencyTable**</color>
+      got the dependency info Tag like
+      <color:blue><size:14>PropertyIDAECPeerInfo</size></color>
+    end note
+
+  camx_multistats->afnode: return
+  deactivate camx_multistats
+[<-afnode: return
+deactivate afnode
+
+... ...
+== <color:red><size:14> when af read peer data </size></color> ==
+[->camx_cafstats: ProcessSetParams
+activate camx_cafstats #Violet
+  alt **TRUE == multiCameraEnable** && **multiCamera3ASync != Disable**
+    camx_cafstats->camx_cafio: GetPeerInfo
+    note over camx_cafio: then call <color:red>AFSetParamPeerInfo</color> and set to af algo
+  end
+
+[<-camx_cafstats: return
+deactivate camx_cafstats
+
+
+... ...
+== <color:red><size:14> when af write peer data </size></color> ==
+[->camx_cafstats: ExecuteProcessRequest
+activate camx_cafstats #violet
+  camx_cafstats->camx_cafio: PublishPeerFocusInfo
+
+[<-camx_cafstats: return
+deactivate camx_cafstats
+
+@enduml

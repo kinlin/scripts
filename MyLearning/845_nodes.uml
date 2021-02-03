@@ -1,0 +1,134 @@
+@startuml
+
+object Sensor {
+camxhwdefs.h
+==
+SensorInstanceName0
+==
+SensorOutputPort0
+SensorOutputPort1
+SensorOutputPort2
+SensorOutputPort3
+SensorOutputPort4
+}
+
+object StatsProcessing {
+camxhwdefs.h
+==
+StatsProcessingInstanceName0
+==
+StatsInputPortHDRBE
+StatsInputPortAWBBG
+StatsInputPortHDRBHist
+StatsInputPortBHist
+StatsInputPortBF
+StatsInputPortIHist
+StatsInputPortCS
+StatsInputPortRS
+StatsInputPortRDIPDAF
+StatsInputPortTintlessBG
+StatsInputPortMaxCount
+==
+StatsProcessingOutputPort0
+}
+
+object SinkBuffer {
+camxhwdefs.h
+==
+Node with a sink port that outputs a buffer
+}
+
+object SinkNoBuffer {
+camxhwdefs.h
+==
+Node with a sink port that does not outputs a buffer
+}
+
+object SourceBuffer {
+camxhwdefs.h
+==
+Node who has a input port that is not connected to any other node
+}
+
+object AutoFocus {
+AutoFocusInstanceName0
+==
+AutoFocusOutputPort0
+}
+
+object JPEGAggregator {
+camxhwdefs.h
+==
+JPEGAggregatorInstanceName0
+==
+JPEGAggregatorInputPort0
+JPEGAggregatorInputPort1
+==
+JPEGAggregatorOutputPort0
+}
+
+object FDSw {
+camxhwdefs.h
+==
+}
+
+object FDManager {
+camxhwdefs.h
+==
+FDManagerInputPortHwResults
+FDManagerInputPortHwRawResults
+FDManagerInputPortHwPyramidBuffer
+FDManagerInputPortImage
+==
+FDManagerMaxInputPorts
+FDManagerMaxOutputPorts
+}
+
+object StatsParse {
+camxhwdefs.h
+==
+StatsParseInstanceName0
+==
+StatsParseInputPortHDRBE
+StatsParseInputPortAWBBG
+StatsParseInputPortHDRBHist
+StatsParseInputPortBHist
+StatsParseInputPortBF
+StatsParseInputPortIHist
+StatsParseInputPortCS
+StatsParseInputPortRS
+StatsParseInputPortRDIPDAF
+StatsParseInputPortTintlessBG
+==
+StatsParseOutputPort0
+}
+
+object OfflineStats {
+camxhwdefs.h
+==
+OfflineStatsInputPort0
+OfflineStatsOutputPort0
+OfflineStatsInstanceName0
+}
+
+object Torch {
+camxhwdefs.h
+==
+}
+
+object ChiExternalNode {
+camxhwdefs.h
+==
+}
+
+
+object PortSrcType {
+camxhwdefs.h
+==
+PortSrcTypeUndefined
+PortSrcTypePixel
+PortSrcTypePDAF
+PortSrcTypeHDR
+PortSrcTypeMeta
+}
+@enduml

@@ -1,0 +1,283 @@
+digraph g {
+
+    graph [ rankdir = "LR" ];
+    node [shape = "record"];
+    edge [];
+    "node0" [
+        label = "
+                <f0> struct ChiFeature2SessionDescriptor\n|
+                <f1> UINT8 sessionId\l|
+                <f2> const CHAR* pSessionName\l|
+                <f3> const ChiFeature2PipelineDescriptor* pPipeline;\l"
+        shape = "record"
+    ]
+    "node1" [
+        label = "
+                <f0> struct ChiFeature2PipelineDescriptor\n|
+                <f1> UINT8 sessionId\l|
+                <f2> UINT8 pipelineId\l|
+                <f3> const CHAR* pPipelineName\l|
+                <f4> ChiFeature2PipelineType pipelineType\l|
+                <f5> UINT8 numInputPorts\l|
+                <f6> const ChiFeature2PortDescriptor* pInputPortDescriptor\l|
+                <f7> UINT8 numOutputPorts\l|<f8> const ChiFeature2PortDescriptor* pOutputPortDescriptor\l"
+        shape = "record"
+    ]
+    "node2" [
+        label = "
+                <f0> struct ChiFeature2Descriptor\n|
+                <f1> UINT32 featureId;\l|
+                <f2> const CHAR* pFeatureName;\l|
+                <f3> UINT8 numStages\l|
+                <f4> const ChiFeature2StageDescriptor* pStages\l|
+                <f5> UINT8 numSessions\l|
+                <f6> const ChiFeature2SessionDescriptor* pSession\l| 
+                <f7> UINT numInternalLinks;\l| 
+                <f8> const ChiFeature2InternalLinkDesc* pInternalLinkDesc\l"
+        shape = "record"
+    ]
+
+    "node3" [
+        label = "
+                <f0> struct ChiFeature2InternalLinkDesc\n|
+                <f1> const ChiFeature2PortDescriptor* pSrcPort;\l|
+                <f2> const ChiFeature2PortDescriptor* pSinkPort;\l"
+        shape = "record"
+    ]
+
+    "node4" [
+        label = "
+                <f0> struct ChiFeatur2PortDescriptor\n|
+                <f1> ChiFeature2Identifier globalId\l|
+                <f2> const CHAR* pPortName\l|
+                <f3> const ChiFeature2TargetDescriptor* pTargetDescriptor\l"
+        shape = "record"
+    ]
+
+    "node5" [
+        label = "<f0> struct ChiFeature2TargetDescriptor\n|<f1> const CHAR* pTargetName\l"
+        shape = "record"
+    ]
+
+    "node6" [
+        label = "
+                <f0> struct ChiFeature2Identifier\n|
+                <f1> UINT8 session\l|
+                <f2> UINT8 pipeline\l|
+                <f3> UINT8 port\l|
+                <f4> ChiFeature2PortDirection portDirectionType\l|
+                <f5> ChiFeature2PortType portType\l|
+                <f6> bool operator==(const ChiFeature2Identifier& rRHS)\l"
+        shape = "record"
+    ]
+
+    "node7" [
+        label = "
+                <f0> enum ChiFeature2PortType\n|
+                <f1> ImageBuffer\l|
+                <f2> MetaData\l"
+        shape = "record"
+    ]
+
+    "node8" [
+        label = "
+                <f0> enum class ChiFeature2PortDirectionType\n |
+                <f1> InternalInput\l                           |
+                <f2> ExternalInput\l                           |
+                <f3> InternalOutput\l                          |
+                <f4> ExternalOutput\l"
+        shape = "record"
+    ]
+
+    "node9" [
+        label = "
+                <f0> ChiFeature2StageDescriptor \n|
+                <f1> stageId;                   \l|
+                <f2> pStageName;                \l|
+                <f3> numDependencyConfigDescriptor \l|
+                <f4> ChiFeature2SessionInfo*   pDependencyConfigDescriptor \l"
+        shape = "record"
+    ]
+
+    "node10" [
+        label = "
+                <f0> ChiFeature2SessionInfo \n |
+                <f1> sessionId;             \l |
+                <f2> numPipelines;          \l |
+                <f3> ChiFeature2PipelineInfo*    pPipelineInfo; \l"
+        shape = "record"
+
+    ]
+
+    "node11" [
+        label = "
+                <f0> ChiFeature2PipelineInfo \n|
+                <f1> pipelineId;             \l|
+                <f2> numHandles;             \l|
+                <f3> ChiFeature2HandleType           type   \l|
+                <f4> CHIFEATURE2HANDLE   handle [注:(void *)] Current is Dependency \l"
+
+        shape = "record"
+    ]
+
+    "node12" [
+        label = "<f0> class ChiFeature2PipelineType\n|
+                 <f1> CHI         CHI pipeline \l|
+                 <f2> Virtual,    Virtual pipeline \l"
+        shape = "record"
+
+    ]
+
+    "node13" [
+        label = "<f0> enum class ChiFeature2HandleType \n|
+                 <f1> PortDescriptor,              Handle is of type ChiFeature2PortDescriptor.\l|
+                 <f2> BufferMetaInfo,              Handle is of type ChiFeature2BufferMetadataInfo \l|
+                 <f3> PortBufferMetaInfo,          Handle is of type ChiFeature2RequestOutputInfo \l|
+                 <f4> DependencyConfigInfo,        Handle is of type ChiFeature2DependencyConfigInfo\l|
+                 <f5> DependencyConfigDescriptor,  Handle is of type ChiFeature2DependencyConfigDescriptor \l"
+        shape = "record"
+    ]
+
+    "node14" [
+        label = "<f0> ChiFeature2InstanceDesc \n|
+                 <f1> const ChiFeature2Descriptor*    pFeatureDesc; \l|
+                 <f2> ChiFeature2InstanceProps*       pInstanceProps; \l"
+        shape = "record"
+    ]
+    "node15" [
+        label = "
+                <f0> ChiFeature2InstanceProps\n|
+                <f1> UINT32 instanceId  [ID of the feature instance] \l|
+                <f2> UINT32 cameraId   [ID of the camera associated with this feature instance] \l|
+                <f3> UINT32 numFeatureProps   [Number of feature properties] \l|
+                <f4> ChiFeature2Property* pFeatureProperties   [Array of feature properties] \l|
+                <f5> bool operator==(const ChiFeature2InstanceProps& rRHS) const\l"
+        shape = "record"
+    ]
+    "node16" [
+        label = "<f0> ChiFeature2Property \n|
+                <f1> UINT32 propertyId  [ID of the property] \l|
+                <f2> const CHAR* pPropertyName  [Name of the property] \l|
+                <f3> UINT32      size   [size of property value] \l|
+                <f4> const VOID* pValue    [Pointer to data. Type dependent on ID] \l"
+        shape = "record"
+    ]
+    "node17" [
+        label = "<f0>  ChiFeature2GraphDesc\n|
+                <f1> UINT32    numFeatureInstances\l|
+                <f2> ChiFeature2InstanceDesc*          pFeatureInstances \l|
+                <f3> UINT32                            numExtSrcLinks \l|
+                <f4> ChiFeature2GraphExtSrcLinkDesc*   pExtSrcLinks \l|
+                <f5> UINT32                            numInternalLinks \l|
+                <f6> ChiFeature2GraphInternalLinkDesc* pInternalLinks \l|
+                <f7> UINT32                            numExtSinkLinks \l|
+                <f8> ChiFeature2GraphExtSinkLinkDesc*  pExtSinkLinks \l"
+        shape = "record"
+    ]
+    "node18" [
+        label = "<f0> struct ChiFeature2GraphExtSrcLinkDesc\n|
+                 <f1> ChiFeature2GlobalPortInstanceId portId\l"
+        shape = "record"
+    ]
+    "node19" [
+        label = "<f0> struct  ChiFeature2GraphInternalLinkDesc\n|
+                 <f1> ChiFeature2GlobalPortInstanceId srcPortId\l|
+                 <f2> ChiFeature2GlobalPortInstanceId sinkPortId\l"
+        shape = "record"
+    ]
+    "node20" [
+        label = "<f0> struct ChiFeature2DependencyConfigDescriptor\n|
+                 <f1> UINT8                               numInputDependency\l|
+                 <f2> ChiFeature2InputDependency*         pInputDependencyList\l|
+                 <f3> UINT8                               numInputConfig\l|
+                 <f4> const ChiFeature2PortDescriptor*    pInputConfig\l|
+                 <f5> UINT8                               numOutputConfig\l|
+                 <f6> const ChiFeature2PortDescriptor*    pOutputConfig\l"
+        shape = "record"
+    ]
+    "node21" [
+        label = "<f0> struct ChiFeature2PortDescriptor\n|
+                 <f1> ChiFeature2Identifier               globalId\l|
+                 <f2> const ChiFeature2TargetDescriptor*  pTargetDescriptor\l|
+                 <f3> const CHAR*                         pPortName\l"
+        shape = "record"
+    ]
+
+
+    "node23" [
+        label = "<f0> struct ChiFeature2InputDependency\n|
+                 <f1> UINT8   numInputDependency\l|
+                 <f2> const ChiFeature2PortDescriptor*    pInputDependency\l"
+        shape = "record"
+    ]
+
+
+    "node24" [
+        label = "<f0> ChiFeature2GraphNode\n                                                |
+                 <f1> UINT32 featureId\l                                                    |
+                 <f2> ChiFeature2InstanceProps instanceProps\l                              |
+                 <f3> ChiFeature2Base* pFeatureBaseObj\l                                    |
+                 <f4> ChiFeature2RequestObject* pFeatureRequestObj\l                        |
+                 <f5> std::vector\<std::vector\<ChiFeature2RequestOutputInfo\> requestTable\l |
+                 <f6> std::vector\<ChiFeature2PortToLinkIndexMap\> portToInputLinkIndexMap\l  |
+                 <f7> std::vector\<ChiFeature2PortToLinkIndexMap\> portToOutputLinkIndexMap\l |
+                 <f8> ChiFeature2Hint featureHint\l"
+        shape = "record"
+    ]
+
+
+    "node25" [
+        label = "<f0> struct ChiFeature2Hint\n|
+                 <f1> UINT                            numFrames\l|
+                 <f2> ChiFeature2CaptureModes         captureMode\l|
+                 <f3> ChiFeature2CaptureModeData      captureData\l|
+                 <f4> VOID*                           pOEMChiFeatureHint\l"
+        shape = "record"
+    ]
+
+    "node26" [
+        label = "<f0> ChiFeature2RequestObject* pFeatureRequestObj is a Class\n|
+                 <f1> \l|
+                 <f2> \l"
+        shape = "record"
+    ]
+
+//    "node22" [
+//        label = "<f0> \n|
+//                 <f1> \l|
+//                 <f2> \l"
+//        shape = "record"
+//    ]
+
+    "node17":f2 -> "node14":f0  [ id = 1 ];
+    "node14":f1 -> "node2":f0  [ id = 1 ];
+    "node0":f3 -> "node1":f0  [ id = 1 ];
+    "node1":f6 -> "node4":f0  [ id = 1 ];
+    "node1":f4 -> "node12":f0  [ id = 1 ];
+    "node2":f6 -> "node0":f0  [ id = 0 ];
+    "node2":f8 -> "node3":f0  [ id = 0 ];
+    "node2":f4 -> "node9":f0  [ id = 0 ];
+    "node3":f1 -> "node4":f0  [ id = 0 ];
+    "node3":f2 -> "node4":f0  [ id = 0 ];
+    "node4":f3 -> "node5":f0  [ id = 0 ];
+    "node4":f1 -> "node6":f0  [ id = 0 ];
+    "node6":f5 -> "node7":f0  [ id = 0 ];
+    "node6":f4 -> "node8":f0  [ id = 0 ];
+    "node9":f4 -> "node10":f0 [ id = 0 ];
+    "node10":f3 -> "node11":f0 [ id = 0 ];
+    "node11":f3 -> "node13":f0 [ id = 0 ];
+    "node14":f2 -> "node15":f0  [ id = 1 ];
+    "node15":f4 -> "node16":f0  [ id = 1 ];
+    "node17":f4 -> "node18":f0  [ id = 1 ];
+    "node17":f6 -> "node19":f0  [ id = 1 ];
+    "node11":f4 -> "node20":f0  [ id = 1 ];
+    "node20":f2 -> "node23":f0  [ id = 1 ];
+    "node20":f4 -> "node21":f0  [ id = 1 ];
+    "node20":f6 -> "node21":f0  [ id = 1 ];
+    "node21":f1 -> "node6":f0  [ id = 1 ];
+    "node21":f2 -> "node5":f0  [ id = 1 ];
+    "node23":f2 -> "node21":f0  [ id = 1 ];
+    "node24":f8 -> "node25":f0  [ id = 1 ];
+    "node24":f4 -> "node26":f0  [ id = 1 ];
+
+}

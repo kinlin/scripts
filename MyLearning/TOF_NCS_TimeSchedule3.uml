@@ -1,0 +1,116 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6. 
+
+
+class Dummy {
+ -field1                     -------private
+ #field2                     -------protected
+ ~method1()                  -------package private
+ +method2()                  -------public
+}
+'/
+
+@startgantt
+<style>
+ganttDiagram {
+	task {
+		FontName Helvetica
+		FontColor black
+		FontSize 16
+		FontStyle bold
+		BackGroundColor GreenYellow
+		LineColor blue
+	}
+	milestone {
+		FontColor blue
+		FontSize 25
+		FontStyle italic
+		BackGroundColor yellow
+		LineColor red
+	}
+	note {
+		FontColor DarkGreen
+		FontSize 10
+		LineColor OrangeRed
+	}
+	arrow {
+		FontName Helvetica
+		FontColor red
+		FontSize 18
+		FontStyle bold
+		BackGroundColor GreenYellow
+		LineColor blue
+	}
+	separator {
+		LineColor red
+		BackGroundColor green
+		FontSize 16
+		FontStyle bold
+		FontColor purple
+	}
+}
+</style>
+Project starts the 2021/02/01
+[Review Round2] starts the 2021/02/01
+[Review Round2] lasts 5 days
+[Review Round2] is colored in Cyan
+
+[Chinese New Year] starts the 2021/02/07
+[Chinese New Year] lasts 10 days
+[Chinese New Year] is colored in OrangeRed
+
+[Coding && Self Test Round3] starts the 2021/02/22
+[Coding && Self Test Round3] lasts 5 days
+[Coding && Self Test Round3] is colored in Lime
+
+[Final Review and Merge Prepare] starts the 2021/03/01
+[Final Review and Merge Prepare] lasts 10 days
+saturday are closed
+sunday are closed
+[Final Review and Merge Prepare] is colored in GreenYellow
+
+@endgantt
+

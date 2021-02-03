@@ -1,0 +1,11 @@
+@startuml
+
+title <size:18>3a sync type</size>
+
+participant HAL
+participant chxusecasemc
+participant MultiCamControlManager
+participant Wide
+participant Tele
+
+@enduml

@@ -1,0 +1,134 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6. 
+'/
+
+@startuml
+title <size:18>camx ncs overview</size>\n     Lin Jin
+
+participant chi
+participant camxncsservice
+/'participant camxncsintfQSEE'/
+/'participant camxncssscconnection'/
+
+== <color:blue>NCS Init </color>==
+[o->chi: **ChiOpenContext()**
+activate chi
+    chi->camxncsservice: **new NCSService()**
+    activate camxncsservice
+    camxncsservice->chi: return
+    deactivate camxncsservice
+
+    chi->camxncsservice: **NCSService::Initialize()**
+    activate camxncsservice
+        loop **MaxNCSIntfType**
+            /'step1: initialize'/
+            create camxncsintfQSEE
+            camxncsservice->camxncsintfQSEE: **static NCSIntfQSEE::GetInstance()**
+            activate camxncsintfQSEE
+                camxncsintfQSEE->camxncsintfQSEE: **NCSIntfQSEE::Initialize()**
+                activate camxncsintfQSEE
+                    create NCSSensorData
+                    camxncsintfQSEE->NCSSensorData: new
+                    note over NCSSensorData
+                        alloc a LDLLNode to keep NCSSensorData
+                        insert it to m_sensorDataObjectList tail
+                    end note
+                camxncsintfQSEE->camxncsintfQSEE: return
+                deactivate camxncsintfQSEE
+
+            camxncsintfQSEE->camxncsservice: return
+            deactivate camxncsintfQSEE
+
+            /'step2: GetListOfSensors'/
+            camxncsservice->camxncsintfQSEE: **NCSIntfQSEE::GetListOfSensors()**
+            activate camxncsintfQSEE
+                loop **sensorType < NCSMaxType**
+                    camxncsintfQSEE->camxncsintfQSEE: **ProbeSensor(sensorType)**
+                    activate camxncsintfQSEE
+                        camxncsintfQSEE->camxncsintfQSEE: **SetupSensorLinkOnly(suids, this, datatype)**
+                        activate camxncsintfQSEE
+                            create SSCConnection
+                            camxncsintfQSEE->SSCConnection: new
+                            note over SSCConnection
+                                create Connect, the handle is <color:red>phSSCHandle</color>
+                                set callback as <color:red>SensorCallback</color>
+                            end note
+                        camxncsintfQSEE->camxncsintfQSEE: return
+                        deactivate camxncsintfQSEE
+                    camxncsintfQSEE->camxncsintfQSEE: return
+                    deactivate camxncsintfQSEE
+                end loop
+            camxncsintfQSEE->camxncsservice: return
+            deactivate camxncsintfQSEE
+
+            camxncsservice->camxncsintfQSEE: **NCSIntfQSEE::QueryCapabilites()**
+            activate camxncsintfQSEE
+            camxncsintfQSEE->camxncsservice: return
+            deactivate camxncsintfQSEE
+        end loop
+
+    camxncsservice->chi: return
+    deactivate camxncsservice
+[o<-chi: return
+deactivate chi
+
+== <color:blue>NCS data callback flow </color>==
+camxncsintfQSEE<-o]: **NCSIntfQSEE::SensorCallback(uint8_t* pData, size)**
+activate camxncsintfQSEE
+    alt **case SNS_STD_MSGID_SNS_STD_ERROR_EVENT:**
+    else **case SNS_STD_SENSOR_MSGID_SNS_STD_SENSOR_PHYSICAL_CONFIG_EVENT**
+    else **case SNS_STD_SENSOR_MSGID_SNS_STD_SENSOR_EVENT**
+        camxncsintfQSEE->camxncsintfQSEE: **<color:red>FillSensorData()</color>**
+        activate camxncsintfQSEE
+        camxncsintfQSEE->camxncsintfQSEE: return
+        deactivate camxncsintfQSEE
+    else **case SNS_STD_MSGID_SNS_STD_ATTR_EVENT**
+    else **case SNS_CAL_MSGID_SNS_CAL_EVENT**
+    else **case SNS_STD_MSGID_SNS_STD_FLUSH_EVENT**
+    end
+camxncsintfQSEE->o]: return
+deactivate camxncsintfQSEE
+@enduml

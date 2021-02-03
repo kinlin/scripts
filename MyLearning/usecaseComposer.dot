@@ -1,0 +1,79 @@
+digraph g {
+
+    graph [ rankdir = "LR" ];
+    node [shape = "record"];
+    edge [];
+    "node0" [
+        label = "<f0> kona_usecase.xml\n|<f1> UsecaseDualCamera\l|<f2> UsecaseTorch\l|<f3> UsecaseRaw8\l|<f4> UsecaseRaw\l|<f5> UsecasePreview\l|<f6> UsecaseVideo\l|<f7> UsecaseQuadCFA\l|<f8> UsecaseRTB\l|<f9> UsecaseSAT\l|<f10>UsecaseZSL\l"
+        shape = "record"
+    ]
+    "node1" [
+        label =
+        "<f0> ../usecase-components/usecases/UsecaseZSL/camxUsecaseZSL.xml\n|
+         <f1> TARGET 0_0_5488_4112_ChiFormatYUV420NV12_ChiFormatUBWCTP10\l|
+         <f2> ../../pipelines/g_camxZSLPreviewRaw.xml\l|
+         <f3> ../../pipelines/g_camxRealTimeFeatureZSLPreviewRaw.xml\l|
+         <f4> ../../pipelines/g_camxZSLPreviewRawFS.xml\l|
+         <f5> ../../pipelines/g_camxZSLPreviewRawYUV.xml\l|
+         <f6> ../../pipelines/g_camxRealTimeFeatureZSLPreviewRawYUV.xml\l|
+         <f7>../../pipelines/g_camxZSLSnapshotJpeg.xml            \l|
+         <f8>../../pipelines/g_camxZSLSnapshotYUVHAL.xml          \l|
+         <f9>../../pipelines/g_camxZSLSnapshotYUV.xml             \l|
+         <f10>../../pipelines/g_camxZSLSnapshotYUVAux.xml         \l|
+         <f11>../../pipelines/g_camxInternalZSLYuv2Jpeg.xml       \l|
+         <f12>../../pipelines/g_camxInternalZSLYuv2JpegMFNR.xml   \l|
+         <f13>../../pipelines/g_camxInternalZSLYuv2JpegMFNRAux.xml\l|
+         <f14>../../pipelines/g_camxInternalZSLYuv2JpegMFSR.xml   \l|
+         <f15>../../pipelines/g_camxInternalZSLYuv2JpegMFSRAux.xml\l|
+         <f16>../../pipelines/g_camxMerge3YuvCustomTo1Yuv.xml     \l|
+         <f17>../../pipelines/g_camxSWMFMergeYuv.xml              \l|
+         <f18>../../pipelines/g_camxMfnrPrefilter.xml             \l|
+         <f19>../../pipelines/g_camxMfnrPrefilterAux.xml          \l|
+         <f20>../../pipelines/g_camxMfnrBlend.xml                 \l|
+         <f21>../../pipelines/g_camxMfnrBlendAux.xml              \l|
+         <f22>../../pipelines/g_camxMfnrPostFilter.xml            \l|
+         <f23>../../pipelines/g_camxMfnrPostFilterAux.xml         \l|
+         <f24>../../pipelines/g_camxMfsrPrefilter.xml             \l|
+         <f25>../../pipelines/g_camxMfsrPrefilterAux.xml          \l|
+         <f26>../../pipelines/g_camxMfsrBlend.xml                 \l|
+         <f27>../../pipelines/g_camxMfsrBlendAux.xml              \l|
+         <f28>../../pipelines/g_camxMfsrPostFilter.xml            \l|
+         <f29>../../pipelines/g_camxMfsrPostFilterAux.xml         \l|
+         <f30>../../pipelines/g_camxOfflineNoiseReprocess.xml     \l|
+         <f31>../../pipelines/g_camxOfflineNoiseReprocessAux.xml  \l|
+         <f32>../../pipelines/g_camxZSLYuv2Yuv.xml                \l|
+         <f33>../../pipelines/g_camxZSLSnapshotJpegGPU.xml        \l|
+         <f34>../../pipelines/g_camxQuadCFAFullSizeRaw.xml        \l|
+         <f35>../../pipelines/g_camxQuadCFARemosaic.xml           \l|
+         <f36>../../pipelines/g_camxQuadCFASnapshotYuv.xml        \l"
+
+        shape = "record"
+    ]
+    "node2" [
+        label = "<f0> common_target_buffers.xml         \n|
+                 <f1> TargetFormat ChiFormatYUV420NV12  \l|
+                 <f2> TargetFormat ChiFormatUBWCTP10    \l|
+                 <f3> Width: 5488\l|<f4> Height 4112    \l"
+        shape = "record"
+    ]
+
+    "node3" [
+        label = "<f0> usecases/UsecaseZSL/pipelines/camxZSLPreviewRaw.xml\n|
+                 <f1> CamxInclude segment=RealTimeSegmentZSL             \l|
+                 <f2> CamxInclude segment=FDSegment                      \l|
+                 <f3> CamxInclude segment=MCTFSegment                    \l|
+                 <f4> CamxInclude segment=PreviewRaw_linkages            \l|
+                 <f5> NodesList                                          \l"
+        shape = "record"
+    ]
+    "node4" [
+        label = "<f0> RealTimeSegmentZSL.xml \n|<f1> Node: sensor StatsProcessing AWB AF StatsParse IFE TRACKERNode: sensor StatsProcessing AWB AF StatsParse IFE TRACKER\l|Link: SensorOutputPort0 --\>IFEInputPortSensor \l"
+        shape = "record"
+    ]
+
+    "node0":f10 -> "node1":f0 [ id = 0 ];
+    "node1":f1  -> "node2":f0 [ id = 1 ];
+    "node1":f2  -> "node3":f0 [ id = 2 ];
+    "node3":f1  -> "node4":f0 [ id = 3 ];
+    
+}

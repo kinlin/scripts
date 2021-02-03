@@ -1,0 +1,70 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6. 
+'/
+
+@startuml
+participant carbitrator
+
+[o->carbitrator: **processAntibandingAdjust**
+activate carbitrator
+    note left carbitrator
+        Not Process Condition:
+            1. if (m_session.flickerMode == StatisticsAntibandingOff)
+            2. if (limit.expTime.max < m_session.flickerHalfPeriod)   
+            这里表示表内最大的曝光时间都比半周期小，不可能找到半周期的整数倍了
+            3. if (inExp.expTime 
+                    <= (FLOAT)m_session.flickerHalfPeriod * 
+                            m_expTable.GetThresAntiBandingMinExpTimePct())
+        Basic Process Principal:
+            numOfHalfPeriod     = 
+                (INT32) (inExp.expTime / m_session.flickerHalfPeriod);
+                取整数倍，如果不可用. 取numOfHalfPeriod+1.
+    end note
+[o<-carbitrator: return
+deactivate carbitrator
+
+
+@enduml

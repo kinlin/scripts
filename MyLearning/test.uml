@@ -1,0 +1,11 @@
+@startuml
+
+state thread1 {
+[*] --> Mutex_1_Lock
+Mutex_1_Lock --> Do_Process: If Other Process Try Lock Mutex_1, \n will Block here
+Do_Process --> Mutex_1_UnLock
+Mutex_1_UnLock --> [*]
+}
+
+
+@enduml

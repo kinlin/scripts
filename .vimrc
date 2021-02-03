@@ -42,6 +42,24 @@ set cursorcolumn " 高亮显示当前列
 set laststatus=2 " 总是显示状态栏
 
 
+
+"""2020-04-18
+"""install gtags and use pygments
+"""https://zhuanlan.zhihu.com/p/36279445
+""let $GTAGSLABEL = 'native-pygments'
+"""let $GTAGSCONF = '/path/to/share/gtags/gtags.conf'
+""let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+""" cscope
+""set cscopetag  "use cscope as tags command
+""set cscopeprg='gtags-cscope' "use gtags-cscope replace cscope
+""" gtags
+""let GtagsCscope_Auto_Load = 1
+""let CtagsCscope_Auto_Map = 1
+""let GtagsCscope_Quiet = 1
+""let s:command = "cs add GTAGS"
+""exe s:command
+
+
 " vim卡顿 https://github.com/wklken/k-vim/issues/233
 " 主要是因为syntax on. 如果syntax off会好很多
 set re=1
@@ -186,7 +204,8 @@ let g:ctrlp_follow_symlinks=2
 let g:ctrlp_switch_buffer = 'et'  " if current file opened, open it again
 
 "set case ignore when search.
-set ignorecase smartcase
+set ignorecase
+set smartcase
 
 set incsearch
 
@@ -305,7 +324,6 @@ Plug 'endel/vim-github-colorscheme'
 "auto clear search highlight when cursor is moved
 "Improve star-search(visual-mode, highlighting without moving)
 Plug 'junegunn/vim-slash'
-            \
 
 
 Plug 'airblade/vim-gitgutter'
@@ -314,6 +332,32 @@ Plug 'airblade/vim-gitgutter'
 "LeetCode
 Plug 'iandingx/leetcode.vim'
 
+
+"comment
+"this plug can make comment easier.  \cc can comment current line, \cu will
+"cancel it
+Plug 'scrooloose/nerdcommenter'   " commenter: \cc \cu
+"let mapleader=';'
+
+"2020-04-18
+"gtags wrapper
+Plug 'vim-scripts/gtags.vim'
+
+
+"2020-11-19
+"vim workspace, so not interrupt the work
+"Plug 'thaerkh/vim-workspace'
+
+"2020-12-22
+"Plug 'machakann/vim-highlightedyank'
+Plug 'machakann/vim-highlightedyank'
+
+"2021-02-03
+Plug 'ntpeters/vim-better-whitespace'
+
+"may not use now, can use later; this can auto gen tags
+"what's the new Universal CTags
+"Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 "===================================================
 "Plug End
@@ -324,15 +368,42 @@ call plug#end()
 "PlugIn Config Start
 "===================================================
 
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+
+"Plug 'machakann/vim-highlightedyank'  setting
+let g:highlightedyank_highlight_duration = -1
+"-1 means always highlight. as we can also set time like 1000 (ms)
+if !exists('##TextYankPost')
+      map y <Plug>(highlightedyank)
+endif
+
+
+"2020-11-19
+"vim workspace setting
+"Plug 'thaerkh/vim-workspace'
+"let g:workspace_create_new_tabs = 1  " enabled = 1 (default), disabled = 0
+"nnoremap <leader>tw :ToggleWorkspace<CR>
+"let g:workspace_session_name = 'Session.vim'
+"let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+"let g:workspace_session_disable_on_args = 1
+"let g:workspace_persist_undo_history = 1  " enabled = 1 (default), disabled = 0
+"let g:workspace_undodir='.undodir'
+""let g:workspace_autosave_always = 1 "If you would like autosave to be always on, even outside of a session
+"let g:workspace_autosave = 0 "If you would like to disable autosave for some reason (i.e. too much IO on disk), it can be disabled
+""let g:workspace_autosave_ignore = ['gitcommit'] "Ignore List
+"let g:workspace_autosave_untrailspaces = 0 "By default, all trailing spaces are trimmed before a buffer is autosaved. If you don't prefer this behaviour, add this line
+
+
 "Leetcode
 "when open split window, :only, will open only question
-let g:leetcode_solution_filetype='cpp'
-let g:leetcode_china = 1
-let g:leetcode_username = '13246650386'
-nnoremap <leader>ll :LeetCodeList<cr>
-nnoremap <leader>lt :LeetCodeTest<cr>
-nnoremap <leader>ls :LeetCodeSubmit<cr>
-nnoremap <leader>li :LeetCodeSignIn<cr>
+"let g:leetcode_solution_filetype='cpp'
+"let g:leetcode_china = 1
+"let g:leetcode_username = '13246650386'
+"nnoremap <leader>ll :LeetCodeList<cr>
+"nnoremap <leader>lt :LeetCodeTest<cr>
+"nnoremap <leader>ls :LeetCodeSubmit<cr>
+"nnoremap <leader>li :LeetCodeSignIn<cr>
 
 
 
@@ -440,9 +511,9 @@ let g:ctrlp_funky_matchtype = 'path'
 "vimwiki
 "let g:vimwiki_folding = 'list'
 let wiki = {}
-let wiki.path = '/mnt/c/mygithub/mywiki/vimwiki/'
-let wiki.export_path = '/mnt/c/mygithub/mywiki/vimwiki/vimwiki_assets'
-let wiki.path_html = '/mnt/c/mygithub/mywiki/vimwiki_html'
+let wiki.path = '/mnt/c/mytext/mywiki/vimwiki/'
+let wiki.export_path = '/mnt/c/mytext/mywiki/vimwiki/vimwiki_assets'
+let wiki.path_html = '/mnt/c/mytext/mywiki/vimwiki_html'
 let wiki.nested_syntaxes = {'js':'javascript', 'python': 'python', 'c++': 'cpp', 'md':'markdown', 'mk':'makefile', 'shell':'shell'}
 "let wiki.template_path=wiki.path_html.'/template'
 let wiki.template_path=wiki.export_path.'vimwiki-assets'
@@ -467,23 +538,27 @@ let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1,color,p
 "Useless...............
 "==============================
 
-
+map<f8> :call MyConfig()<cr>
+func! CompileUml()
+exec "!source ~/.vrc"
+endfunc
 
 
 map <f11> :call CompileUml()<cr>
 func! CompileUml()
 exec "w"
-exec "!java -jar plantuml.jar -charset UTF-8 %"
-exec "!java -jar plantuml.jar -charset UTF-8 -tsvg %"
+exec "!java -jar /mnt/c/Tools/plantuml.jar -charset UTF-8 %"
+exec "!java -jar /mnt/c/Tools/plantuml.jar -charset UTF-8 -tsvg %"
 endfunc
 
 "reset cscope out file
-map <F12> : call ReConnectCscope()<cr>
+map <f12> : call ReConnectCscope()<cr>
 func! ReConnectCscope()
 exec "cs kill 0"
 exec "!./generate.sh"
 exec "set csprg=~/cscope.sh"
 exec "cs add cscope.out"
+"exec "!gtags -i"
 endfunc
 
 "use
@@ -514,6 +589,4 @@ nmap ggt :GitGutterToggle<CR>
 nmap ggl :GitGutterLineHighlightsToggle<CR>
 
 
-" don't need Ex mode
-map q: <Nop>
-nnoremap Q <nop>
+

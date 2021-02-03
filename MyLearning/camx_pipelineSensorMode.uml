@@ -1,0 +1,138 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6. 
+'/
+
+@startuml
+title Sensor Mode standby and active \n Jin Lin
+participant chxusecasemc
+participant chxextensionmodule
+participant camxchicontext
+participant chxsession
+participant camxsession
+participant camxpipeline
+
+note left chxusecasemc
+  activateMode:
+    1. CHIDeactivateModeRealTimeDevices
+
+  Here Focus on the Mode, take Chxusecasemc as example
+  
+  //If pipeline is active and LPM says to deactivate then 
+  //wait for all the inflight requests to finish and then deactivate
+
+  CHIDeactivateModeSensorStandby can be used to stream off only
+  sensor during LPM mode. This means, IFE is not hardware is not
+  release and still can achieve current dual camera behavior.
+
+  CHI can use CHIDeactivateModeRealTimeDevices in case to share
+  IFE resource between cameras.
+end note
+
+chxusecasemc->chxusecasemc: **ActivateDeactivateRealtimePipeline(**\n**deactivateMode=CHIDeactivateModeRealTimeDevices)**
+activate chxusecasemc
+  /'alt **0==m_sessionInfo[REALTIME_SESSION].m_pendingResults[pipelineIndex]**'/
+  loop pipelineIndex < **m_numOfPhysicalDevices**
+    chxusecasemc->chxextensionmodule: **DeactivatePipeline(mode)**
+    activate chxextensionmodule
+      chxextensionmodule->camxchicontext: **DeactivatePipeline(modeBitmask)**
+      activate camxchicontext
+        camxchicontext->camxsession: **Session::StreamOff(modeBitmask)**
+        activate camxsession
+          loop index<m_numPipelines
+            alt **IsRealTime==TRUE**
+              camxsession->camxsession: **SetAELockRange(index, 0, 0)**
+              activate camxsession
+              camxsession->camxsession: return
+              deactivate camxsession
+            end
+
+            camxsession->camxpipeline: **StreamOff(modeBitmask)**
+            activate camxpipeline
+              alt PipelineStatus== **STREAM_ON** or **PARTIAL_STREAM_ON**
+                note over camxpipeline
+                  1. will call every node of this Pipe's  **OnNodeStreamOff(modeBitmask)**
+                end note
+              end
+            camxpipeline->camxsession: return
+            deactivate camxpipeline
+          end loop
+        camxsession->camxchicontext: return
+        deactivate camxsession
+      chxextensionmodule<-camxchicontext: return
+      deactivate camxchicontext
+    chxusecasemc<-chxextensionmodule: return
+    deactivate chxextensionmodule
+
+    chxusecasemc->chxsession: **SetPipelineDeactivate(pipelineIndex)**
+    activate chxsession
+    chxusecasemc<-chxsession: return
+    deactivate chxsession
+  end loop
+
+
+  loop pipelineIndex < **m_numOfPhysicalDevices**
+    chxusecasemc->chxextensionmodule: **ActivatePipeline()**
+    activate chxextensionmodule
+    chxextensionmodule->chxusecasemc: **return**
+    deactivate chxextensionmodule
+
+    chxusecasemc->camxsession: **SetPipelineActivateFlag()**
+    activate camxsession
+    camxsession->chxusecasemc: **return**
+    deactivate camxsession
+  end loop
+  /'end'/
+    
+  alt **FALSE == m_offlinePreviewSessionCreateDone**
+    note over chxusecasemc
+      <color:red>**m_pOfflinePreviewSessionCreateDoneCondition->Wait()**</color>
+      wait the offline preview session create done, which should be done in defer thread
+        in **DeferSnapSession**, which will signal after **CreateSession(<color:red>Offline_YUV_SESSION</color>)** Done
+    end note
+  end
+chxusecasemc->chxusecasemc: return
+deactivate chxusecasemc
+@enduml

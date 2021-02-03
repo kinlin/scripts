@@ -1,0 +1,7 @@
+@startuml
+concise "AutoFocus" as AF
+
+@AF
+0 is 
+
+@enduml

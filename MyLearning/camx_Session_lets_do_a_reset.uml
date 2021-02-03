@@ -1,0 +1,18 @@
+@startuml
+title <size:16>**about session Lets do a Reset**
+
+box "user" #LightGoldenRodYellow
+collections ThreadUsers
+end box
+participant camxthreadmanager
+participant camxthreadjobregistry
+participant camxthreadjoblist
+participant camxthreadcore
+
+
+== thread Pool create ==
+
+==<size:14> **thread job register** </size>==
+
+
+@enduml

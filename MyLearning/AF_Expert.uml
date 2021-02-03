@@ -1,0 +1,49 @@
+@startmindmap
+caption fig 1
+title What should a AF Expert Know
+
+* Autofocus
+** AF Algorithm
+*** pdlib
+**** the input and output of pdlib
+**** performance
+**** hw process and sw process gap
+*** LCR
+*** low light performance
+*** TOF
+**** FixFOV
+**** floatFOV multiwindow
+*** DCIAF
+*** TouchAF
+*** TrackAF
+*** FaceAF
+** AutoExplosure
+*** How AE affect AF
+**** why AF should wait AE settle
+**** would scene light/ sensor gain affect AF process
+** AutoWhiteBalance
+** ISP
+*** how ISP process pixel and output Bayer AF
+*** how PD stats from sensor output, like HBI or VBI, has any different?
+** Sensor
+*** how many PD type sensor
+*** how many frame when change sensor register, we can get effect
+** flash
+*** when flash fire
+** kernel
+*** all peripheral device
+** actuator
+*** how long did actuator take from start to finish
+*** the start and park place of actuator
+** cowork with the whole system
+
+
+header 
+My super header
+endheader
+
+center footer My super footer
+legend right
+    short legend
+endlegend
+@endmindmap

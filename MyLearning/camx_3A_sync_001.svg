@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="583px" preserveAspectRatio="none" style="width:946px;height:583px;" version="1.1" viewBox="0 0 946 583" width="946px" zoomAndPan="magnify"><defs><filter height="300%" id="f1uwvoc5wfbu17" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="162" x="387.75" y="24.5332">How we switch the role</text><rect fill="#FFFFFF" filter="url(#f1uwvoc5wfbu17)" height="332.5703" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="179" y="191.1797"/><rect fill="#FFFFFF" filter="url(#f1uwvoc5wfbu17)" height="228.5156" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="755" y="264.8828"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="49" x2="49" y1="71.2188" y2="542.1016"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="184" x2="184" y1="71.2188" y2="542.1016"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="370" x2="370" y1="71.2188" y2="542.1016"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="499.5" x2="499.5" y1="71.2188" y2="542.1016"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="759.5" x2="759.5" y1="71.2188" y2="542.1016"/><rect fill="#FF0000" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="8" y="34.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="15" y="56.1426">camxnode</text><rect fill="#FF0000" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="8" y="541.1016"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="15" y="562.6348">camxnode</text><rect fill="#00FF00" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="58" x="153" y="34.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="160" y="56.1426">afnode</text><rect fill="#00FF00" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="58" x="153" y="541.1016"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="160" y="562.6348">afnode</text><rect fill="#ADFF2F" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="76" x="330" y="34.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="337" y="56.1426">statsnode</text><rect fill="#ADFF2F" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="76" x="330" y="541.1016"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="337" y="562.6348">statsnode</text><rect fill="#7FFF00" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="71" x="462.5" y="34.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="469.5" y="56.1426">awbnode</text><rect fill="#7FFF00" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="71" x="462.5" y="541.1016"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="469.5" y="562.6348">awbnode</text><rect fill="#4169E1" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="159" x="678.5" y="34.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="145" x="685.5" y="56.1426">camxmultistatsoperator</text><rect fill="#4169E1" filter="url(#f1uwvoc5wfbu17)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="159" x="678.5" y="541.1016"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="145" x="685.5" y="562.6348">camxmultistatsoperator</text><rect fill="#FFFFFF" filter="url(#f1uwvoc5wfbu17)" height="332.5703" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="179" y="191.1797"/><rect fill="#FFFFFF" filter="url(#f1uwvoc5wfbu17)" height="228.5156" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="755" y="264.8828"/><line style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="3" x2="934.5" y1="82.2188" y2="82.2188"/><rect fill="#EEEEEE" filter="url(#f1uwvoc5wfbu17)" height="3" style="stroke: #EEEEEE; stroke-width: 1.0;" width="931.5" x="3" y="105.0234"/><line style="stroke: #000000; stroke-width: 1.0;" x1="3" x2="934.5" y1="105.0234" y2="105.0234"/><line style="stroke: #000000; stroke-width: 1.0;" x1="3" x2="934.5" y1="108.0234" y2="108.0234"/><rect fill="#EEEEEE" filter="url(#f1uwvoc5wfbu17)" height="25.6094" style="stroke: #000000; stroke-width: 2.0;" width="170" x="383.75" y="93.2188"/><text fill="#FF0000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="144" x="393.75" y="111.752">How we switch role?</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="545.75" y="111.9717"/><polygon fill="#FBFB77" filter="url(#f1uwvoc5wfbu17)" points="130,133.8281,130,159.8281,813,159.8281,813,143.8281,803,133.8281,130,133.8281" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="803" x2="803" y1="133.8281" y2="143.8281"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="813" x2="803" y1="143.8281" y2="143.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="31" x="284.75" y="152.3232">since</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="23" x="319.75" y="152.3232">aec</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="0" x="346.75" y="152.3232"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="27" x="346.75" y="152.3232">awb</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="0" x="377.75" y="152.3232"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="12" x="377.75" y="152.3232">af</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="172" x="393.75" y="152.3232">is the same process, just use</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="12" x="569.75" y="152.3232">af</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="60" x="585.75" y="152.3232">as sample</text><polygon fill="#A80036" points="167,187.1797,177,191.1797,167,195.1797,171,191.1797" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="3" x2="173" y1="191.1797" y2="191.1797"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="144" x="10" y="186.6748">ExecuteProcessRequest</text><line style="stroke: #A80036; stroke-width: 1.0;" x1="189" x2="231" y1="221.8828" y2="221.8828"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="231" x2="231" y1="221.8828" y2="234.8828"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="190" x2="231" y1="234.8828" y2="234.8828"/><polygon fill="#A80036" points="200,230.8828,190,234.8828,200,238.8828,196,234.8828" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="162" x="196" y="217.0264">GetMultiStatsDependencies</text><polygon fill="#A80036" points="743,260.8828,753,264.8828,743,268.8828,747,264.8828" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="189" x2="749" y1="264.8828" y2="264.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="140" x="196" y="260.3779">UpdateStatsDependcies</text><line style="stroke: #A80036; stroke-width: 1.0;" x1="765" x2="807" y1="295.5859" y2="295.5859"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="807" x2="807" y1="295.5859" y2="308.5859"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="766" x2="807" y1="308.5859" y2="308.5859"/><polygon fill="#A80036" points="776,304.5859,766,308.5859,776,312.5859,772,308.5859" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="92" x="772" y="290.7295">ReadVendorTag</text><polygon fill="#FBFB77" filter="url(#f1uwvoc5wfbu17)" points="618,321.5859,618,461.5859,897,461.5859,897,331.5859,887,321.5859,618,321.5859" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="887" x2="887" y1="321.5859" y2="331.5859"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="897" x2="887" y1="331.5859" y2="331.5859"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="223" x="624" y="340.0811">read Tag "com.qti.chi.multicamerainfo"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="144" x="624" y="356.4326">offset is "MasterCamera"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="0" x="628" y="372.7842"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="137" x="624" y="389.1357">and then will search the</text><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="117" x="765" y="389.1357">qtiDependencyTable</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="187" x="624" y="405.4873">got the dependency info Tag like</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="147" x="624" y="421.8389">PropertyIDAECPeerInfo</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="152" x="624" y="438.1904">PropertyIDAWBPeerInfo</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="138" x="624" y="454.542">PropertyIDAFPeerInfo</text><polygon fill="#A80036" points="200,489.3984,190,493.3984,200,497.3984,196,493.3984" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="194" x2="759" y1="493.3984" y2="493.3984"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="33" x="206" y="488.8936">return</text><polygon fill="#A80036" points="14,519.75,4,523.75,14,527.75,10,523.75" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="8" x2="183" y1="523.75" y2="523.75"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="33" x="20" y="519.2451">return</text><!--
+@startuml
+title 3A sync of 845 [[https://confluence.qualcomm.com/confluence/display/3AWIDETELE/3A+Sync+Design ReferencePage]] \n jinlin
+
+participant camxnode #ff0000
+participant afnode #00ff00
+participant statsnode #GreenYellow
+participant awbnode #Chartreuse
+participant camxmultistatsoperator as camx_multistats #RoyalBlue
+
+== <color:red><size:14> Af </size></color> ==
+camxnode->afnode: PostPipelineCreate
+activate afnode #00ff00
+  afnode->afnode: InitializeMultiStats
+  note over afnode
+    multiStatsData.algoSyncType = <color:red><size:13>StatsAlgoSyncTypeAF</size></color>
+  end note
+  activate afnode #PaleGreen
+    alt pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncQTI</size></color>
+      afnode->camx_multistats: CAMX_NEW **QTIMultiStatsOperator**
+      camx_multistats->afnode: return handler
+    else pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncSingleton</size></color>
+      afnode->camx_multistats: CAMX_NEW **SingletonStatsOperator**
+      camx_multistats->afnode: return handler
+    else pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncDisabled</size></color>
+      afnode->camx_multistats: CAMX_NEW **NoSyncStatsOperator**
+      camx_multistats->afnode: return handler
+    end
+  afnode->afnode: return
+  deactivate afnode
+afnode->camxnode: return
+deactivate afnode
+
+... ...
+== <color:red><size:14> Aec </size></color> ==
+camxnode->statsnode: PostPipelineCreate
+activate statsnode #GreenYellow
+  statsnode->statsnode: InitializeMultiStats
+  note over statsnode
+    multiStatsData.algoSyncType = <color:red><size:13>StatsAlgoSyncTypeAEC</size></color>
+  end note
+  activate statsnode #PaleGreen
+    alt pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncQTI</size></color>
+      statsnode->camx_multistats: CAMX_NEW **QTIMultiStatsOperator**
+      camx_multistats->statsnode: return handler
+    else pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncSingleton</size></color>
+      statsnode->camx_multistats: CAMX_NEW **SingletonStatsOperator**
+      camx_multistats->statsnode: return handler
+    else pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncDisabled</size></color>
+      statsnode->camx_multistats: CAMX_NEW **NoSyncStatsOperator**
+      camx_multistats->statsnode: return handler
+    end
+  statsnode->statsnode: return
+  deactivate statsnode
+statsnode->camxnode: return
+deactivate statsnode
+
+... ...
+== <color:red><size:14> Awb</size></color> ==
+camxnode->awbnode: PostPipelineCreate
+activate awbnode #Chartreuse
+  awbnode->awbnode: InitializeMultiStats
+  note over awbnode
+    multiStatsData.algoSyncType = <color:red><size:13>StatsAlgoSyncTypeAWB</size></color>
+  end note
+  activate awbnode #PaleGreen
+    alt pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncQTI</size></color>
+      awbnode->camx_multistats: CAMX_NEW **QTIMultiStatsOperator**
+      camx_multistats->awbnode: return handler
+    else pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncSingleton</size></color>
+      awbnode->camx_multistats: CAMX_NEW **SingletonStatsOperator**
+      camx_multistats->awbnode: return handler
+    else pStaticSettings->multiCamera3ASync == <color:red><size:14>MultiCamera3ASyncDisabled</size></color>
+      awbnode->camx_multistats: CAMX_NEW **NoSyncStatsOperator**
+      camx_multistats->awbnode: return handler
+    end
+  awbnode->awbnode: return
+  deactivate awbnode
+awbnode->camxnode: return
+deactivate awbnode
+
+newpage How we switch the role
+
+== <color:red><size:14> How we switch role? </size></color> ==
+
+note over afnode, camx_multistats
+  since **aec** **awb** **af** is the same process, just use **af** as sample
+end note
+
+[->afnode: ExecuteProcessRequest
+activate afnode
+  afnode->afnode: GetMultiStatsDependencies
+  afnode->camx_multistats: UpdateStatsDependcies
+  activate camx_multistats
+    camx_multistats->camx_multistats: ReadVendorTag
+    note over camx_multistats
+      read Tag "com.qti.chi.multicamerainfo"
+      offset is "MasterCamera"
+      
+      and then will search the <color:red><size:13>qtiDependencyTable</size></color>
+      got the dependency info Tag like
+      **PropertyIDAECPeerInfo**
+      **PropertyIDAWBPeerInfo**
+      **PropertyIDAFPeerInfo**
+    end note
+    camx_multistats->afnode: return
+  deactivate camx_multistats
+
+  [<-afnode: return
+deactivate afnode
+
+
+@enduml
+
+PlantUML version 1.2017.20(Tue Dec 12 00:57:05 CST 2017)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) Client VM
+Java Version: 1.8.0_171-b11
+Operating System: Windows 10
+OS Version: 10.0
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>
