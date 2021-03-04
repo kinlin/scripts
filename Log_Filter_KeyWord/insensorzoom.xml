@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText doSearch="false" select="text" bgColor="cyan" comment="Debug">insensorzoom</SearchText>
+    <SearchText select="text" bgColor="purple" comment="Debug">PublishHWPDConfig</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Debug">UpdateDependency</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="cyan" comment="Debug">ValidatePDCrop|ValidateDependenceParams|ValidateDualPD</SearchText>
+    <SearchText select="text" bgColor="orange" comment="Debug">ExecuteProcessRequest() ProcessRequestDone</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="pink" comment="Debug">ProcessRequestIdDone.*AutoFocus</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="orange" comment="Debug">ProcessRequestIdDone.*IFE</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="Debug">DisableUnwantedPDAFLink</SearchText>
+    <SearchText searchType="regex" bgColor="red" comment="Debug">timed out</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="green" comment="Debug">DeActivatePipeline</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="litePink" comment="Debug">NodeOutputPortFence_MultiCameraRealtime1_IFE</SearchText>
+    <SearchText searchType="regex" bgColor="darkYellow" comment="Debug">Fence Signalled in flush</SearchText>
+    <SearchText select="text" bgColor="liteRed" comment="Debug">kinlin</SearchText>
+    <SearchText bgColor="liteBeige" comment="Debug">IsSkipProcess</SearchText>
+    <SearchText bgColor="liteGreen" comment="Debug">Skipping AF Algo processing</SearchText>
+    <SearchText select="text" bgColor="liteGreen" comment="Debug">&lt;==&gt;  requestId</SearchText>
+    <SearchText doSearch="false" searchType="regex" color="pink" comment="Debug">AddOutputNodes.*LCR</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="Debug">PDLibInit|PDLibDeinit</SearchText>
+    <SearchText searchType="regex" bgColor="liteGreen" comment="Debug">ProcessRequestIdDone.*autofocus</SearchText>
+    <SearchText searchType="regex" bgColor="red" comment="Debug">Timed Wait Live Pending Requests.*CamxResultETimeout</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteBeige" comment="Debug">\[ DUMP\]\[CORE   \].*DumpDebugInfo</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="Debug">GetRequestIDFromLastReset</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="yellow" comment="Debug">EnablePDOutputPort</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Debug">AF Processor execute request for id</SearchText>
+    <SearchText color="blue" comment="Debug">CanSkipAlgoProcessing</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="liteRed" comment="Debug">sparse_hardware_flow</SearchText>
+    <SearchText bgColor="yellow" comment="Debug">PopulateSensorPDAFInformation</SearchText>
+    <SearchText bgColor="pink" comment="Debug">Tintless Lib Execute</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="orange" comment="Debug">PopulatePDInputData</SearchText>
+    <SearchText select="text" bgColor="darkYellow" comment="Debug">getinsensorzoom</SearchText>
+    <SearchText bgColor="liteBlue" comment="Debug">SetInSensorZoomInfo</SearchText>
+    <SearchText color="red" comment="Debug">CAM_ERR </SearchText>
+    <SearchText select="text" bgColor="cyan" comment="Debug">EnablePDOutputPort</SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Debug">DisablePDOutputPort</SearchText>
+    <SearchText color="blue" comment="Debug">UpdateConfigurationForInSensorZoom</SearchText>
+    <SearchText bgColor="liteRed" comment="Debug">cam_vfe_camif_lite_print_status</SearchText>
+    <SearchText select="text" bgColor="beige" comment="Debug">readinsensorzoom</SearchText>
+    <SearchText bgColor="litePink" comment="Debug">handleinsensorzoom</SearchText>
+    <SearchText select="text" color="blue" comment="Debug">ReadMultiCameraInfo</SearchText>
+    <SearchText bgColor="liteBlue" comment="Debug">HandleModeSwitchDelay</SearchText>
+    <SearchText select="text" bgColor="cyan" comment="Debug">AF Node execute request </SearchText>
+    <SearchText select="text" bgColor="litePink" comment="Debug">IFE Settings</SearchText>
+    <SearchText select="text" bgColor="red" comment="Debug">fatal signal</SearchText>
+    <SearchText select="text" bgColor="pink" comment="Debug">DEBUG   </SearchText>
+</AnalyseDoc>
