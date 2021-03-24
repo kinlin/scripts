@@ -42,7 +42,7 @@ Yellow Gold LightGoldenRodYellow Orange LemonChiffon
 5. Violet
 DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
 
-6. 
+6.
 
 
 class Dummy {
@@ -54,39 +54,46 @@ class Dummy {
 '/
 participant Other_Modules << (U,#ADD1B2) >>
 participant camxncsservice
-participant camxtofsensorintf
+participant camxncsintftofsensor
 participant camxncsprovider
 @startuml
 == <color:blue> How Tof is Link to NCSService </color>==
 [o-> camxncsservice: **NCSService::Initialize**
 activate camxncsservice
-    alt **NCSIntfType == ASM**
+    alt **NCSIntfType == TOF**
         note over camxncsservice
-            1. Use ASM as sample
-            2. Still Use camxtofsensorintf name
+            This will run during camera bootup time
+            If we need this duration Log, kill camera server and logcat can got the
+            ncs server Log
         end note
-        camxncsservice->camxtofsensorintf: **GetInstance()**
-        activate camxtofsensorintf
+        camxncsservice->camxncsintftofsensor: **GetInstance()**
+        activate camxncsintftofsensor
             note right camxncsservice
                 got pNCSIntfObject and then call the INCSIntfBase public API
             end note
-        camxtofsensorintf->camxncsservice:
-        deactivate camxtofsensorintf
+        camxncsintftofsensor->camxncsservice:
+        deactivate camxncsintftofsensor
 
-        camxncsservice->camxtofsensorintf: **ListSensors()**
-        activate camxtofsensorintf
-        camxtofsensorintf->camxncsservice:
-        deactivate camxtofsensorintf
+        camxncsservice->camxncsintftofsensor: **ListSensors()**
+        activate camxncsintftofsensor
+            note over camxncsintftofsensor
+                Load TOF Sensor Lib and Open it
+            end note
+        camxncsintftofsensor->camxncsservice:
+        deactivate camxncsintftofsensor
 
-        camxncsservice->camxtofsensorintf: **QueryCapabilites()**
-        activate camxtofsensorintf
-        camxtofsensorintf->camxncsservice:
-        deactivate camxtofsensorintf
+        camxncsservice->camxncsintftofsensor: **QueryCapabilites()**
+        activate camxncsintftofsensor
+            note over camxncsintftofsensor
+                query Sensor Capability, like distance Range and name, vendor...
+            end note
+        camxncsintftofsensor->camxncsservice:
+        deactivate camxncsintftofsensor
 
-        camxncsservice->camxtofsensorintf: **GetCaps()**
-        activate camxtofsensorintf
-        camxtofsensorintf->camxncsservice:
-        deactivate camxtofsensorintf
+        camxncsservice->camxncsintftofsensor: **GetCaps()**
+        activate camxncsintftofsensor
+        camxncsintftofsensor->camxncsservice:
+        deactivate camxncsintftofsensor
 
         camxncsservice->camxncsservice: **RegisterProvider()**
         activate camxncsservice
@@ -107,24 +114,24 @@ camxncsservice->Other_Modules:
 deactivate camxncsservice
 
 alt **Old way of Calling**
-Other_Modules->X camxtofsensorintf: **GetInstance()**
-activate camxtofsensorintf
+Other_Modules->X camxncsintftofsensor: **GetInstance()**
+activate camxncsintftofsensor
     note over Other_Modules
         This Old way, other module still interact directly
-        with camxtofsensorintf
+        with camxncsintftofsensor
     end note
-camxtofsensorintf->Other_Modules:
-deactivate camxtofsensorintf
+camxncsintftofsensor->Other_Modules:
+deactivate camxncsintftofsensor
 end
 
 ... ...
 == <color:blue> How to fit current TOF intf to NCSIntf </color>==
-note right camxtofsensorintf
+note right camxncsintftofsensor
 <img ./TOF_Intf.png>
 end note
 ... ...
 == <color:blue> What should be keeped and stay no change </color>==
-note over camxtofsensorintf
+note over camxncsintftofsensor
   /// Current TOF sensor library implements Android sensor HAL interface. As per specification, every hardware
   /// module must have a data structure named HAL_MODULE_INFO_SYM
   /// Get sensor module handle address
