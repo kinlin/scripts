@@ -1,3 +1,15 @@
+
+Color_Off='\033[0m'       # Text Reset
+# Regular Colors
+Black='\033[0;30m'        # Black
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
+
 cur_dir=$PWD
 alias ls='ls -lart --color=tty'
 alias ll="ls -lart --color=tty --show-control-chars"
@@ -16,6 +28,8 @@ HISTFILESIZE=4000000
 HISTSIZE=10000
 PROMPT_COMMAND="history -a"
 export HISTSIZE PROMPT_COMMAND
+
+#export /mnt/c/BuildWithSparseAU/tools:$PATH
 
 alias cmm='cd $ANDROID_BUILD_TOP/vendor/qcom/proprietary/mm-camera'
 alias ccore='cd $ANDROID_BUILD_TOP/vendor/qcom/proprietary/mm-camera-core'
@@ -55,10 +69,40 @@ function mmcamx() {
    mm  CAMX_PATH_PREFIX=vendor/qcom/proprietary/camx  KERNEL_DEFCONFIG=sdm845-perf_defconfig -j8 2>&1 | tee makelog.txt
 }
 
-function ssh-gv() {
+function sshgv() {
    ssh jinlin@10.238.176.30
 }
 
+#164, 静音键
+function opencamera() {
+    adb wait-for-device root;
+    adb wait-for-device remount;
+    adb shell input keyevent 82;
+    adb shell input swipe 500 1500 500 500;
+
+    # pull down
+    adb shell input swipe 500 0 500 1500
+
+    # tap not disturb
+    adb shell input tap 600 400
+    adb shell input keyevent 3;
+
+#    adb shell input keyevent 164;
+#    adb shell input tap 1300 1850;
+#    adb shell input keyevent 164;
+#    adb shell input tap 1300 1850;
+#    adb shell input tap 200 2600;
+#
+##do not distureb
+#    adb shell input tap 600 1860;
+#    adb shell input tap 350 600;
+#    adb shell input tap 700 2789;
+    adb shell mkdir /vendor/etc/camera;
+
+    adb push camxoverridesettings.txt /vendor/etc/camera;
+    adb shell settings put system screen_off_timeout 2147483647
+
+}
 
 
 function man() {
@@ -86,6 +130,10 @@ function camxsetting() {
 #export PATH=/mnt/c/Tools/ADB_and_Fastboot:$PATH
 export PATH=/mnt/c/Tools/platform-tools_r29.0.2-windows/platform-tools:$PATH
 export PATH=/mnt/c/Bug_Log/Tools/bin:$PATH
+export PATH=/mnt/c/Tools/replaykit/win32:$PATH
+export PATH=/usr/bin:$PATH
+export CAMERA_ITS_TOP=/mnt/c/ITS/ITS_fromAPT
+export PYTHONPATH=/mnt/c/ITS/ITS_fromAPT/pymodules
 #declare -x PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 #declare -x LANG="zh_CN.GB18030"
 #declare -x LANGUAGE="zh_CN.GB18030:zh_CN.GB2312:zh_CN"
@@ -102,6 +150,83 @@ alias ag='ag -p='~/' -if'
 alias adb='adb.exe'
 alias fastboot='fastboot.exe'
 
+function rand(){
+  min=$1
+  max=$(($2-$min+1))
+  num=$(($RANDOM+1000000000)) #增加一个10位的数再求余
+  echo $(($num%$max+$min))
+}
+
+function test_zoom(){
+    #i_index = 0
+    #max = 300
+    sleep 1
+    for i in {1..1000}
+    do
+        #i_index = $((i_index+1))
+        #Pos1 = $(rand 100 450)
+        #Pos2 = $(rand 800 1000)
+        echo "Pos:$Pos1 1620 <-> Pos:$Pos2 1620"
+        #adb.exe shell input swipe $Pos1 1620 $Pos2 1620 50
+        #adb.exe shell input swipe $Pos2 1620 $Pos1 1620 50
+        adb.exe shell input swipe 190 1740 890 1740 100
+        adb.exe shell input swipe 890 1740 190 1740 100
+        echo "loop $i"
+    done
+}
+
+function test_switch(){
+    sleep 1
+
+    time=`date +%Y%m%d-%H:%M`
+    start_time_sec=`date +%s`
+    for i_index in {1..10000}
+    do
+        adb.exe shell input swipe 300 1300 1000 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 300 1300 1000 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 300 1300 1000 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 300 1300 1000 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 300 1300 1000 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 1000 1300 300 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 1000 1300 300 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 1000 1300 300 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 1000 1300 300 1300 50
+        sleep 0.5
+        adb.exe shell input swipe 1000 1300 300 1300 50
+        sleep 0.5
+        end_time_sec=`date +%s`
+        total_time=$(($end_time_sec - $start_time_sec))
+        total=`expr 8 \* $i_index`
+        echo -e "switch 1 round, 8*$i_index = $Red $total   times $Color_Off, total time: $Green $total_time     second $Color_Off"
+    done
+}
+
+function backupupupup(){
+git config --global user.email jinlin
+git push origin master
+}
+
+function test_video(){
+    sleep 1
+    for i in {1..1000}
+    do
+        echo "tap 540 2100"
+        adb.exe shell input tap 540 2100
+        if [ $(($i%2)) -eq 1 ]; then
+            sleep 3.2
+            echo "loop $i"
+        fi
+    done
+}
+
 function remountDevice() {
     deviceID=""
     if  [ $# -eq 1 ]; then
@@ -110,10 +235,15 @@ function remountDevice() {
         adb -s $deviceID root
         adb -s $deviceID remount
         adb logcat -G 256m
+        date
     else
+        echo "will root and remount device"
         adb wait-for-device root
         adb wait-for-device remount
+        adb shell input keyevent 82;
+        adb shell input swipe 500 1500 500 500;
         adb logcat -G 256m
+        date
     fi
 }
 
@@ -124,17 +254,33 @@ function boostPhone() {
 
 function resetcam() {
 #     pid_1=`adb shell ps| grep 'camera.provider' | grep -v grep | awk '{print $2}'`; echo "camera.provider Pid:"$pid_1;
-     adb shell "ps -e|grep cameraserver"
-     pid_cameraserver=`adb shell ps -e| grep cameraserver | grep -v grep | awk '{print $2}'`; echo "cameraserver Pid:"$pid_cameraserver;
-     arr=(${pid_cameraserver//,/ })
-     echo "${arr[0]}  ${arr[1]}"
-     echo "`sleep 1` will sleep 1"
-     adb shell kill -9 ${arr[0]}
-     echo "`sleep 1` will sleep 1"
-     adb shell kill -9 ${arr[1]}
+    adb shell "ps -e|grep camera"
+    pid_cameraserver=`adb shell ps -e| grep camera | grep -v grep | awk '{print $2}'`; echo "camera Pid:"$pid_cameraserver;
+    arr=(${pid_cameraserver//,/ })
+    # echo "${arr[0]}  ${arr[1]}"
 
-     echo "kill thread done..., new server is below"
-     adb shell "ps -e|grep cameraserver"
+    for var in ${arr[@]};
+    do
+        echo "killing PID: $var"
+        echo "`sleep 1` will sleep 1"
+        adb shell kill -9 $var
+    done
+    echo "`sleep 1` will sleep 1"
+    #echo "`sleep 1` will sleep 1"
+    #adb shell kill -9 ${arr[0]}
+    #echo "`sleep 1` will sleep 1"
+    #adb shell kill -9 ${arr[1]}
+
+    echo "kill thread done..., new server is below"
+    adb shell "ps -e|grep camera"
+    date
+}
+
+
+function adbpush(){
+    adb wait-for-device root;
+    adb wait-for-device remount;
+    adb push camxoverridesettings.txt /vendor/etc/camera;
 }
 
 killcscope ()
@@ -169,6 +315,7 @@ function adb_reboot() {
 }
 
 #server1: vivo1234
+#hello8350
 alias vivo_server1='ssh develop01@10.238.180.209'
 
 #server2: af1c36
@@ -223,3 +370,6 @@ wikibackup()
 }
 
 
+
+#cd $cur_dir
+#cd /mnt/c/Code/Camx
