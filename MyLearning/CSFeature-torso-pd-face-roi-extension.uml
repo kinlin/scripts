@@ -1,0 +1,183 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participantXXX
+
+box "Factory"
+participantcamxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red CrimsonDeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow GoldLightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagentaBlueViolet DardViolet Magenta Fuchsia Purple
+
+6.
+
+
+class Dummy{
+ -field1                 -------private
+ #field2                 -------protected
+ ~method1()              -------package private
+ +method2()              -------public
+}
+'/
+@startuml
+title cs-feature-torso-pd-face-roi-extension \n Jin Lin
+/'skinparam ParticipantPadding 20
+skinparam BoxPadding 10'/
+participant af_haf
+participant af_util
+participant af_haf_pdaf
+
+box "PDLib" #LemonChiffon
+participant dpd_hardware_flow
+participant sparse_hardware_flow #GreenYellow
+end box
+
+== <color:blue><size:16> **When we set ROI** </size></color>==
+af_haf->af_haf: **af_haf_set_dynamic_roi_extension_info()**
+activate af_haf
+af_haf->af_haf:
+deactivate af_haf
+......
+[o->af_util: **af_util_adjust_roi**
+activate af_util
+    af_util->af_util: **af_util_check_dynamic_extension_roi()**
+    activate af_util
+        note right af_util
+            HAFProgressLevel75 > af->haf->kpi.progress
+            Before FineSearch we need ApplyDynamicROIExtension
+        end note
+    af_util->af_util:
+    deactivate af_util
+
+    alt **TRUE==applyDynamicExtensionROI**
+        af_util->af_util: **af_util_get_dynamic_extension_roi()**
+        activate af_util
+        af_util->af_util:
+        deactivate af_util
+    end
+    ......
+    af_util->af_util: **af_util_stats_config_pdaf**
+    activate af_util
+        alt **TRUE==useDynamicExtensionROI**
+            note right af_util
+                set to pdaf config
+            end note
+        end
+    af_util->af_util:
+    deactivate af_util
+
+[<-af_util:
+deactivate af_util
+
+== <color:blue><size:16> **How PDLib process** </size></color>==
+note right sparse_hardware_flow
+    Due to performance limitation(multiple PD calculation in one frame),
+    only support in sparse HWPD
+    And Actually will run HW/SW process together
+end note
+[o->sparse_hardware_flow: **InitTuning**
+activate sparse_hardware_flow
+    note right sparse_hardware_flow
+        faceTorsoFocus param:(default value)
+            baseScaleWidth(1.0)            baseScaleHeight(0.5)
+            heightExtensionCount(3.0)      headTopExtensionCount(0)
+            confidenceThreshold(100)       pdToleranceThreshold(0.3)
+            pdDeltaThreshold(1.0)          widthThreshold(0.25)
+            heightThreshold(0.25)
+    end note
+[<-sparse_hardware_flow:
+deactivate sparse_hardware_flow
+......
+[o->sparse_hardware_flow: **SparseHardwareFlow::Process**
+activate sparse_hardware_flow
+    alt faceTorsoFocus.enable  &&  **IsSmallFace**
+        note right sparse_hardware_flow
+            <color:blue><b>useFaceTorseExt = TRUE</b></color>
+            <color:blue><b>assistHWPDbySWPD = TRUE</b></color>
+        end note
+    end
+
+    alt **useFaceTorseExt==TRUE**
+        sparse_hardware_flow->sparse_hardware_flow: **ProcessFaceTorso()**
+        activate sparse_hardware_flow
+            sparse_hardware_flow->sparse_hardware_flow: **SetContextParamInfoTorso**
+            activate sparse_hardware_flow
+                sparse_hardware_flow->sparse_hardware_flow: **AllocateGridMemoryAndConfigTorso()**
+                activate sparse_hardware_flow
+                    note right sparse_hardware_flow
+                        //              X
+                        //              |
+                        //start(x,y)    +----+
+                        //              | 😀 |
+                        //              | 😀 |
+                        //              |    |
+                        //              +----+ end(x, y) -------Y
+                        extension初始tuning是 heightExtensionCount=3, 但也可以微调
+                    end note
+                    sparse_hardware_flow->sparse_hardware_flow: **MapOneWindowFaceTorso**
+                    activate sparse_hardware_flow
+                    sparse_hardware_flow->sparse_hardware_flow:
+                    deactivate sparse_hardware_flow
+                sparse_hardware_flow->sparse_hardware_flow:
+                deactivate sparse_hardware_flow
+            sparse_hardware_flow->sparse_hardware_flow:
+            deactivate sparse_hardware_flow
+
+            alt **numOfLines==currentImageHeight**
+                sparse_hardware_flow->sparse_hardware_flow: **GetPDWindowFaceTorso()**
+                activate sparse_hardware_flow
+                    sparse_hardware_flow->sparse_hardware_flow: **sparse_HW_ModuleBasedGridSADSum()**
+                    activate sparse_hardware_flow
+                    sparse_hardware_flow->sparse_hardware_flow:
+                    deactivate sparse_hardware_flow
+                sparse_hardware_flow->sparse_hardware_flow:
+                deactivate sparse_hardware_flow
+            end
+        sparse_hardware_flow->sparse_hardware_flow:
+        deactivate sparse_hardware_flow
+    end
+[<-sparse_hardware_flow:
+deactivate sparse_hardware_flow
+......
+[o->dpd_hardware_flow: **process()**
+activate dpd_hardware_flow
+    note right dpd_hardware_flow
+        almost same as sparse HW, so not write here
+    end note
+[<-dpd_hardware_flow:
+deactivate dpd_hardware_flow
+
+@enduml

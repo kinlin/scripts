@@ -1,0 +1,175 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6.
+
+
+class Dummy {
+ -field1                     -------private
+ #field2                     -------protected
+ ~method1()                  -------package private
+ +method2()                  -------public
+}
+'/
+
+@startuml
+participant  chifeature2graphmanager
+participant  chifeature2graphselector
+participant  chifeaturePoolManager
+participant  chifeature2utils
+participant  chifeature2featurepool
+participant  chifeature2base
+
+[o->chifeature2graphmanager: **Initlize()**
+activate chifeature2graphmanager
+    chifeature2graphmanager->chifeature2graphmanager: **CloneStreamConfig**
+    ......
+    chifeature2graphmanager->chifeature2graphmanager: **RegisterFGMCallbacks(pFeatureWrapperCallbacks)**
+    ......
+    chifeature2graphmanager->chifeaturePoolManager: **Create()**
+    ......
+    chifeature2graphmanager->chifeature2graphselector: **GetGraphDescriptorTables()**
+    ......
+    chifeature2graphmanager->chifeature2graphmanager: **CreateVirtualSuperGraph**
+    ......
+    alt TRUE==EnableFeature2BinaryGraphDump
+        chifeature2graphmanager->chifeature2graphmanager: **DumpFeatureGraphDescToFile()**
+    end
+    ......
+    alt TRUE==IsMCXDevice()
+        chifeature2graphmanager->chifeature2utils: **GetNZSLSnapshotConfigInfo()**
+    end
+    ......
+    chifeature2graphmanager->chifeature2featurepool: **CreateFeatureInstances**
+    ......
+    chifeature2graphmanager->chifeaturePoolManager: **FinalizeFeatureInstances**
+    activate chifeaturePoolManager
+        loop enableFeatures
+            loop sinkLinks
+                note right chifeaturePoolManager
+                    Backward work. CreateOutputRequirment
+                end note
+            end loop
+        end loop
+        chifeaturePoolManager->chifeature2base: **configureFeature()**
+        activate chifeature2base
+            alt ChiFeature2Status::Initialized == GetFeature2Status()
+                chifeature2base->chifeature2base: **PrepareFeatureData**
+                activate chifeature2base
+                chifeature2base->chifeature2base:
+                deactivate chifeature2base
+
+                chifeature2base->chifeature2base: **OnInitialize()**
+                activate chifeature2base
+                chifeature2base->chifeature2base:
+                deactivate chifeature2base
+
+                chifeature2base->chifeature2base: **ConfigureOutputPorts()**
+                activate chifeature2base
+                chifeature2base->chifeature2base:
+                deactivate chifeature2base
+
+                alt ChiFeature2Type::MCX_REALTIME == GetFeatureType()
+                    note right chifeature2base
+                        pJobData->code     = DeferredCreateOpCode::AsyncConfigurePipelineOp;
+                        ChiFeature2Base::AsyncConfigurePipelineData
+                    end note
+                else
+                    note right chifeature2base
+                        loop pipelinedata:
+                            ConfigurePipelineData
+                    end note
+                end
+            end
+        chifeature2base->chifeaturePoolManager:
+        deactivate chifeature2base
+
+        loop enableFeatures
+            loop srcLinks
+                note right chifeaturePoolManager
+                    Forward work.
+                    rFeature.FinalizeInitialization()
+
+                    updateConfigStreams
+                end note
+                chifeaturePoolManager->chifeature2base: **FinalizeInitialization()**
+                activate chifeature2base
+                    alt **ChiFeature2Status::Configured == GetFeature2Status()**
+                        chifeature2base->chifeature2base: **FinalizeSessionData()**
+                        activate chifeature2base
+                        chifeature2base->chifeature2base:
+                        deactivate chifeature2base
+
+                        alt ChiFeature2Status::Deferred != GetFeature2Status()
+                            chifeature2base->chifeature2base: **CreateTargetBufferManagers()**
+                            activate chifeature2base
+                            chifeature2base->chifeature2base:
+                            deactivate chifeature2base
+
+                            chifeature2base->chifeature2base: **PrepareStageData()**
+                            activate chifeature2base
+                            chifeature2base->chifeature2base:
+                            deactivate chifeature2base
+                        end
+
+
+                        alt **ChiFeature2Status::Deferred == GetFeature2Status()**
+                            note right chifeature2base
+                                DeferredCreateOpCode::CreateSessionOp;
+                                will create session
+                            end note
+                        end
+                    end
+                chifeature2base->chifeaturePoolManager:
+                deactivate chifeature2base
+            end loop
+        end loop
+    chifeaturePoolManager->chifeature2graphmanager:
+    deactivate chifeaturePoolManager
+    ......
+
+[<-chifeature2graphmanager:
+deactivate chifeature2graphmanager
+
+@enduml
