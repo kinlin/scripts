@@ -57,5 +57,51 @@ class Dummy {
 '/
 
 @startuml
+title <size:18>MaxLiveRequestCtl </size>\n     Lin Jin
+
+box "feature2"
+    participant feature2realtime
+    participant feature2realtimemcx
+end box
+participant chxutils
+
+
+[o->feature2realtime: **OnSessionCreate()**
+activate feature2realtime
+    note right feature2realtime
+        Semaphore::Create(maxHalRequests - 1)
+    end note
+[<-feature2realtime:
+deactivate feature2realtime
+
+......
+[o->feature2realtime: **AcquireResource()**
+activate feature2realtime
+    feature2realtime->chxutils: **WaitForSemaphore()**
+    activate chxutils
+        note right chxutils
+            std::unique_lock<std::mutex> lock(m_mutex);
+            while (m_semaphoreCount == 0)  wait
+            m_semaphoreCount--
+        end note
+    chxutils->feature2realtime:
+    deactivate chxutils
+[<-feature2realtime:
+deactivate feature2realtime
+
+......
+[o->feature2realtime: **ReleaseResource()**
+activate feature2realtime
+    feature2realtime->chxutils: **NotifyAllThread()**
+    activate chxutils
+        note right chxutils
+            std::unique_lock<std::mutex> lock(m_mutex);
+            m_semaphoreCount++
+            m_semaphoreCv.notify_all()
+        end note
+    chxutils->feature2realtime:
+    deactivate chxutils
+[<-feature2realtime:
+deactivate feature2realtime
 
 @enduml

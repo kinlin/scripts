@@ -60,7 +60,12 @@ participant  chifeaturePoolManager
 participant  chifeature2utils
 participant  chifeature2featurepool
 participant  chifeature2base
-
+participant  camxsession
+participant  camxpipeline
+box "Nodes" #SlateBlue
+    participant camxnode
+    participant autofocusnode
+end box
 [o->chifeature2graphmanager: **Initlize()**
 activate chifeature2graphmanager
     chifeature2graphmanager->chifeature2graphmanager: **CloneStreamConfig**
@@ -158,7 +163,31 @@ activate chifeature2graphmanager
                             note right chifeature2base
                                 DeferredCreateOpCode::CreateSessionOp;
                                 will create session
+                     <color:red>I Simplify the Calling Below for clear insight of the flow</color>
                             end note
+                            chifeature2base->camxsession: **Session::Initialize**
+                            activate camxsession
+                                camxsession->camxsession: **InitializeNewPipelines()**
+                                activate camxsession
+                                    note right camxsession
+                                        RegisterJobFamily(NodeThreadJobFamilySessionCb  给camxpipeline
+                                    end note
+                                    alt **m_numPipelines**
+                                        camxsession->camxpipeline: **NotifyFinalizeBufferDimensions**
+                                        activate camxpipeline
+                                            alt nodecount
+                                                camxpipeline->camxnode: **FinalizeInitialization**
+                                                ......
+                                                camxnode->autofocusnode: **ProcessingNodeFinalizeInitialization**
+                                                ......
+                                            end
+                                        camxpipeline->camxsession:
+                                        deactivate camxpipeline
+                                    end
+                                camxsession->camxsession:
+                                deactivate camxsession
+                            camxsession->chifeature2base:
+                            deactivate camxsession
                         end
                     end
                 chifeature2base->chifeaturePoolManager:
@@ -171,5 +200,39 @@ activate chifeature2graphmanager
 
 [<-chifeature2graphmanager:
 deactivate chifeature2graphmanager
+
+== <color:blue> when node postpipeline create called </color>==
+[o->camxsession: **Session::StreamOn**
+activate camxsession
+    camxsession->camxsession: **FinalizePipeline**
+    activate camxsession
+        alt PRE_FINALIZATION_INPROGRESS || PRE_FINALIZED
+            camxsession->camxpipeline: **WaitForDeferPrepareFinalizePipeline**
+        end
+        ......
+        alt BUFFER_PROPERTIES_FINALIZED
+            camxsession->camxpipeline: **NotifyPrepareFinalizePipeline**
+            activate camxpipeline
+                camxpipeline->camxnode: **IsDeferPipelineCreate**
+                activate camxnode
+                    camxnode->autofocusnode: **PostPipelineCreate**
+                    activate autofocusnode
+                    autofocusnode->camxnode:
+                    deactivate autofocusnode
+                camxnode->camxpipeline:
+                deactivate camxnode
+            camxsession->camxpipeline:
+            deactivate camxpipeline
+            camxsession->camxpipeline: **WaitForDeferPrepareFinalizePipeline**
+            activate camxpipeline
+            camxsession->camxpipeline:
+            deactivate camxpipeline
+        end
+        ......
+        camxsession->camxpipeline: **FinalizePipeline**
+    camxsession->camxsession:
+    deactivate camxsession
+[<-camxsession:
+deactivate camxsession
 
 @enduml

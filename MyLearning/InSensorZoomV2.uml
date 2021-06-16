@@ -1,0 +1,321 @@
+/'派生，继承：<|--'/
+/'组合：*-- ， 将会管理对象的生命周期'/
+/'聚合：o--, 特指不管理对象的生命周期，但存在关联'/
+/'
+title <size:18>camx awb overview</size>\n     Lin Jin
+
+collections ThreadUsers
+
+<color:red><size:16>****</size></color>
+
+<color:blue><size:15></size></color>
+
+package <color:blue><size:15>**AWBDecisionAggregator** {
+}
+
+== <color:blue> CAWBMain::Configure </color>==
+
+participant XXX
+
+box "Factory"
+participant camxcawbfactory as awb_factory
+end box
+
+
+
+<color:red>TODO: this need check further</color>
+
+
+Useful color:
+1. Red
+Red Crimson DeepPink LightPink Salmon HotPink
+
+2. Blue
+MediumBlue Blue DodgerBlue DeepSkyBlue Cyan LightSkyBlue SlateBlue SkyBlue
+
+3. Green
+Chartreuse Green GreenYellow LawnGreen Lime LightGreen SpingGreen
+
+4. Yellow
+Yellow Gold LightGoldenRodYellow Orange LemonChiffon
+
+5. Violet
+DarkMagenta BlueViolet DardViolet Magenta Fuchsia Purple
+
+6.
+
+
+note across: 新方法：\n""note across""
+
+Bob->Alice
+hnote across: 跨越所有参与者的备注。
+
+class Dummy {
+ -field1                     -------private
+ #field2                     -------protected
+ ~method1()                  -------package private
+ +method2()                  -------public
+}
+'/
+
+@startuml
+title <size:18>InSensorZoom-V2</size>\n     Lin Jin
+
+box "sensornode" #LemonChiffon
+participant sensornode
+end box
+
+box "HWL"  #LightPink
+participant ifenode
+participant ifeutils
+end box
+
+box "AFNode" #GreenYellow
+participant autofocus
+participant afstatsprocessor
+participant afioutil
+end box
+
+box "PDLib" #LightGreen
+participant pdafdata
+participant pdlibinterface
+participant pdlib_instance_manager
+participant pdlib
+end box
+
+note across: The Prop We Used for InSensorZoom:\n **EnableInsensorZoom** \n **SensorSwitchedTag** \n **InSensorZoomStateTag** \n **PDLibInitInfo**
+hnote across: <color:red>**How the smooth config for HW/Kernel do, don't Know**</color>
+
+== <color:blue> IFE/SFE </color>==
+alt ExecuteProcessRequest
+[o->ifenode: **GetInSensorZoomTags()**
+activate ifenode
+    alt **TRUE == m_inSensorZoomModeSwitched**
+        ifenode->ifenode: **FetchSensorInfo()**
+        ifenode->ifenode: **UpdateSensorModeData()**
+        alt **ISPHwTitan680 && m_bIsSFEEnabled**
+            ifenode->ifeutils: <color:blue>**SFEUtils::SelectSFEMode()**</color>
+            note right ifeutils
+                SensorCapability <-> SFEMode
+                QUADCFA          <-> SFEUsecaseQCFA
+                INSENSORZOOM     <-> SFEUsecaseQCFA
+                QHDR             <-> SFEUsecaseQCFAHDR
+                SHDR             <-> SFEUsecaseSHDR
+                FS               <-> SFEUsecaseOffline
+            end note
+        end
+    end
+
+[<-ifenode:
+deactivate ifenode
+......
+[o->ifenode: HandleInSensorZoom
+activate ifenode
+    note right ifenode
+        pModuleInput->forceTriggerUpdate=TRUE   :  force update reg
+    end note
+
+    alt <color:red>**m_inSensorZoomModeSwitchFrameID + MaxPipelineDelay >= frameNum**</color>
+        alt **State==InSenzorZoomCrop**
+            note right ifenode
+                **tintlessALSCTableScale = TRUE**
+                When Binning => Remosaic-Crop , we have to scale ALSC table
+            end note
+
+        else
+            note right ifenode
+                **tintlessALSCDisable = TRUE**
+                when Remosaic-Crop => Binning: <color:red>**No Proper Solution, Disable Tintless and ALSC for now**
+            end note
+        end
+    end
+
+    ......
+    alt **ISPHwTitan480 | ISPHwTitan580**
+        ifenode->ifenode: **DisablePDOutputPort**
+        ifenode->ifenode: **EnablePDOutputPort**
+    end
+[<-ifenode:
+deactivate ifenode
+......
+[o->ifenode: **ProgramIQConfig()**
+activate ifenode
+    alt **TRUE==m_bIsSFEEnabled**
+        ifenode->ifeutils: <color:blue>**SFEUtils::ConfigureSFEData()**</color>
+        activate ifeutils
+            note right ifeutils
+                **We will config SFE channel data / mux ...etc here.**
+            end note
+        ifeutils->ifenode:
+        deactivate ifeutils
+    end
+    ifenode->ifenode: **UpdateCommonConfig**
+[<-ifenode:
+deactivate ifenode
+
+end /'ERP end'/
+
+== <color:blue> AFNode</color>==
+[o->autofocus: **PostPipelineCreate()**
+activate autofocus
+    autofocus->afioutil: **InSensorZoom()**
+    activate afioutil
+    afioutil->autofocus:
+    deactivate afioutil
+[<-autofocus:
+deactivate autofocus
+
+[o->autofocus: **ExecuteProcessRequest()**
+activate autofocus
+    autofocus->afioutil: **ReadInSensorZoom()**
+    autofocus->autofocus: **HandleInSensorZoom()**
+    activate autofocus
+        autofocus->afioutil: **DeinitializePDLib()**
+        autofocus->autofocus: **LoadPDLib(newSensorMode)**
+        autofocus->autofocus: **InitPDLib()**
+    autofocus->autofocus
+    deactivate autofocus
+......
+    autofocus->afstatsprocessor: **ExecuteProcessRequest()**
+    activate afstatsprocessor
+        alt <color:red>**RequestIdOffsetFromLastReset<=MaxPipelineDelay**</color>
+            afstatsprocessor->afioutil: **<color:red>PublishPDLibConfigureParam</color>**
+        end
+        afstatsprocessor->afioutil: **AFNodePDLibHandler::ParsePDStats()**
+        activate afioutil
+            alt **IsPDHWEnabled==TRUE**
+                afioutil->afioutil: **ReadPDLibConfigureParam**
+                    note right afioutil
+                        <color:red>**Read  PropertyIDPDLibInitInfo**</color>
+                         m_AFReadProperties[AFReadTypePropertyIDPDLibInitInfo] =
+                         {
+                             <color:red>PropertyIDPDLibInitInfo,</color>
+                             <color:red>m_pNode->GetMaximumPipelineDelay(),</color>
+                             NULL
+                         };
+                         <color:red>**We Always Read the reqId-3's Info to process PD**</color>
+                    end note
+                afioutil->afioutil:
+            end
+            afioutil->pdlibinterface: **PDLibConfigure()**
+            activate pdlibinterface
+                pdlibinterface->pdlibinterface: **PDLibLCRConfigure(<color:red>&initParam, pPDLibTuningData</color>)**
+                pdlibinterface->pdlib: **PDLibConfig(<color:red>PD_HANDLE</color>, PDLibInitParam, tuning)**
+                activate pdlib
+                    pdlib->pdlib_instance_manager: **Configure**
+                    activate pdlib_instance_manager
+                        note over pdlib_instance_manager
+                            <color:red><b>map<UINT32, PDLibFlowInstance> m_flowInstanceMap</b></color>
+                            we create instance for different mode
+                        end note
+                    pdlib_instance_manager->pdlib:
+                    deactivate pdlib_instance_manager
+                pdlib->pdlibinterface:
+                deactivate pdlib
+            pdlibinterface->afioutil:
+            deactivate pdlibinterface
+            ......
+            afioutil->afioutil: **PopulatePDInputData**
+            afioutil->pdlibinterface: **PDlibProcess**
+            afioutil->afioutil: **PublishPDLibOutput**
+            activate afioutil
+                afioutil->afioutil: **<color:red>PublishPDLibConfigureParam</color>**
+                activate afioutil
+                afioutil->afioutil:
+                deactivate afioutil
+            afioutil->afioutil
+            deactivate afioutil
+        afioutil->afstatsprocessor:
+        deactivate afioutil
+        ......
+        alt algoRole == slave
+            afstatsprocessor->afioutil: **<color:red>PublishPDLibConfigureParam</color>**
+        end
+    afstatsprocessor->autofocus:
+    deactivate afstatsprocessor
+[<-autofocus:
+deactivate autofocus
+
+== <color:blue> Sensor </color>==
+[o->sensornode: **ExecuteProcessRequest()**
+activate sensornode
+    ......
+    alt **m_isVendorAECDataAvailable**
+    else **isFSCaptureRequest**
+    else **InputSensor ExposureTime/Sensitivity/FrameDuration**
+    end
+    sensornode->sensornode: **PrepareSensorUpdate()**
+    activate sensornode
+        note right sensornode
+            **calculate Exp etc and FillExposureArray**
+        end note
+    sensornode->sensornode:
+    deactivate sensornode
+
+    sensornode->sensornode: <color:red>**CreateSensorUpdatePacket()**</color>
+    activate sensornode
+        note right sensornode
+            Read different condition and create I2CRegCmd
+            <b>m_seamlessInSensorState <--> I2CRegSettingType::InSensorHDR3ExpOn/OFF</b>
+            <b>Total Type</b>
+                enum class I2CRegSettingType
+                {
+                    // NOWHINE NC011: Asking for exception, sensor commands are well known as - init, res, start, stop etc
+                    Init,               ///< Init Setting
+                    Res,                ///< Resolution Setting
+                    Start,              ///< Start Setting
+                    Stop,               ///< Stop Setting
+                    Master,             ///< Dual Master Setting
+                    Slave,              ///< Dual Slave Setting
+                    AEC,                ///< AEC Setting
+                    AWB,                ///< AWB Setting
+                    SPC,                ///< SPC OTP Setting
+                    PDAF,               ///< PDAF Setting
+                    AWBOTP,             ///< AWB OTP Setting
+                    LSC,                ///< LSC OTP Setting
+                    Read,               ///< Read Device Setting
+                    InSensorHDR3ExpOn,  ///< In-sensor HDR 3 exposure start Setting
+                    InSensorHDR3ExpOff, ///< In-sensor HDR 3 exposure stop Setting
+                    LTC,                ///< LTC ratio Setting
+                    QSC,                ///< QSC OTP Setting
+                    ModeSwitch,         ///< Mode Switch Settings
+                    Max                 ///< Max I2C setting type
+                };
+        end note
+        alt <color:red>**TRUE==HandleModeSwitchDelay()**</color>
+            note right sensornode
+                <b>BeginCommand()</b>
+                <b>CreateI2CCmd()</b>
+                <b>CommitCommands()</b>
+            end note
+        end
+    sensornode->sensornode:
+    deactivate sensornode
+
+    sensornode->sensornode:
+    activate sensornode
+    sensornode->sensornode:
+    deactivate sensornode
+[<-sensornode:
+deactivate sensornode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/'
+== <color:blue> PDLib</color>==
+'/
+
+@enduml
