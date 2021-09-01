@@ -11,7 +11,7 @@ set hlsearch
 set number
 set list
 set listchars=tab:>-,trail:-
- 
+
 set ruler " 开启行号显示
 syntax enable "开启语法高亮
 syntax on "
@@ -148,7 +148,7 @@ nmap si    : cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap sd    : cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "show cscope result in a quickfix window
-"set cscopequickfix=s-,c-,d-,i-,t-,e-   
+"set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 
 "powerline
@@ -320,7 +320,7 @@ Plug 'junegunn/gv.vim'
 "github theme
 Plug 'endel/vim-github-colorscheme'
 
-"vim-slash 
+"vim-slash
 "auto clear search highlight when cursor is moved
 "Improve star-search(visual-mode, highlighting without moving)
 Plug 'junegunn/vim-slash'
@@ -577,7 +577,8 @@ nmap tu :syntax sync fromstart<cr>
 nmap gll :GV --no-merges<CR>
 nmap glc :GV!<CR>
 nmap gla :GV --no-merges --author<space>
-nmap glg :GV --no-merges --grep<space>
+nmap glg :GV --no-merges -i -E --grep<space>
+"GV --no-merges -i -E --grep "af.*fix|sensor.*fix"             Samples
 
 "vim slash
 noremap <plug>(slash-after) zz
