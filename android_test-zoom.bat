@@ -1,9 +1,8 @@
 set countor=0
 :func
-    adb shell input touchscreen swipe 218 2187 1248 2144 100
+    adb shell -s 17a2502c input touchscreen swipe 181 1881 432 1881 100
     set /a countor+=1
-    sleep 3
-    adb shell input touchscreen swipe 1248 2144 218 2187 100
+    adb shell -s 17a2502c input touchscreen swipe 432 1881 181 1881 100
 if %countor%==1000 goto end
 goto func
 :end
