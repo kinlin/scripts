@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
+    <SearchText doSearch="false" select="text" bgColor="yellow" comment="debug">camxncsservice</SearchText>
+    <SearchText bgColor="liteGreen" comment="debug">PDAFDepthAFMixerProcessMonitorOutput</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="debug">FillTOFSensorData</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="debug">camxncsintftofsensor</SearchText>
+    <SearchText doSearch="false" bgColor="yellow" comment="debug">ParseMultiPointTOFData</SearchText>
+    <SearchText select="text" color="pink" bgColor="liteBeige" comment="debug">DEBUG   :</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue" comment="debug">SetupTOFLink</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow" comment="debug">tofsensor.*RegisterService</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="debug">registerService.*sensor 6</SearchText>
+    <SearchText select="text" bgColor="pink" comment="debug">camxncsbuffer</SearchText>
+    <SearchText searchType="regex" bgColor="liteGreen" comment="debug">tofsensor.*QueryCapabilites</SearchText>
+    <SearchText select="text" bgColor="green" comment="debug">populatetof</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="litePink" comment="debug">tofsensor</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="liteGreen" comment="debug">DumpMultiPointTOFSensorData</SearchText>
+    <SearchText bgColor="darkYellow" comment="debug">DepthAFParseDepth16Stats</SearchText>
+    <SearchText select="text" bgColor="liteBeige" comment="debug">Filled up 7 events</SearchText>
+    <SearchText bgColor="liteRed" comment="debug">Starting the polling thread</SearchText>
+    <SearchText bgColor="veryLitePurple" comment="debug">ActivateTOFSensor</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen" comment="debug">stmvl|vl53l5</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteRed" comment="debug">QDEBUG</SearchText>
+</AnalyseDoc>

@@ -1,3 +1,0 @@
-dot -Tpng feature2typesHead.dot -o feature2typesHead.png
-dot -Tsvg feature2typesHead.dot -o feature2typesHead.svg
-dot -Tsvg feature2typesHead.dot -o feature2typesHead.svg

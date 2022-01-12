@@ -3,6 +3,8 @@
     <SearchText bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">GetHWPDConfig</SearchText>
     <SearchText searchType="regex" bgColor="veryLiteBlue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">SetupRequestOutputPortFence.*IFE.*port: 20</SearchText>
     <SearchText searchType="regex" bgColor="veryLitePurple" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">SetupRequestOutputPortFence.*IFE.*port: 8</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteRed" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DumpDebugInfo</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="liteGreen" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">processrequestiddone.*Autofocus</SearchText>
     <SearchText color="blue" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">DumpData|DumpDebugInfo</SearchText>
     <SearchText bgColor="red" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">Frame Error</SearchText>
     <SearchText bgColor="darkYellow" comment="tof &#x6570;&#x636E;&#x6253;&#x5370;">af_util_stats_config_pdaf</SearchText>
