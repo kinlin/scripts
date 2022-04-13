@@ -1,58 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <AnalyseDoc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./AnalyseDoc.xsd">
-    <SearchText bgColor="yellow">handleinsensorzoom</SearchText>
+    <SearchText doSearch="false" searchType="regex">CommonFAIL###################################</SearchText>
+    <SearchText bgColor="veryLitePurple">CamX: [ERROR]</SearchText>
+    <SearchText searchType="regex">camxsession.*HandleSystemEventCb</SearchText>
+    <SearchText bgColor="red">checkforrecovery</SearchText>
     <SearchText bgColor="red">dlopen fail</SearchText>
     <SearchText searchType="regex" bgColor="red">cslfence.*ife.*por.*fail</SearchText>
-    <SearchText doSearch="false" bgColor="cyan">FilterStats</SearchText>
+    <SearchText searchType="regex" color="red">fatal sig|DEBUG   </SearchText>
+    <SearchText searchType="regex" color="red">sparse_h.*NULL|PDLibFailState</SearchText>
+    <SearchText doSearch="false" select="text" color="orange" bgColor="veryLiteBlue">QDEBUG</SearchText>
+    <SearchText doSearch="false" searchType="regex">AutoFOCUS###################################</SearchText>
+    <SearchText>PublishSeamlessGroupPDInfo</SearchText>
+    <SearchText>SetPerModeEnablementInfo</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="#9dff9d">ProcessRequestIdDone.*AutoFocus</SearchText>
+    <SearchText select="text" bgColor="veryLiteBlue">PreparePDEnablementInfo</SearchText>
+    <SearchText>GetSensorPDAFInfo</SearchText>
+    <SearchText>PublishAFStatsProcessingDone</SearchText>
+    <SearchText select="text" bgColor="liteGreen">PublishPDLibConfigureParam</SearchText>
+    <SearchText select="text" bgColor="cyan">ReadPDLibConfigureParam</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="#8282ff">autofocus.*skiprequired 1</SearchText>
+    <SearchText bgColor="yellow">handleinsensorzoom</SearchText>
+    <SearchText searchType="regex" bgColor="liteGreen">sparse_.*Init</SearchText>
+    <SearchText searchType="regex">sparse_h.*init</SearchText>
+    <SearchText searchType="regex" bgColor="#77ddff">sparse_h.*process.*frame</SearchText>
+    <SearchText searchType="regex" bgColor="#77ddff">pdaf_v30_hw_flow.*frame_idx</SearchText>
+    <SearchText bgColor="yellow">PublishHWPDConfig</SearchText>
+    <SearchText color="#9d0000">statsfilter</SearchText>
     <SearchText color="blue">PopulatePDHWConfiguration</SearchText>
-    <SearchText select="text" color="blue">printPDHWConfig</SearchText>
-    <SearchText bgColor="litePink">CamX: [ERROR]</SearchText>
-    <SearchText doSearch="false">camxnode</SearchText>
-    <SearchText doSearch="false">ifenode</SearchText>
-    <SearchText doSearch="false">sensornode</SearchText>
-    <SearchText searchType="regex" select="text" bgColor="yellow">handleModeSwitchDelay|CreateSensorUpdatePacket</SearchText>
-    <SearchText searchType="regex" select="text" bgColor="yellow">camxifepdaf21</SearchText>
-    <SearchText select="text">readsensorinput</SearchText>
-    <SearchText select="text">selectSFEmode</SearchText>
-    <SearchText select="text">PDAFInit</SearchText>
-    <SearchText searchType="regex" select="text" bgColor="veryLiteBlue">sensornode.*executeProcessRequest</SearchText>
-    <SearchText searchType="regex" bgColor="liteBeige">GetCropWindowInfo</SearchText>
-    <SearchText select="text" bgColor="darkYellow">PDAFEnable</SearchText>
+    <SearchText color="blue">printPDHWConfig</SearchText>
+    <SearchText doSearch="false" color="blue">DumpHWPDConfig</SearchText>
+    <SearchText select="text" bgColor="#9f9fff">pdlibprocess</SearchText>
+    <SearchText searchType="regex" bgColor="veryLiteBlue">autofocus.*seqId</SearchText>
     <SearchText>PDLibProcess</SearchText>
     <SearchText searchType="regex" select="text" bgColor="orange">autofocus.*GetCurrentSensorMode</SearchText>
-    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen">ProcessRequestIdDone</SearchText>
     <SearchText doSearch="false" select="text" color="blue">lcr_hardware_flow</SearchText>
-    <SearchText searchType="regex" select="text">ifenode.*OnSetupRequest</SearchText>
-    <SearchText bgColor="yellow">UpdateCurrentSensorModePDAFInfo</SearchText>
-    <SearchText select="text" bgColor="blue">printpdhwenableconditions</SearchText>
+    <SearchText searchType="regex" select="text" color="darkYellow" bgColor="blue">pdafenablement.*print.*conditions</SearchText>
+    <SearchText doSearch="false" select="text">camxpdafenablementconditions</SearchText>
     <SearchText searchType="regex" select="text" bgColor="litePink">DumpHWPDConfig.*LCR config</SearchText>
+    <SearchText doSearch="false" select="text" bgColor="litePink">DumpHWPDConfig</SearchText>
     <SearchText searchType="regex" select="text" bgColor="yellow">LCR Output</SearchText>
     <SearchText searchType="regex" select="text" bgColor="liteBeige">lcr_hardware_flow.*parseInputParam</SearchText>
     <SearchText select="text" bgColor="pink">Disabling PerRequest Stats</SearchText>
-    <SearchText select="text">camxpdafenablementconditions</SearchText>
     <SearchText color="green">DisableUnwantedPipelineLinksPermanently</SearchText>
     <SearchText color="liteRed">DisableInputOutputLink</SearchText>
     <SearchText color="orange">populatepdin</SearchText>
-    <SearchText searchType="regex" color="red">fatal sig|DEBUG   </SearchText>
-    <SearchText doSearch="false" searchType="regex" color="red">FindBestSensorMode.*selected</SearchText>
     <SearchText>pdlibgethwinfo</SearchText>
-    <SearchText doSearch="false">ifenode</SearchText>
-    <SearchText searchType="regex" bgColor="#c7def1">&lt;==&gt;.*MultiCameraRealtime</SearchText>
-    <SearchText searchType="regex">ifenode.*executeProcess.*framecontext</SearchText>
-    <SearchText select="text" color="orange" bgColor="veryLiteBlue">QDEBUG</SearchText>
     <SearchText select="text" bgColor="purple">PopulatePDLibInitParam</SearchText>
-    <SearchText select="text">PopulatePDHWConfiguration</SearchText>
-    <SearchText select="text" bgColor="liteRed">UpdateParamsUponModeSwitch</SearchText>
+    <SearchText select="text" color="red" bgColor="#95ffff">PublishPDHWEnableConditions</SearchText>
     <SearchText select="text" bgColor="cyan">LCREnablementPerRequest()</SearchText>
-    <SearchText select="text" bgColor="#ffc8c8">PDLibInit</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="#ffc8c8">PDLibInit|PDAFInit|InitPDLib|PDAFDeInit|LoadPDLib|CreatePDLib|ChiPDlibraryEntry|LoadPDLibrary|GetCurrentPDAFModeIndex|DeinitializePDLib</SearchText>
     <SearchText select="text" bgColor="liteGreen">update m_tRequestId</SearchText>
-    <SearchText select="text">GetCurrentPDAFModeIndex</SearchText>
-    <SearchText select="text">GetPDAFInformation</SearchText>
-    <SearchText searchType="regex" select="text" color="cyan" bgColor="pink">sfelcr.*qdebug</SearchText>
-    <SearchText doSearch="false" color="purple">kinlin</SearchText>
+    <SearchText doSearch="false" select="text">GetCurrentPDAFModeIndex</SearchText>
+    <SearchText doSearch="false" select="text">GetPDAFInformation</SearchText>
+    <SearchText select="text">pdlibDestroy</SearchText>
     <SearchText searchType="regex" color="purple">autofocus.*kinlin</SearchText>
     <SearchText searchType="regex" select="text">autofocus.*OnSetupRequest</SearchText>
     <SearchText>pdlib_instance_manager</SearchText>
-    <SearchText>PrintDebugPDAFData</SearchText>
+    <SearchText searchType="regex">PrintDebugPDAFData.*PDAF Debug Data</SearchText>
     <SearchText color="litePink">LCR processing</SearchText>
+    <SearchText doSearch="false" searchType="regex">IFE###################################</SearchText>
+    <SearchText doSearch="false">ifenode</SearchText>
+    <SearchText searchType="regex">ifenode.*submit</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="#a2ffa2">ProcessRequestIdDone.*IFE</SearchText>
+    <SearchText select="text" bgColor="liteGreen">DisablePDOutputPort</SearchText>
+    <SearchText searchType="regex">ifenode.*executeprocessreq</SearchText>
+    <SearchText select="text" bgColor="liteGreen">Submitted packets with requestId</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="yellow">camxifepdaf21|sfelcr11|ifesparsepdext|csidcamifpdaftitan|sfepipelinetitan|ifepipelinetitan</SearchText>
+    <SearchText select="text">selectSFEmode</SearchText>
+    <SearchText select="text">readsensorinput</SearchText>
+    <SearchText searchType="regex">GetCropWindowInfo</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="darkYellow">ifenode.*PDAFEnable</SearchText>
+    <SearchText searchType="regex" select="text">ifenode.*OnSetupRequest</SearchText>
+    <SearchText searchType="regex">ifenode.*executeProcess.*framecontext</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" color="cyan" bgColor="pink">sfelcr.*qdebug</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="yellow">ifenode.*submit</SearchText>
+    <SearchText doSearch="false" searchType="regex">SENSOR###################################</SearchText>
+    <SearchText>PublishSensorModeSwitched</SearchText>
+    <SearchText doSearch="false">sensornode</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="#d5ffff">handleModeSwitchDelay|CreateSensorUpdatePacket</SearchText>
+    <SearchText searchType="regex" select="text" bgColor="veryLiteBlue">sensornode.*executeProcessRequest.*ApplyGains</SearchText>
+    <SearchText select="text" bgColor="liteRed">UpdateParamsUponModeSwitch</SearchText>
+    <SearchText doSearch="false" searchType="regex">MISC###################################</SearchText>
+    <SearchText searchType="regex" bgColor="#ff9fcf">cslfencecallback.*ife.*portid=8</SearchText>
+    <SearchText searchType="regex" bgColor="#ff9fcf">cslfencecallback.*ife.*portid=20</SearchText>
+    <SearchText searchType="regex" bgColor="#ff9fcf">cslfencecallback.*ife.*portid=25</SearchText>
+    <SearchText searchType="regex" bgColor="#ff9fcf">cslfencecallback.*ife.*portid=27</SearchText>
+    <SearchText searchType="regex" bgColor="#ff9fcf">cslfencecallback.*ife.*portid=28</SearchText>
+    <SearchText searchType="regex" bgColor="#ff9fcf">cslfencecallback.*ife.*portid=33</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteGreen">ProcessRequestIdDone</SearchText>
+    <SearchText doSearch="false">camxnode</SearchText>
+    <SearchText bgColor="cyan">SubmitRequestToSession() FRO-URO</SearchText>
+    <SearchText doSearch="false" searchType="regex">AddDependencyEntry</SearchText>
+    <SearchText doSearch="false" searchType="regex">session.*ProcessCaptureRequest</SearchText>
+    <SearchText searchType="regex" select="text">SetInSensorZoomInfo</SearchText>
+    <SearchText select="text">GetInSensorZoomTags</SearchText>
+    <SearchText searchType="regex" bgColor="liteGreen">APP user zoomRatio</SearchText>
+    <SearchText doSearch="false" searchType="regex" color="red">FindBestSensorMode.*selected</SearchText>
+    <SearchText searchType="regex" bgColor="#c7def1">&lt;==&gt;.*MultiCameraRealtime</SearchText>
+    <SearchText searchType="regex" bgColor="#c7def1">&lt;==&gt;.*RealTimeFeatureZSLPreviewRaw</SearchText>
+    <SearchText doSearch="false" searchType="regex">DRQ###################################</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="liteBlue">camxdeferredrequestqueue.*AddDependencyEntry</SearchText>
+    <SearchText doSearch="false" searchType="regex" select="text" bgColor="litePink">addDependencyEntry.*PropertyIDPDHwConfig</SearchText>
 </AnalyseDoc>
